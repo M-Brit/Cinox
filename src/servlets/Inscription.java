@@ -15,7 +15,6 @@ public class Inscription extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("@1");
         this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
     }
 
@@ -72,7 +71,7 @@ public class Inscription extends HttpServlet {
         try {
             connexion = DriverManager.getConnection(url, utilisateur, mDP);
             // Création de l'objet gérant la requête.
-            preparedStatement = connexion.prepareStatement("INSERT INTO Users (idUsers, email, password, nom, prenom, login) VALUES(4, ?, MD5(?), ?, ?, ?);");
+            preparedStatement = connexion.prepareStatement("INSERT INTO Users (email, motdepasse, nom, prenom, pseudo) VALUES(?, MD5(?), ?, ?, ?);");
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, motDePasse);
             preparedStatement.setString(3, nom);
@@ -148,7 +147,7 @@ public class Inscription extends HttpServlet {
         try {
             connexion = DriverManager.getConnection(url, utilisateur, mDP);
             // Création de l'objet gérant la requête.
-            preparedStatement = connexion.prepareStatement("SELECT COUNT(*) FROM Users WHERE login=?;");
+            preparedStatement = connexion.prepareStatement("SELECT COUNT(*) FROM Users WHERE pseudo=?;");
             preparedStatement.setString(1, nom);
 
             ResultSet statut = preparedStatement.executeQuery();
