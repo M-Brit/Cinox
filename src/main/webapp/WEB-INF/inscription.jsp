@@ -5,18 +5,16 @@
   Time: 19:24
   To change this template use File | Settings | File Templates.
 --%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <link href="../inscription.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="../css/inscription.css" rel="stylesheet">
+
     <title>Title</title>
 </head>
 <body>
@@ -27,7 +25,7 @@
         <h2 class="form-signin-heading">Rejoignez Cinox</h2>
         <label for="pseudo" class="sr-only"></label>
         <input type="text" id="pseudo" name="pseudo" class="form-control" placeholder="Pseudo"
-               value="<c:out value="${param.pseudo}"/>" required autofocus>
+               value="<c:out value="${param.pseudo}"/>" minlength="3" required autofocus>
         <span class="erreur">${erreurs['pseudo']}</span>
 
         <label for="prenom" class="sr-only"></label>
@@ -47,18 +45,28 @@
 
         <label for="motdepasse" class="sr-only"></label>
         <input type="password" id="motdepasse" name="motdepasse" class="form-control" placeholder="Mot de passe"
-               required>
+               minlength="3" required>
         <span class="erreur">${erreurs['motdepasse']}</span>
 
         <label for="confirmation" class="sr-only"></label>
         <input type="password" id="confirmation" name="confirmation" class="form-control" placeholder="Confirmation"
-               required>
+               minlength="3" required>
         <span class="erreur">${erreurs['confirmation']}</span>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
     </form>
 
-</div> <!-- /container -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
