@@ -8,6 +8,20 @@
         <listener-class>utils.HibernateUtil</listener-class>
     </listener>
 
+    <!-- ••••• Connexion ••••• -->
+
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>servlets.Connexion</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/connexion</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• Inscription ••••• -->
+
     <servlet>
         <servlet-name>inscription</servlet-name>
         <servlet-class>servlets.Inscription</servlet-class>

@@ -6,7 +6,7 @@ public class Utilisateur {
     private String nom;
     private String prenom;
     private String pseudo;
-    private String motdepasse;
+    private String motDePasse;
     private String email;
 
     public Utilisateur() {
@@ -16,7 +16,7 @@ public class Utilisateur {
         this.nom = nom;
         this.prenom = prenom;
         this.pseudo = pseudo;
-        this.motdepasse = motdepasse;
+        this.motDePasse = motdepasse;
         this.email = email;
     }
 
@@ -53,11 +53,11 @@ public class Utilisateur {
     }
 
     public String getMotdepasse() {
-        return motdepasse;
+        return motDePasse;
     }
 
     public void setMotdepasse(String motdepasse) {
-        this.motdepasse = motdepasse;
+        this.motDePasse = motdepasse;
     }
 
     public String getEmail() {
@@ -66,5 +66,9 @@ public class Utilisateur {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 }

@@ -9,47 +9,48 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
-<head>
+<head> <!-- TODO : mettre une favicon -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="../css/inscription.css" rel="stylesheet">
 
-    <title>Title</title>
+    <title>Inscription</title>
 </head>
 <body>
 
 <div class="container">
 
-    <form method="post" action="inscription" class="form-signin">
+    <form class="form-signin" method="post" action="inscription" >
         <h2 class="form-signin-heading">Rejoignez Cinox</h2>
-        <label for="pseudo" class="sr-only"></label>
-        <input type="text" id="pseudo" name="pseudo" class="form-control" placeholder="Pseudo"
+        <label class="sr-only" for="pseudo" ></label>
+        <input class="form-control" type="text" id="pseudo" name="pseudo"  placeholder="Pseudo"
                value="<c:out value="${param.pseudo}"/>" minlength="3" required autofocus>
         <span class="erreur">${erreurs['pseudo']}</span>
 
-        <label for="prenom" class="sr-only"></label>
-        <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom"
+        <label class="sr-only" for="prenom" ></label>
+        <input class="form-control" type="text" id="prenom" name="prenom"  placeholder="Prénom"
                value="<c:out value="${param.prenom}"/>" required>
         <span class="erreur">${erreurs['prenom']}</span>
 
         <label for="nom" class="sr-only"></label>
-        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom"
+        <input class="form-control" type="text" id="nom" name="nom"  placeholder="Nom"
                value="<c:out value="${param.nom}"/>" required>
         <span class="erreur">${erreurs['nom']}</span>
 
         <label for="email" class="sr-only"></label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+        <input class="form-control" type="email" id="email" name="email"  placeholder="Email"
                value="<c:out value="${param.email}"/>" required>
         <span class="erreur">${erreurs['email']}</span>
 
-        <label for="motdepasse" class="sr-only"></label>
+        <label class="sr-only" for="motdepasse" class="sr-only"></label>
         <input type="password" id="motdepasse" name="motdepasse" class="form-control" placeholder="Mot de passe"
                minlength="3" required>
         <span class="erreur">${erreurs['motdepasse']}</span>
 
-        <label for="confirmation" class="sr-only"></label>
-        <input type="password" id="confirmation" name="confirmation" class="form-control" placeholder="Confirmation"
+        <label class="sr-only" for="confirmation" ></label>
+        <input class="form-control" type="password" id="confirmation" name="confirmation"  placeholder="Confirmation"
                minlength="3" required>
         <span class="erreur">${erreurs['confirmation']}</span>
 
