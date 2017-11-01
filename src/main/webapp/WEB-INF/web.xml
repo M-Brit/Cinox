@@ -8,8 +8,12 @@
         <listener-class>utils.HibernateUtil</listener-class>
     </listener>
 
-    <!-- ••••• Connexion ••••• -->
+    <!-- ••••• Test session ••••• -->
+    <!--<session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>-->
 
+    <!-- ••••• Connexion ••••• -->
     <servlet>
         <servlet-name>Connexion</servlet-name>
         <servlet-class>servlets.Connexion</servlet-class>
@@ -30,5 +34,15 @@
     <servlet-mapping>
         <servlet-name>inscription</servlet-name>
         <url-pattern>/inscription</url-pattern>
+    </servlet-mapping>
+    <!-- ••••• Inscription ••••• -->
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>servlets.Deconnexion</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 </web-app>
