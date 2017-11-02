@@ -26,17 +26,17 @@
         <h2 class="form-signin-heading">Rejoignez Cinox</h2>
         <label class="sr-only" for="pseudo" ></label>
         <input class="form-control" type="text" id="pseudo" name="pseudo"  placeholder="Pseudo"
-               value="<c:out value="${param.pseudo}"/>" minlength="3" required autofocus>
+               value="<c:out value="${param.pseudo}"/>" minlength="3" required autofocus/>
         <span class="erreur">${erreurs['pseudo']}</span>
 
         <label class="sr-only" for="prenom" ></label>
         <input class="form-control" type="text" id="prenom" name="prenom"  placeholder="Prénom"
-               value="<c:out value="${param.prenom}"/>" required>
+               value="<c:out value="${param.prenom}"/>" required/>
         <span class="erreur">${erreurs['prenom']}</span>
 
         <label for="nom" class="sr-only"></label>
         <input class="form-control" type="text" id="nom" name="nom"  placeholder="Nom"
-               value="<c:out value="${param.nom}"/>" required>
+               value="<c:out value="${param.nom}"/>" required />
         <span class="erreur">${erreurs['nom']}</span>
 
         <label for="email" class="sr-only"></label>
@@ -46,12 +46,12 @@
 
         <label class="sr-only" for="motdepasse" class="sr-only"></label>
         <input type="password" id="motdepasse" name="motdepasse" class="form-control" placeholder="Mot de passe"
-               minlength="3" required>
+               minlength="3" required/>
         <span class="erreur">${erreurs['motdepasse']}</span>
 
         <label class="sr-only" for="confirmation" ></label>
         <input class="form-control" type="password" id="confirmation" name="confirmation"  placeholder="Confirmation"
-               minlength="3" required>
+               minlength="3" required/>
         <span class="erreur">${erreurs['confirmation']}</span>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>

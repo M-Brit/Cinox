@@ -58,11 +58,11 @@ public class InscriptionForm {
     }
 
     // Valide le pseudo saisi.
-    private static void validationPseudo(String nom) throws InscriptionException {
-        if (nom != null && nom.trim().length() < 3) {
+    private static void validationPseudo(String pseudo) throws InscriptionException {
+        if (pseudo != null && pseudo.trim().length() < 3) {
             throw new InscriptionException("Le pseudo doit contenir au moins 3 caractères.");
         }
-        if (!UtilisateurImpl.rechercheUtilisateurs(nom).isEmpty()) {
+        if (!UtilisateurImpl.rechercheUtilisateurs(pseudo).isEmpty()) {
             throw new InscriptionException("Le pseudo est déjà utilisé.");
         }
     }

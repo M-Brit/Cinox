@@ -18,5 +18,6 @@ public class Deconnexion extends HttpServlet {
 
         /* Redirection vers notre page d'accueil */
         resp.sendRedirect( URL_REDIRECTION ); // TODO ne surtout pas mettre de forwarding ici
+                                              // TODO qd l'url changera vers la page de notre dossier mettre : request.getContextPath() + URL_REDIRECTION
     }
 }

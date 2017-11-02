@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Inscription extends HttpServlet {
     private static final String VUE = "/WEB-INF/inscription.jsp";
-
+    private static final String VUE_ACCUEIL = "/index.jsp";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
@@ -38,6 +38,7 @@ public class Inscription extends HttpServlet {
             this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
         } else {
             UtilisateurImpl.ajoutUtilisateur(nom, prenom, pseudo, motDePasse, email);
+            this.getServletContext().getRequestDispatcher(VUE_ACCUEIL).forward(req, resp);
         }
     }
 }

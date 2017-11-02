@@ -8,7 +8,20 @@
         <listener-class>utils.HibernateUtil</listener-class>
     </listener>
 
-    <!-- ••••• Test session ••••• -->
+    <!-- ••••• Filtres session ••••• -->
+ <!--   <filter>
+        <filter-name>Filtre</filter-name>
+        <filter-class>filters.RestrictionFilter</filter-class>
+    </filter> -->
+    <!-- TODO : ¿¿¿ Les mappings de filtres sont appliqués les uns apres les autres selon leurs positions -->
+    <!--   <filter-mapping>
+         <filter-name>Filtre</filter-name>
+         <url-pattern>/*</url-pattern>
+     </filter-mapping> -->
+
+
+
+     <!-- ••••• Test session TODO a enelever ••••• -->
     <!--<session-config>
         <session-timeout>1</session-timeout>
     </session-config>-->

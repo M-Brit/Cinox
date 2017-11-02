@@ -21,16 +21,25 @@ public class UtilisateurImpl {
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
-                tx.rollback();
+                tx.rollback(); // TODO : zebi
             }
         }
     }
 
-    public static List rechercheUtilisateurs(String nom) {
+    public static List rechercheUtilisateurs(String pseudo) {
         try (Session session = HibernateUtil.sessionFactory.openSession()) {
-            Query query = session.createQuery("FROM Utilisateur WHERE pseudo = :nom");
-            query.setParameter("nom", nom);
+            Query query = session.createQuery("FROM Utilisateur WHERE pseudo = :pseudo");
+            query.setParameter("pseudo", pseudo);
             return query.getResultList();
         }
     }
+
+   /* public static List validation_Pseudo_MotDePasse_InBD( String pseudoUtilisateur, String motDePasse) {
+        try (Session session = HibernateUtil.sessionFactory.openSession()) {
+            Query query = session.createQuery("FROM Utilisateur WHERE pseudo = :pseudoUtilisateur AND motdepasse = :motDePasse");
+            query.setParameter("pseudoUtilisateur", pseudoUtilisateur);
+            query.setParameter("motDePasse", motDePasse);
+            return query.getResultList();
+        }
+    }*/
 }
