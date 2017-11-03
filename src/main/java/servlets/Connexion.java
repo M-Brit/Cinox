@@ -15,7 +15,7 @@ public class Connexion extends HttpServlet {
     public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE = "/WEB-INF/connexion.jsp";
+    public static final String VUE = "/index.jsp";
     public static final String VUE_FRONTPAGE = "/WEB-INF/dashboard.jsp";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,13 +41,14 @@ public class Connexion extends HttpServlet {
             session.setAttribute(ATT_FORM, form); // TODO : voir si utile
             session.setAttribute(ATT_SESSION_USER, utilisateur);
             this.getServletContext().getRequestDispatcher(VUE_FRONTPAGE).forward(request, response);
+            //response.sendRedirect(request.getContextPath() + VUE_FRONTPAGE);
         } else {
             session.setAttribute(ATT_SESSION_USER, null);
              /* Stockage du formulaire et du bean dans l'objet request */
             request.setAttribute(ATT_FORM, form);
             request.setAttribute(ATT_USER, utilisateur);
-
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+            //response.sendRedirect(request.getContextPath() + VUE);
         }
 
     }

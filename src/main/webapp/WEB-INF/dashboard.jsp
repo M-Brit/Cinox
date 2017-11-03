@@ -14,7 +14,7 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../css/jumbotron.css" rel="stylesheet">
   </head>
   <body>
 
@@ -40,6 +40,7 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+          <a class="btn btn btn-outline-danger" href="deconnexion"  type="warning" role="button">Sign out</a>
         </div>
       </nav>
     </header>

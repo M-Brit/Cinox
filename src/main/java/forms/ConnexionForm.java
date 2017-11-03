@@ -24,18 +24,12 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         /* Récupération des champs du formulaire */
-        String email = getValeurChamp(request, CHAMP_EMAIL);
+        //String email = getValeurChamp(request, CHAMP_EMAIL);
         String pseudo = getValeurChamp(request, CHAMP_PSEUDO);
         String motDePasse = getValeurChamp(request, CHAMP_PASS);
 
         Utilisateur utilisateur = new Utilisateur();
 
-        System.out.println("DODO");
-        try {
-            Thread.sleep(1000000000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         /* Validation du champ email. */
        /* try {
@@ -136,7 +130,7 @@ public final class ConnexionForm {
 
     /**
      * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
-     * sinon.
+     * sinon. -> permet d'éviter les espaces en trop et les valeur null ou vide.
      *
      * @param request
      * @param nomChamp

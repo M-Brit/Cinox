@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Deconnexion extends HttpServlet {
     // TODO : mettre ici la page index.html a la place de google.fr
-    public static final String URL_REDIRECTION = "https://www.google.fr";
+    public static final String URL_REDIRECTION = "/index.jsp";
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
@@ -17,7 +17,7 @@ public class Deconnexion extends HttpServlet {
         session.invalidate();
 
         /* Redirection vers notre page d'accueil */
-        resp.sendRedirect( URL_REDIRECTION ); // TODO ne surtout pas mettre de forwarding ici
-                                              // TODO qd l'url changera vers la page de notre dossier mettre : request.getContextPath() + URL_REDIRECTION
+        resp.sendRedirect(req.getContextPath() + URL_REDIRECTION ); // TODO ne surtout pas mettre de forwarding ici
+                                           // TODO qd l'url changera vers la page de notre dossier mettre : request.getContextPath() + URL_REDIRECTION
     }
 }

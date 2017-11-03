@@ -39,6 +39,7 @@ public class Inscription extends HttpServlet {
         } else {
             UtilisateurImpl.ajoutUtilisateur(nom, prenom, pseudo, motDePasse, email);
             this.getServletContext().getRequestDispatcher(VUE_ACCUEIL).forward(req, resp);
+            //resp.sendRedirect(req.getContextPath() + VUE_ACCUEIL);
         }
     }
 }

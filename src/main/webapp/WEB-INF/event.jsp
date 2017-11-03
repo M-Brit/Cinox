@@ -1,24 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: evergreen
+  Date: 02/11/2017
+  Time: 15:13
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head> <!-- TODO : mettre une favicon -->
+<head>
+    <title>Céation d'évènements</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="../css/connexion.css" rel="stylesheet">
-    <title>Connexion</title>
+    <link href="../css/inscription.css" rel="stylesheet">
 </head>
 <body>
+
 
 <div class="container">
     <form class="form-signin" method="post" action="connexion">
         <h2 class="form-signin-heading">Connexion Cinox</h2>
         <label class="sr-only" for="pseudo"></label>
         <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Pseudo"
-               value="<c:out value="${utilsateur.pseudo}"/>" minlength="3"  required autofocus>
-        <span class="erreur">${erreurs['pseudo']}</span>
+               value="<c:out value="${param.email}"/>" required>
+        <span class="erreur">${erreurs['email']}</span>
 
 
         <label class="sr-only" for="motdepasse"></label>
@@ -28,7 +35,7 @@
 
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
-        <!-- TODO : a enlever juste pour le test -->
+
         <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 
         <%-- Vérification de la présence d'un objet utilisateur en session --%>

@@ -1,0 +1,24 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+form .erreur {
+  color: #900;
+}
+
+.form-inline .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-inline .form-control:focus {
+  z-index: 2;
+}
