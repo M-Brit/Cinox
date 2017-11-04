@@ -21,7 +21,11 @@ public class UtilisateurImpl {
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
-                tx.rollback(); // TODO : zebi
+                try {
+                    tx.rollback();
+                } catch (Exception e2) {
+                    System.out.println("Rollback impossible !");
+                }
             }
         }
     }
@@ -30,6 +34,14 @@ public class UtilisateurImpl {
         try (Session session = HibernateUtil.sessionFactory.openSession()) {
             Query query = session.createQuery("FROM Utilisateur WHERE pseudo = :pseudo");
             query.setParameter("pseudo", pseudo);
+            return query.getResultList();
+        }
+    }
+
+    public static List rechercheEmail(String email) {
+        try (Session session = HibernateUtil.sessionFactory.openSession()) {
+            Query query = session.createQuery("FROM Utilisateur WHERE email = :email");
+            query.setParameter("email", email);
             return query.getResultList();
         }
     }

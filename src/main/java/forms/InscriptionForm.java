@@ -42,6 +42,9 @@ public class InscriptionForm {
         } else {
             throw new InscriptionException("Merci de saisir une adresse mail.");
         }
+        if (!UtilisateurImpl.rechercheEmail(email).isEmpty()) {
+            throw new InscriptionException("L'adresse mail est déjà utilisé.");
+        }
     }
 
     // Valide les mots de passe saisis.
