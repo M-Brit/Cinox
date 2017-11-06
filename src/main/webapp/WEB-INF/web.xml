@@ -58,4 +58,14 @@
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Profil</servlet-name>
+        <servlet-class>servlets.Profil</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Profil</servlet-name>
+        <url-pattern>/profil</url-pattern>
+    </servlet-mapping>
 </web-app>

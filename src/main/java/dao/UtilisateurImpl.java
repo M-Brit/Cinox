@@ -38,6 +38,14 @@ public class UtilisateurImpl {
         }
     }
 
+    public static List rechercheUtilisateurs(int id) {
+        try (Session session = HibernateUtil.sessionFactory.openSession()) {
+            Query query = session.createQuery("FROM Utilisateur WHERE id = :id");
+            query.setParameter("id", id);
+            return query.getResultList();
+        }
+    }
+
     public static List rechercheEmail(String email) {
         try (Session session = HibernateUtil.sessionFactory.openSession()) {
             Query query = session.createQuery("FROM Utilisateur WHERE email = :email");
