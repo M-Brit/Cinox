@@ -248,7 +248,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="recommended-info">
                 <h3>History Of My Play</h3>
                 <%
-                    ArrayList<Movie> moviesList = (ArrayList<Movie>) request.getAttribute("userlist");
+                    //System.out.println("movieList"+ request.getAttribute("movieList"));
+                    ArrayList<Movie> moviesList = (ArrayList<Movie>) request.getAttribute("movieList");
                     System.out.println("jsp=="+ moviesList.size());
                     for (Movie movie: moviesList) {
 
