@@ -31,4 +31,16 @@
         <servlet-name>inscription</servlet-name>
         <url-pattern>/inscription</url-pattern>
     </servlet-mapping>
+
+    <!-- ••••• Search ••••• -->
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>servlets.Search</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/servlets/Search</url-pattern>
+    </servlet-mapping>
+
 </web-app>

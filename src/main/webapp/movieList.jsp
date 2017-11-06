@@ -6,7 +6,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Movies</title>
+    <title>Search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="navbar" class="navbar-collapse collapse">
             <div class="top-search">
                 <form class="navbar-form navbar-right" action="servlets/Search" method="get">
-                    <input type="text" name="title" class="form-control" placeholder="Search...">
+                    <input type="text" name="movieName" class="form-control" placeholder="Search...">
                     <input type="submit" value=" ">
                 </form>
             </div>
@@ -244,115 +244,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="show-top-grids">
-        <div class="col-sm-10 show-grid-left main-grids">
-            <div class="recommended">
-                <div class="recommended-grids english-grid">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>Now Playing</h3>
-                        </div>
-                        <div class="clearfix"> </div>
+        <div class="main-grids news-main-grids">
+            <div class="recommended-info">
+                <h3>History Of My Play</h3>
+                <%
+                    ArrayList<Movie> moviesList = (ArrayList<Movie>) request.getAttribute("userlist");
+                    System.out.println("jsp=="+ moviesList.size());
+                    for (Movie movie: moviesList) {
+
+                %>
+                <div class="history-grids">
+                    <div class="col-md-1 history-left">
+                        <p><%=movie.getRelease_date()%></p>
                     </div>
-                    <%
-                        MovieApi movieApi = new MovieApi();
-                        Movie playingMovie;
-                        String playing_image;
-                        ArrayList<Movie> playingMovies = movieApi.nowPlaying();
-                        for (int i=0; i<playingMovies.size(); i++) {
-                            playingMovie = playingMovies.get(i);
-                            playing_image = "https://image.tmdb.org/t/p/w500"+playingMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=playingMovie.getId()%>"><img src=<%=playing_image%> alt="" /></a>
-                        </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=playingMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=playingMovie.getVote_average()%></p></li>
-                            </ul>
-                        </div>
+                    <div class="col-md-11 history-right">
+                        <h5><%=movie.getTitle()%></h5>
+                        <p><%=movie.getOverview()%></p>
                     </div>
-                    <%}%>
                     <div class="clearfix"> </div>
                 </div>
-            </div>
-            <div class="recommended">
-                <div class="recommended-grids">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>UpComing</h3>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <%
-                        Movie upComingMovie;
-                        String upComing_image;
-                        ArrayList<Movie> upComingMovies = movieApi.upComing();
-                        for (int j=0; j<upComingMovies.size(); j++) {
-                            upComingMovie = upComingMovies.get(j);
-                            upComing_image = "https://image.tmdb.org/t/p/w500"+upComingMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=upComingMovie.getId()%>"><img src=<%=upComing_image%> alt="" /></a>
-                            <div class="clck movie-clock">
-                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=upComingMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=upComingMovie.getVote_average()%></p></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%}%>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="recommended">
-                <div class="recommended-grids">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>Top Rated</h3>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <%
-                        Movie topMovie;
-                        String topMovie_image;
-                        ArrayList<Movie> topMovies = movieApi.topRated();
-                        for (int k=0; k<topMovies.size(); k++) {
-                            topMovie = topMovies.get(k);
-                            topMovie_image = "https://image.tmdb.org/t/p/w500"+topMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=topMovie.getId()%>"><img src=<%=topMovie_image%> alt="" /></a>
-                            <div class="clck movie-clock">
-                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=topMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=topMovie.getVote_average()%></p></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%}%>
-                    <div class="clearfix"> </div>
-                </div>
+                <%}%>
             </div>
         </div>
-
-        <div class="clearfix"> </div>
     </div>
     <!-- footer -->
-    <div class="footer">
 
-    </div>
     <!-- //footer -->
 </div>
 <div class="clearfix"> </div>

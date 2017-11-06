@@ -244,116 +244,117 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="show-top-grids">
-        <div class="col-sm-10 show-grid-left main-grids">
-            <div class="recommended">
-                <div class="recommended-grids english-grid">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>Now Playing</h3>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <%
-                        MovieApi movieApi = new MovieApi();
-                        Movie playingMovie;
-                        String playing_image;
-                        ArrayList<Movie> playingMovies = movieApi.nowPlaying();
-                        for (int i=0; i<playingMovies.size(); i++) {
-                            playingMovie = playingMovies.get(i);
-                            playing_image = "https://image.tmdb.org/t/p/w500"+playingMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=playingMovie.getId()%>"><img src=<%=playing_image%> alt="" /></a>
-                        </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=playingMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=playingMovie.getVote_average()%></p></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%}%>
-                    <div class="clearfix"> </div>
+        <div class="col-sm-8 single-left">
+            <div class="song">
+                <div class="song-info">
+                    <h3>Etiam molestie nisl eget consequat pharetra</h3>
+                </div>
+                <%
+                    String id = request.getParameter("id");
+                    MovieApi movieApi = new MovieApi();
+                    Movie movie = movieApi.getMovieDetails(id);
+                    String image = "https://image.tmdb.org/t/p/w500"+movie.getPoster_path();
+                %>
+                <div class="video-grid">
+                    <!--<iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowfullscreen></iframe>-->
+                    <iframe src="<%=image%>" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="recommended">
-                <div class="recommended-grids">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>UpComing</h3>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <%
-                        Movie upComingMovie;
-                        String upComing_image;
-                        ArrayList<Movie> upComingMovies = movieApi.upComing();
-                        for (int j=0; j<upComingMovies.size(); j++) {
-                            upComingMovie = upComingMovies.get(j);
-                            upComing_image = "https://image.tmdb.org/t/p/w500"+upComingMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=upComingMovie.getId()%>"><img src=<%=upComing_image%> alt="" /></a>
-                            <div class="clck movie-clock">
-                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=upComingMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=upComingMovie.getVote_average()%></p></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%}%>
-                    <div class="clearfix"> </div>
+            <div class="song-grid-right">
+                <div class="share">
+                    <h5>Share this</h5>
+                    <ul>
+                        <li><a href="#" class="icon fb-icon">Facebook</a></li>
+                        <li><a href="#" class="icon dribbble-icon">Dribbble</a></li>
+                        <li><a href="#" class="icon twitter-icon">Twitter</a></li>
+                        <li><a href="#" class="icon pinterest-icon">Pinterest</a></li>
+                        <li><a href="#" class="icon whatsapp-icon">Whatsapp</a></li>
+                        <li><a href="#" class="icon like">Like</a></li>
+                        <li><a href="#" class="icon comment-icon">Comments</a></li>
+                        <li class="view">200 Views</li>
+                    </ul>
                 </div>
             </div>
-            <div class="recommended">
-                <div class="recommended-grids">
-                    <div class="recommended-info">
-                        <div class="heading">
-                            <h3>Top Rated</h3>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <%
-                        Movie topMovie;
-                        String topMovie_image;
-                        ArrayList<Movie> topMovies = movieApi.topRated();
-                        for (int k=0; k<topMovies.size(); k++) {
-                            topMovie = topMovies.get(k);
-                            topMovie_image = "https://image.tmdb.org/t/p/w500"+topMovie.getPoster_path();
-                    %>
-                    <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-                        <div class="resent-grid-img recommended-grid-img">
-                            <a href="movieDetails.jsp?id=<%=topMovie.getId()%>"><img src=<%=topMovie_image%> alt="" /></a>
-                            <div class="clck movie-clock">
-                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            <div class="clearfix"> </div>
+            <div class="published">
+                <script src="jquery.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        size_li = $("#myList li").size();
+                        x=1;
+                        $('#myList li:lt('+x+')').show();
+                        $('#loadMore').click(function () {
+                            x= (x+1 <= size_li) ? x+1 : size_li;
+                            $('#myList li:lt('+x+')').show();
+                        });
+                        $('#showLess').click(function () {
+                            x=(x-1<0) ? 1 : x-1;
+                            $('#myList li').not(':lt('+x+')').hide();
+                        });
+                    });
+                </script>
+                <div class="load_more">
+                    <ul id="myList">
+                        <li>
+                            <h4>Sortie <%=movie.getRelease_date()%></h4>
+                            <p><%=movie.getOverview()%></p>
+                        </li>
+                        <li>
+                            <p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
+                            <p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
+                            <div class="load-grids">
+                                <div class="load-grid">
+                                    <p>Category</p>
+                                </div>
+                                <div class="load-grid">
+                                    <a href="movies.html">Entertainment</a>
+                                </div>
+                                <div class="clearfix"> </div>
                             </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="all-comments">
+                <div class="all-comments-info">
+                    <a href="#">All Comments (numbre)</a>
+                    <div class="box">
+                        <form>
+                            <textarea placeholder="Message" required=" "></textarea>
+                            <input type="submit" value="SEND">
+                            <div class="clearfix"> </div>
+                        </form>
+                    </div>
+                    <div class="all-comments-buttons">
+                        <ul>
+                            <li><a href="#" class="top">Top Comments</a></li>
+                            <li><a href="#" class="top newest">Newest First</a></li>
+                            <li><a href="#" class="top my-comment">My Comments</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="media-grids">
+                    <div class="media">
+                        <h5>Tom Brown</h5>
+                        <div class="media-left">
+                            <a href="#">
+
+                            </a>
                         </div>
-                        <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-                            <h5><a href="single.html" class="title"><%=topMovie.getTitle()%></a></h5>
-                            <ul>
-                                <li class="right-list"><p class="views views-info">vote_average:<%=topMovie.getVote_average()%></p></li>
-                            </ul>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
                         </div>
                     </div>
-                    <%}%>
-                    <div class="clearfix"> </div>
+
                 </div>
             </div>
         </div>
-
         <div class="clearfix"> </div>
     </div>
     <!-- footer -->
-    <div class="footer">
-
-    </div>
     <!-- //footer -->
+</div>
 </div>
 <div class="clearfix"> </div>
 <div class="drop-menu">
