@@ -5,7 +5,9 @@
 
 <hibernate-mapping>
     <class name="beans.Amis" table="amis">
-        <id name="idAmi" column="idAmis" type="int"/>
-        <property name="idUser" type="int" column="idUsers"/>
+        <composite-id>
+            <key-property name="idAmi" column="idAmis" type="int"/>
+            <key-property name="idUser" type="int" column="idUsers"/>
+        </composite-id>
     </class>
 </hibernate-mapping>

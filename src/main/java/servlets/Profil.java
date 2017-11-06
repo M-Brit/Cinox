@@ -21,17 +21,23 @@ public class Profil extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String s = "[{ \"id\" : \"1\", \"pseudo\" : \"Dark75\", \"prenom\" : \"Jean\", \"nom\" : \"Michel\"}," +
-        //        "{ \"id\" : \"2\", \"pseudo\" : \"White75\", \"prenom\" : \"Jean\", \"nom\" : \"Michel\"}]";
-
-
-        List l = AmisImpl.rechercheAmis(11);
-        JSONArray array = ProfilForm.rechercheAmisJSON(l);
-        System.out.println(l.get(0).toString() + " - " + l.get(1).toString());
-        String s = array.toString();
-        resp.setContentType("plain/text");
-        resp.setHeader("Cache-control", "no-cache");
-        resp.getWriter().write(s);
-        resp.getWriter().close();
+        // TODO GERER SESSION
+        String action = req.getParameter("action");
+        switch (action) {
+            case "update":
+                List l = AmisImpl.rechercheAmis(11); // !!!!! session
+                JSONArray array = ProfilForm.rechercheAmisJSON(l);
+                String s = array.toString();
+                resp.setContentType("plain/text");
+                resp.setHeader("Cache-control", "no-cache");
+                resp.getWriter().write(s);
+                resp.getWriter().close();
+                break;
+            case "suppr":
+                AmisImpl.supressionAmis(11, Integer.parseInt(req.getParameter("id")));
+                break;
+            default:
+                System.out.println("Action invalide !");
+        }
     }
 }

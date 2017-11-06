@@ -1,6 +1,8 @@
 package beans;
 
-public class Amis {
+import java.io.Serializable;
+
+public class Amis implements Serializable {
     private int idUser;
     private int idAmi;
 

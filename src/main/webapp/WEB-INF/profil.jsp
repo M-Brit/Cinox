@@ -79,7 +79,7 @@
 
         function update() {
             $.post('profil',
-                '',
+                {"action": "update"},
                 function (data, status) {
                     res = JSON.parse(data);
                     $('#tableauAmi').html('');
@@ -92,19 +92,20 @@
                         tmp += '<td class="text-center">' +
                             '<button type="button" value=' + res[i].id + ' class="btn btn-danger">Supprimer</button>';
                         tmp += '</tr>';
-                        console.log(tmp);
                         $('#tableauAmi').append(tmp);
                     }
                 });
         }
 
         $(document).on('click', 'button', function () {
-            confirm('Êtes-vous sûr de vouloir supprimer cette ami ?');
-            $.post('profil',
-                'suppr',
-                function (data, status) {
-                    update();
-                });
+            var res = confirm('Êtes-vous sûr de vouloir supprimer cette ami ?');
+            if (res === true) {
+                $.post('profil',
+                    {"action": "suppr", "id": $(this).val()},
+                    function (data, status) {
+                        update();
+                    });
+            }
         });
 
         //setInterval(update, 4000);
