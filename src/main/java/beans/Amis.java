@@ -5,14 +5,17 @@ import java.io.Serializable;
 public class Amis implements Serializable {
     private int idUser;
     private int idAmi;
+    private int status;
 
     public Amis() {
 
     }
 
-    public Amis(int idUser, int idAmi) {
-        idUser = idUser;
-        idAmi = idAmi;
+    public Amis(int idUser, int idAmi, int status) {
+        this.idUser = idUser;
+        this.idAmi = idAmi;
+        this.status = status;
+
     }
 
     public int getIdUser() {
@@ -29,5 +32,13 @@ public class Amis implements Serializable {
 
     public void setIdAmi(int idAmi) {
         this.idAmi = idAmi;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

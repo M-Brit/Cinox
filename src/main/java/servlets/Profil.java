@@ -1,6 +1,8 @@
 package servlets;
 
+import beans.Utilisateur;
 import dao.AmisImpl;
+import dao.UtilisateurImpl;
 import forms.ProfilForm;
 import org.json.JSONArray;
 
@@ -35,6 +37,19 @@ public class Profil extends HttpServlet {
                 break;
             case "suppr":
                 AmisImpl.supressionAmis(11, Integer.parseInt(req.getParameter("id")));
+                break;
+            case "add":
+                List u = UtilisateurImpl.rechercheUtilisateurs(req.getParameter("pseudo"));
+                if (!u.isEmpty()) {
+                    int id = ((Utilisateur) u.get(0)).getId();
+                    if (id != 11) {
+                        AmisImpl.ajoutAmi(11, id);
+                    }
+                }
+                // TODO CAS IMPOSSIBLE
+                break;
+            case "accept":
+                AmisImpl.accepterAmis(11, Integer.parseInt(req.getParameter("id")));
                 break;
             default:
                 System.out.println("Action invalide !");

@@ -21,6 +21,7 @@
 
 <body>
 
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" href="#">Cinox</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -45,6 +46,20 @@
     </div>
 </nav>
 <br>
+
+<div class="container">
+    <h1>Ajout d'un ami</h1>
+    <div class="form-inline">
+        <input type="text" id="addPseudo" class="form-control" placeholder="pseudo">
+        <button type="submit" id="addUser" class="btn btn-outline-primary">Ajouter</button>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <h1>Liste d'amis</h1>
+</div>
 
 <div class="container">
     <table class="table">
@@ -89,8 +104,17 @@
                         tmp += '<td class="text-center">' + res[i].pseudo + '</td>';
                         tmp += '<td class="text-center">' + res[i].prenom + '</td>';
                         tmp += '<td class="text-center">' + res[i].nom + '</td>';
-                        tmp += '<td class="text-center">' +
-                            '<button type="button" value=' + res[i].id + ' class="btn btn-danger">Supprimer</button>';
+                        if (res[i].status === 1) {
+                            tmp += '<td class="text-center">' +
+                                '<button type="button" value=' + res[i].id + ' class="btn btn-outline-danger">Supprimer</button> </td>';
+                        } else if (res[i].status === 0) {
+                            tmp += '<td class="text-center"> En attente d\'acceptation ...</td>';
+                        } else if (res[i].status === 2) {
+
+                            tmp += '<td class="text-center">' +
+                                '<button type="button" id="accept" value=' + res[i].id + ' class="btn btn-outline-success">Accepter</button>';
+                            tmp += '<button type="button" id="refuse" value=' + res[i].id + ' class="btn btn-outline-danger">Refuser</button> </td>';
+                        }
                         tmp += '</tr>';
                         $('#tableauAmi').append(tmp);
                     }
@@ -98,13 +122,35 @@
         }
 
         $(document).on('click', 'button', function () {
-            var res = confirm('Êtes-vous sûr de vouloir supprimer cette ami ?');
-            if (res === true) {
-                $.post('profil',
-                    {"action": "suppr", "id": $(this).val()},
+            if (this.id === "addUser") {
+                $.post('profil', {"action": "add", "pseudo": document.getElementById("addPseudo").value},
                     function (data, status) {
                         update();
                     });
+            } else if (this.id === "accept") {
+                $.post('profil',
+                    {"action": "accept", "id": $(this).val()},
+                    function (data, status) {
+                        update();
+                    });
+            } else if (this.id === "refuse") {
+                var res = confirm('Êtes-vous sûr de vouloir refuser cette ami ?');
+                if (res === true) {
+                    $.post('profil',
+                        {"action": "suppr", "id": $(this).val()},
+                        function (data, status) {
+                            update();
+                        });
+                }
+            } else {
+                var res = confirm('Êtes-vous sûr de vouloir supprimer cette ami ?');
+                if (res === true) {
+                    $.post('profil',
+                        {"action": "suppr", "id": $(this).val()},
+                        function (data, status) {
+                            update();
+                        });
+                }
             }
         });
 

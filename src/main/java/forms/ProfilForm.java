@@ -20,6 +20,7 @@ public class ProfilForm {
             json.put("pseudo", u.getPseudo());
             json.put("prenom", u.getPrenom());
             json.put("nom", u.getNom());
+            json.put("status", a.getStatus());
             array.put(json);
         }
         return array;

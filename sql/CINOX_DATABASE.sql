@@ -52,8 +52,9 @@ ENGINE = InnoDB;
 -- Table `mydb`.`amis`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`amis` (
-  `idAmis` INT NOT NULL,
+  `idAmis`  INT NOT NULL,
   `idUsers` INT NOT NULL,
+  `status`  INT NOT NULL,
   PRIMARY KEY (`idAmis`, `idUsers`),
   INDEX `fk_Users_has_Users_Users1_idx` (`idUsers` ASC),
   INDEX `fk_Users_has_Users_Users_idx` (`idAmis` ASC),
@@ -124,15 +125,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`commentaires` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Notes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Notes` (
-)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`notes`

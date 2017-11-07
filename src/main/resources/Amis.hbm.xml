@@ -9,5 +9,6 @@
             <key-property name="idAmi" column="idAmis" type="int"/>
             <key-property name="idUser" type="int" column="idUsers"/>
         </composite-id>
+        <property name="status" column="status" type="int"/>
     </class>
 </hibernate-mapping>
