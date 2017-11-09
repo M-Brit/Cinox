@@ -89,4 +89,26 @@ public class AmisImpl {
             }
         }
     }
+
+    public static void supressionTousAmis(int idUser) {
+        Transaction tx = null;
+        try (Session session = HibernateUtil.sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            Query query1 = session.createQuery("delete from  Amis where idUser=:iduser");
+            Query query2 = session.createQuery("delete from  Amis where idAmi=:iduser");
+            query1.setParameter("iduser", idUser);
+            query2.setParameter("iduser", idUser);
+            query1.executeUpdate();
+            query2.executeUpdate();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                try {
+                    tx.rollback();
+                } catch (Exception e2) {
+                    System.out.println("Rollback impossible !");
+                }
+            }
+        }
+    }
 }

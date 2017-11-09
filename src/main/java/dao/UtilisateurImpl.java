@@ -54,12 +54,22 @@ public class UtilisateurImpl {
         }
     }
 
-   /* public static List validation_Pseudo_MotDePasse_InBD( String pseudoUtilisateur, String motDePasse) {
+    public static void supressionUtilisateur(int idUser) {
+        Transaction tx = null;
         try (Session session = HibernateUtil.sessionFactory.openSession()) {
-            Query query = session.createQuery("FROM Utilisateur WHERE pseudo = :pseudoUtilisateur AND motdepasse = :motDePasse");
-            query.setParameter("pseudoUtilisateur", pseudoUtilisateur);
-            query.setParameter("motDePasse", motDePasse);
-            return query.getResultList();
+            tx = session.beginTransaction();
+            Query query1 = session.createQuery("delete from  Utilisateur where id=:iduser");
+            query1.setParameter("iduser", idUser);
+            query1.executeUpdate();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                try {
+                    tx.rollback();
+                } catch (Exception e2) {
+                    System.out.println("Rollback impossible !");
+                }
+            }
         }
-    }*/
+    }
 }

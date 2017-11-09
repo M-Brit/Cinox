@@ -12,7 +12,6 @@ import org.hibernate.cfg.Configuration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HibernateUtil implements ServletContextListener {
@@ -21,7 +20,7 @@ public class HibernateUtil implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        testMongo();
+        //testMongo();
 
     }
 

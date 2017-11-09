@@ -51,6 +51,10 @@ public class Profil extends HttpServlet {
             case "accept":
                 AmisImpl.accepterAmis(11, Integer.parseInt(req.getParameter("id")));
                 break;
+            case "desins":
+                AmisImpl.supressionTousAmis(14);
+                UtilisateurImpl.supressionUtilisateur(14);
+                break;
             default:
                 System.out.println("Action invalide !");
         }

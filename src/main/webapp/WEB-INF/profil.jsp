@@ -58,6 +58,15 @@
 <br>
 
 <div class="container">
+    <h1>Désinscription</h1>
+    <div class="form-inline">
+        <button type="submit" id="desinscription" class="btn btn-outline-danger">Désinscription</button>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
     <h1>Liste d'amis</h1>
 </div>
 
@@ -140,6 +149,15 @@
                         {"action": "suppr", "id": $(this).val()},
                         function (data, status) {
                             update();
+                        });
+                }
+            } else if (this.id === "desinscription") {
+                var res = confirm('Êtes-vous sûr de vouloir vous désinscrire ?');
+                if (res === true) {
+                    $.post('profil',
+                        {"action": "desins", "id": $(this).val()},
+                        function (data, status) {
+                            update(); //todo desins redirect
                         });
                 }
             } else {
