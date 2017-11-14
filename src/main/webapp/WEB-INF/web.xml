@@ -9,7 +9,7 @@
     </listener>
 
     <!-- ••••• Filtres session ••••• -->
- <!--   <filter>
+    <!--   <filter>
         <filter-name>Filtre</filter-name>
         <filter-class>filters.RestrictionFilter</filter-class>
     </filter> -->
@@ -59,6 +59,51 @@
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 
+
+    <!-- ••••• TestMongodb ••••• -->
+    <servlet>
+        <servlet-name>TestMongodb</servlet-name>
+        <servlet-class>servlets.TestMongodb</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestMongodb</servlet-name>
+        <url-pattern>/testMongodb</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• Commentaires ••••• -->
+    <servlet>
+        <servlet-name>Commentaires</servlet-name>
+        <servlet-class>servlets.Commentaires</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Commentaires</servlet-name>
+        <url-pattern>/commentaires</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• FILMS ••••• -->
+    <servlet>
+        <servlet-name>Films</servlet-name>
+        <servlet-class>servlets.Films</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Films</servlet-name>
+        <url-pattern>/films</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• Search Films ••••• -->
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>servlets.Search</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>Profil</servlet-name>
         <servlet-class>servlets.Profil</servlet-class>
@@ -68,4 +113,5 @@
         <servlet-name>Profil</servlet-name>
         <url-pattern>/profil</url-pattern>
     </servlet-mapping>
+
 </web-app>

@@ -16,13 +16,13 @@ public class Connexion extends HttpServlet {
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE = "/index.jsp";
-    public static final String VUE_FRONTPAGE = "/WEB-INF/dashboard.jsp";
-
+    public static final String VUE_FRONTPAGE = "/WEB-INF/dashboard2.jsp";
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Affichage de la page de connexion */
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
-
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
         ConnexionForm form = new ConnexionForm();

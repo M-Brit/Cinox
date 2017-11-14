@@ -3,8 +3,10 @@ package utils;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCursor;
+
+
 import org.bson.Document;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -16,6 +18,14 @@ import java.util.List;
 
 public class HibernateUtil implements ServletContextListener {
     public static SessionFactory sessionFactory;
+    //public static MongoDatabase database ;
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        //MongoClientURI uriMongo = new MongoClientURI("mongodb://cinox:cinoxroot@ds042687.mlab.com:42687/cinox");
+        //MongoClient client = new MongoClient(uriMongo);
+        //database = client.getDatabase(uriMongo.getDatabase());
+    }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -102,6 +112,7 @@ public class HibernateUtil implements ServletContextListener {
 
         client.close();
     }
+
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

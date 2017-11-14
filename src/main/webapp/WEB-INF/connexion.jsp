@@ -13,11 +13,12 @@
 <body>
 
 <div class="container">
-    <form class="form-signin" method="post" action="connexion">
+    <form class="form-signin" method="post" action="<c:url value="/connexion" />"> <!-- permet de gerer les navigateur qui utilise pas de ccookie pour la session. -->
+        <!-- <form class="form-signin" method="post" action="connexion">-->
         <h2 class="form-signin-heading">Connexion Cinox</h2>
         <label class="sr-only" for="pseudo"></label>
         <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Pseudo"
-               value="<c:out value="${utilsateur.pseudo}"/>" minlength="3"  required autofocus>
+               value="<c:out value="${utilisateur.pseudo}"/>" minlength="3"  required autofocus>
         <span class="erreur">${erreurs['pseudo']}</span>
 
 

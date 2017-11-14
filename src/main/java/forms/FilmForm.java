@@ -1,0 +1,142 @@
+package forms;
+
+import beans.Movie;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+public class FilmForm {
+
+        JSONObject jsonObject;
+
+        private StringBuffer getData(String url) throws Exception{
+            URL url1 = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response;
+
+        }
+
+        //private JSONArray getMovies(JSONArray movies) throws JSONException{
+          //  return movies;
+        //}
+
+        public JSONArray nowPlaying() throws Exception
+        {
+            String url_nowPlaying = "https://api.themoviedb.org/3/movie/now_playing?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
+
+            jsonObject = new JSONObject(getData(url_nowPlaying).toString());
+
+            if ( jsonObject.getJSONArray("results").length() >0){
+                //ArrayList<Movie> nowPlayingList = new ArrayList<>();
+                //nowPlayingList ;
+                //System.out.println("nowplaying=="+ nowPlayingList.size());
+                //for(Movie movie : nowPlayingList)
+                // System.out.println(movie.getId() +"§ "+movie.getTitle()+"§ "+movie.getOverview());
+                return jsonObject.getJSONArray( "results" );
+            }
+            return null;
+        }
+
+        public ArrayList<Movie> upComing() throws Exception
+        {
+            String url_upComing = "https://api.themoviedb.org/3/movie/upcoming?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
+
+            jsonObject = new JSONObject(getData(url_upComing).toString());
+
+            if ( jsonObject.getJSONArray("results").length() >0){
+                ArrayList<Movie> upComingList = new ArrayList<>();
+                //upComingList = getMovies(jsonObject.getJSONArray( "results" ), upComingList);
+                return upComingList;
+            }
+            return null;
+        }
+
+
+        public ArrayList<Movie> topRated() throws Exception
+        {
+            String url_topRated = "https://api.themoviedb.org/3/movie/top_rated?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
+
+            jsonObject = new JSONObject(getData(url_topRated).toString());
+            if ( jsonObject.getJSONArray("results").length() >0){
+
+                ArrayList<Movie> topRatedList = new ArrayList<>();
+                //topRatedList = getMovies(jsonObject.getJSONArray( "results" ), topRatedList);
+                return topRatedList;
+            }
+            return null;
+        }
+
+
+
+
+        public JSONArray getMovieWithKeywords(String keywords) throws Exception
+        {
+            //TODO replace
+            keywords = keywords.replace(" ","%");
+            String url_keywords = "https://api.themoviedb.org/3/search/movie?api_key=37558deaca34c291c832573f6b749f63&language=fr&query="+keywords+"&page=1&include_adult=false";
+
+            jsonObject = new JSONObject(getData(url_keywords).toString());
+            if ( jsonObject.getJSONArray("results").length() >0) {
+                //ArrayList<Movie> movies_keywords = new ArrayList<>();
+                //movies_keywords = getMovies(jsonObject.getJSONArray("results"), movies_keywords);
+                return jsonObject.getJSONArray("results");
+            }
+            return null;
+        }
+
+
+        public Movie getMovieDetails(String id) throws Exception{
+
+            String url_details = "https://api.themoviedb.org/3/movie/"+id+"?api_key=37558deaca34c291c832573f6b749f63&language=fr&append_to_response=fr";
+            URL url = new URL(url_details);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            connection.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            System.out.println(response.toString());
+
+            try {
+                JSONObject jsonObject = new JSONObject(response.toString());
+                System.out.println(jsonObject.length());
+
+                if (jsonObject.length() > 0) {
+                    Movie movie = new Movie();
+                    movie.setPoster_path(jsonObject.getString("poster_path"));
+                    movie.setRelease_date(jsonObject.getString("release_date"));
+                    movie.setOverview(jsonObject.getString("overview"));
+                    return movie;
+                }
+            }catch(JSONException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+

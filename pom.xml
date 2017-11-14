@@ -59,6 +59,19 @@
             <version>20171018</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.api-allocine-cinox</groupId>
+            <artifactId>api-allocine-cinox</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/api-allocine-cinox.jar</systemPath>
+        </dependency>
 
     </dependencies>
 
@@ -105,6 +118,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
         </plugins>
         <finalName>test</finalName>
     </build>
