@@ -108,7 +108,7 @@ public class FilmForm {
             String inputLineActors;
             StringBuffer responseActors = new StringBuffer();
             while ((inputLineActors = inactors.readLine()) != null) {
-                responseActors.append(inputLine);
+                responseActors.append(inputLineActors);
             }
             inactors.close();
             //TODO : FIN acteurs
