@@ -50,11 +50,16 @@ public class FilmImpl  {
             while (it.hasNext()) {
                 //System.out.println("MONGOTESTSWAG : " + it.next());
                 Document doc = (Document)it.next();
+                JSONObject obje = new JSONObject(doc.toJson());
+                System.out.println("obje"+obje);
                 Object obj = null;
                 String film = "";
                 String name ="";
-                try {
+               /* try {
+                    String aaa = "{\"a\":\"b\"}";
                     obj = parser.parse(doc.toJson());
+                    JSONObject ooo = new JSONObject(aaa);
+                    System.out.println("ooo" + ooo);
                     System.out.println("eeeee"+ obj);
                     JSONObject jsonfilm = (JSONObject) obj;
                     System.out.println("uuuuuu");
@@ -64,7 +69,7 @@ public class FilmImpl  {
                     System.out.println("rr"+ name);
                 } catch (ParseException e) {
                     e.printStackTrace();
-                }
+                }*/
 
 
                                //TODO : test
