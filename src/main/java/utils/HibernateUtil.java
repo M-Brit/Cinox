@@ -27,13 +27,6 @@ public class HibernateUtil implements ServletContextListener {
         //database = client.getDatabase(uriMongo.getDatabase());
     }
 
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        //testMongo();
-
-    }
-
     public static void testMongo() {
         // Create seed data
 

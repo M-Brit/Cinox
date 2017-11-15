@@ -1,7 +1,5 @@
 package servlets;
 
-import api.MovieApi;
-import beans.Movie;
 import forms.FilmForm;
 import org.json.JSONArray;
 
@@ -10,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Search extends HttpServlet {
 

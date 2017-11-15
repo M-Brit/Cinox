@@ -1,21 +1,16 @@
 package servlets;
 
-import api.MovieApi;
-import beans.Movie;
 import forms.FilmForm;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Films extends HttpServlet {
 
-    JSONObject jsonObject;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,7 +18,6 @@ public class Films extends HttpServlet {
 
         try {
            JSONArray listFilms = themoviedb.nowPlaying();
-
 
          /*   System.out.println("Test1 - Http GET request for API Now Playing");
             themoviedb.nowPlaying();
@@ -35,6 +29,8 @@ public class Films extends HttpServlet {
             themoviedb.getMovieWithKeywords("Star Wars");
             System.out.println("Test5 - Http GET request for API Movies Details");
             themoviedb.getMovieDetails("1891");
+            System.out.println("Test6 - Http GET request for API Now Playing");
+            JSONArray listFilms = themoviedb.getMovieByTypeId(28);
 
             */
 

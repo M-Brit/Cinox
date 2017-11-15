@@ -104,6 +104,18 @@
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
+    <!-- ••••• Film Details ••••• -->
+    <servlet>
+        <servlet-name>FilmDetails</servlet-name>
+        <servlet-class>servlets.FilmDetails</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilmDetails</servlet-name>
+        <url-pattern>/filmDetails</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>Profil</servlet-name>
         <servlet-class>servlets.Profil</servlet-class>
