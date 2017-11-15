@@ -126,7 +126,7 @@
 
     $(function () {
         $(document).ready(function() {
-            getFilm();
+            getFilmActeurs();
         });
 
         $('input').on('click', function(){
@@ -134,8 +134,8 @@
             console.log('input=='+ test)
         });
 
-        function getFilm() {
-            $.get('films',
+        function getFilmActeurs() {
+            $.get('filmDetails',
                 function (data, status) {
                 var imageUrl ='https://image.tmdb.org/t/p/w500';
                   //console.log("data : "+data.length );

@@ -1,6 +1,7 @@
 package servlets;
 
 import forms.FilmForm;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -17,11 +18,11 @@ public class FilmDetails extends HttpServlet {
         String id = request.getParameter("id");
         FilmForm themoviedb = new FilmForm();
         try {
-            JSONObject jsonObject = themoviedb.getMovieDetails(id);
+            JSONArray jsonArray = themoviedb.getMovieDetails(id);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
-            response.getWriter().write(jsonObject.toString());
+            response.getWriter().write(jsonArray.toString());
             response.getWriter().flush();
             response.getWriter().close();
 

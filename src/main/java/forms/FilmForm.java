@@ -80,15 +80,13 @@ public class FilmForm {
             return null;
         }
 
-        public JSONObject getMovieDetails(String id) throws Exception{
+        public JSONArray getMovieDetails(String id) throws Exception{
             // https://www.youtube.com/watch?v=ePbKGoIGAXY
 
             String url_details = "https://api.themoviedb.org/3/movie/"+id+"?api_key=37558deaca34c291c832573f6b749f63&append_to_response=videos&language=fr";
             URL url = new URL(url_details);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
             connection.setRequestMethod("GET");
-
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
             String inputLine;
@@ -100,9 +98,35 @@ public class FilmForm {
             in.close();
 
 
+            //TODO : acteurs
+            String url_actors = " https://api.themoviedb.org/3/movie/284053/credits?api_key=37558deaca34c291c832573f6b749f63";
+            URL urlactors = new URL(url_actors);
+            HttpURLConnection connectionActors = (HttpURLConnection) urlactors.openConnection();
+            connectionActors.setRequestMethod("GET");
+            BufferedReader inactors = new BufferedReader(
+                    new InputStreamReader(connectionActors.getInputStream()));
+            String inputLineActors;
+            StringBuffer responseActors = new StringBuffer();
+            while ((inputLineActors = inactors.readLine()) != null) {
+                responseActors.append(inputLine);
+            }
+            inactors.close();
+            //TODO : FIN acteurs
+
+
             try {
                 JSONObject jsonObject = new JSONObject(response.toString());
-                return jsonObject;
+                //TODO acteurs
+                JSONObject jsonObjectActors = new JSONObject(responseActors.toString());
+                JSONArray jsonArrayFILM = new JSONArray();
+                jsonArrayFILM.put(jsonObject);
+                jsonArrayFILM.put(jsonObjectActors);
+                //TODO FIN acteurs
+
+
+
+                return jsonArrayFILM;
+
             }catch(JSONException e){
                 e.printStackTrace();
             }
