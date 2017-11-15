@@ -65,13 +65,14 @@
             <version>1.1</version>
         </dependency>
 
-        <dependency>
+<!-- TODO
+       <dependency>
             <groupId>com.api-allocine-cinox</groupId>
             <artifactId>api-allocine-cinox</artifactId>
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/api-allocine-cinox.jar</systemPath>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

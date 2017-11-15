@@ -55,11 +55,12 @@ public final class ConnexionForm {
         }
         utilisateur.setMotDePasse(motDePasse);
 
-        try {
+        //TODO
+        /*try {
             this.testConnexionInBd(pseudo, motDePasse);
         } catch (ConnexionException e) {
             setErreur(CHAMP_BD, e.getMessage());
-        }
+        }*/
 
 
         /* Initialisation du résultat global de la validation. */

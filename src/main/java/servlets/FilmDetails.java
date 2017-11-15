@@ -12,9 +12,10 @@ import java.io.IOException;
 public class FilmDetails extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
+        System.out.println("id"+ id);
         FilmForm themoviedb = new FilmForm();
         try {
             JSONArray jsonArray = themoviedb.getMovieDetails(id);

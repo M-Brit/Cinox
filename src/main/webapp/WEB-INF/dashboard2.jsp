@@ -90,11 +90,9 @@
 
         <div class="album text-muted">
             <div id="films" class="container">
-
-
-
             </div>
         </div>
+
 
 
     </div><!-- /.container -->
@@ -124,6 +122,7 @@
 <script>
 
 
+
     $(function () {
         $(document).ready(function() {
             getFilm();
@@ -148,7 +147,7 @@
                     tmp += '<p>'+element.release_date+'</p>';
                         tmp += '<p>'+element.overView+'</p>';
                         tmp += '<p>'+element.vote_average+'</p>';
-                    tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                    tmp += '<a href="#" onclick="filmDetails('+ element.id+')"> <img src="'+ imageUrl+""+element.poster_path+'"/></a>';
                     tmp += "</div>";
                     $('#films').append(tmp);
 
@@ -158,7 +157,7 @@
         }
 
         function getSearchFilm(objsearch) {
-
+            console.log('submitsearch2')
             $.post('search',
                 {"titleFilm": objsearch},
                 function (data, status) {
@@ -182,21 +181,91 @@
         }
 
         var submitsearch = document.getElementById('submitsearch');
+        console.log('submitsearch')
         submitsearch.addEventListener('click', function() {
             var objsearch= document.getElementById('search').value;
             getSearchFilm(objsearch);
 
         }, false);
 
+
+
+
       //  setInterval(getCommentaires, 5000);
     });
 
+    function filmDetails(id) {
+        alert('id=='+ id)
+        $.post(
+            'filmDetails',
+            {"id": id},
+            function (data, status) {
+                var imageUrl ='https://image.tmdb.org/t/p/w500';
+                var videoUrl = 'https://www.youtube.com/watch?v=';
+                res = JSON.parse(data);
+                alert("filmDetails : "+data);
+                $('#films').html('');
+                //res.forEach(function(element) {
+                element = res[0];
+                video = ((element.videos).results[0]).key;
+                alert('videosss=='+ video)
+                    var tmp = "";
+                    tmp += "<div> " + element.title;
+                    tmp += '<p>'+element.release_date+'</p>';
+                alert('3'+ element.vote_average)
+                    tmp += '<p>'+element.vote_average+'</p>';
+                alert('4'+ imageUrl+ element.poster_path)
+                    tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                alert('5'+ videoUrl+ video)
+                    tmp+= '<div id="ytplayer"></div>';
+                    tmp += "</div>";
+                    $('#films').append(tmp)
+
+                //});
+                alert("TMP : "+tmp);
+                    onYouTubePlayerAPIReady();
 
 
 
+
+                // Load the IFrame Player API code asynchronously.
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/player_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                // Replace the 'ytplayer' element with an <iframe> and
+                // YouTube player after the API code downloads.
+                var player;
+                function onYouTubePlayerAPIReady() {
+                    player = new YT.Player('ytplayer', {
+                        height: '360',
+                        width: '640',
+                        videoId: video
+                    });
+                }
+            });
+
+    }
+
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+        console.log('ssss=='+ video)
+        player = new YT.Player('ytplayer', {
+            height: '360',
+            width: '640',
+            videoId: videoUrl + video
+        });
+    }
 
 </script>
-
-
 </body>
 </html>

@@ -61,7 +61,7 @@
 
 
     <!-- ••••• TestMongodb ••••• -->
-    <servlet>
+    <!--<servlet>
         <servlet-name>TestMongodb</servlet-name>
         <servlet-class>servlets.TestMongodb</servlet-class>
 
@@ -69,7 +69,7 @@
     <servlet-mapping>
         <servlet-name>TestMongodb</servlet-name>
         <url-pattern>/testMongodb</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <!-- ••••• Commentaires ••••• -->
     <servlet>
