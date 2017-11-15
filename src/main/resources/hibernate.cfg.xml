@@ -8,7 +8,8 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?verifyServerCertificate=false&amp;useSSL=true</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">oWM,yjo-,8C5</property>
+       <!-- <property name="hibernate.connection.password">oWM,yjo-,8C5</property> -->
+        <property name="hibernate.connection.password">pupuce</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="c3p0.max_size">100</property>
         <property name="c3p0.min_size">0</property>

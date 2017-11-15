@@ -18,13 +18,19 @@ import java.util.List;
 
 public class HibernateUtil implements ServletContextListener {
     public static SessionFactory sessionFactory;
-    //public static MongoDatabase database ;
+    public static MongoDatabase database ;
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        //MongoClientURI uriMongo = new MongoClientURI("mongodb://cinox:cinoxroot@ds042687.mlab.com:42687/cinox");
-        //MongoClient client = new MongoClient(uriMongo);
-        //database = client.getDatabase(uriMongo.getDatabase());
+        try {
+            MongoClientURI uriMongo = new MongoClientURI("mongodb://cinox:cinoxroot@ds042687.mlab.com:42687/cinox");
+            MongoClient client = new MongoClient(uriMongo);
+            database = client.getDatabase(uriMongo.getDatabase());
+        }catch (Exception e){
+            System.out.println("SEAGALL");
+        }
+
+
     }
 
     public static void testMongo() {

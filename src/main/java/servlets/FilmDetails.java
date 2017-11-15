@@ -2,7 +2,6 @@ package servlets;
 
 import forms.FilmForm;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

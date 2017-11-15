@@ -68,7 +68,7 @@ public final class CommentairesForm {
         MongoClient mongo = new MongoClient("localhost", 27017);
         MongoDatabase database = mongo.getDatabase("cinoxNoSqlDB");
         // Accessing the database
-        MongoCollection<Document> collection = database.getCollection("critiques");
+        MongoCollection<Document> collection = database.getCollection("commentaire");
 
         return collection;
     }

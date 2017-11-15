@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.FilmImpl;
 import forms.FilmForm;
 import org.json.JSONArray;
 
@@ -33,6 +34,9 @@ public class Films extends HttpServlet {
             JSONArray listFilms = themoviedb.getMovieByTypeId(28);
 
             */
+
+            FilmImpl test = new FilmImpl();
+            test.ajoutFilm(listFilms);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");

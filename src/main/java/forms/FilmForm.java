@@ -1,5 +1,6 @@
 package forms;
 
+import dao.FilmImpl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -122,15 +123,23 @@ public class FilmForm {
                 jsonArrayFILM.put(jsonObject);
                 jsonArrayFILM.put(jsonObjectActors);
                 //TODO FIN acteurs
-
-
-
+                FilmImpl fi = new FilmImpl();
+                //  mise en bdd des films
+                fi.ajoutFilm(jsonArrayFILM);
+                //  mise en bdd des films
+                fi.ajoutActeurs(jsonObject);
                 return jsonArrayFILM;
 
             }catch(JSONException e){
                 e.printStackTrace();
             }
             return null;
+
         }
+
+
+
+
+
     }
 
