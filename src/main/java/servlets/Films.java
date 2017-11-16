@@ -47,12 +47,6 @@ public class Films extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
     }
 
     @Override

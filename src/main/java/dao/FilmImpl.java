@@ -6,8 +6,6 @@ import exceptions.FilmException;
 import org.bson.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import utils.HibernateUtil;
 
 import java.util.Iterator;
@@ -38,53 +36,73 @@ public class FilmImpl  {
         // Getting the iterable object
         FindIterable<Document> iterDoc = collection.find();
         System.out.println("iterDoc : "+iterDoc);
-        JSONParser parser = new JSONParser();
-        int i = 1;
-        Iterator it = iterDoc.iterator();
+        //JSONParser parser = new JSONParser();
 
-        for(int j=0; j< arrayFilm.length(); j++) {
-            int idFIlm= arrayFilm.getJSONObject(j).getInt("id");
-            String nameFIlm= arrayFilm.getJSONObject(j).getString("title");
-            //arrayFilm[j].id;
+        Iterator iterator = iterDoc.iterator();
+        Iterator it;
 
-            while (it.hasNext()) {
-                //System.out.println("MONGOTESTSWAG : " + it.next());
-                Document doc = (Document)it.next();
-                JSONObject obje = new JSONObject(doc.toJson());
-                System.out.println("obje"+obje);
-                Object obj = null;
-                String film = "";
-                String name ="";
-               /* try {
-                    String aaa = "{\"a\":\"b\"}";
-                    obj = parser.parse(doc.toJson());
-                    JSONObject ooo = new JSONObject(aaa);
-                    System.out.println("ooo" + ooo);
-                    System.out.println("eeeee"+ obj);
-                    JSONObject jsonfilm = (JSONObject) obj;
-                    System.out.println("uuuuuu");
-                    film = jsonfilm.getString("id");
-                    System.out.println("rr"+ film);
-                    name = jsonfilm.getString("name");
-                    System.out.println("rr"+ name);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }*/
+        int filmId ;
+        String filmName ="";
 
+        JSONObject jsonObject;
+        JSONObject object;
+        Document doc;
+        Document document;
+        System.out.println("arrayFilm =="+ arrayFilm.length());
 
-                               //TODO : test
-                if (String.valueOf(idFIlm).equals(film) || nameFIlm.equals(name) )
-                    throw new FilmException("");
+        if(iterator.hasNext()){
+            for( int j = 0; j < arrayFilm.length(); j++) {
+                jsonObject = (JSONObject) arrayFilm.get(j);
+                int id = jsonObject.getInt("id");
+
+                it = iterator;
+                int conflit = 0;
+                while (it.hasNext()) {
+                    doc = (Document) it.next();
+                    object = new JSONObject(doc.toJson());
+                    filmId = object.getInt("id");
+                    filmName = object.getString("title");
+                    if (id == filmId || jsonObject.getString("title").equals(filmName)) {
+                        //throw new FilmException("");
+                        System.out.println("conflit");
+                        conflit ++;
+                        break;
+                    }
+                }
+                if(conflit == 0) {
+                    System.out.println("document");
+                    document = new Document();
+
+                    document.put("id", jsonObject.getInt("id"));
+                    document.put("title", jsonObject.getString("title"));
+                    document.put("poster_path", jsonObject.getString("poster_path"));
+                    document.put("vote_average", jsonObject.getDouble("vote_average"));
+                    document.put("overview", jsonObject.getString("overview"));
+                    document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
+
+                    collection.insertOne(document);
+                }
+
+            }
+        }else {
+
+            for( int j = 0; j < arrayFilm.length(); j++) {
+                jsonObject = (JSONObject) arrayFilm.get(j);
+                document = new Document();
+
+                document.put("id", jsonObject.getInt("id"));
+                document.put("title", jsonObject.getString("title"));
+                document.put("poster_path", jsonObject.getString("poster_path"));
+                document.put("vote_average", jsonObject.getDouble("vote_average"));
+                document.put("overview", jsonObject.getString("overview"));
+                document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
+
+                //document.put("film", (JSONObject)jsonObject);
+                collection.insertOne(document);
+
             }
 
-            Document document = new Document()
-                    .append("id", idFIlm)
-                    .append("name", nameFIlm)
-                    .append("film", arrayFilm.getJSONObject(j));
-            collection.insertOne(document);
-
         }
-
     }
 
     public FilmImpl ajoutActeurs(JSONObject jsonobj){
