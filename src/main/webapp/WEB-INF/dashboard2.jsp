@@ -204,16 +204,12 @@
                 $('#films').html('');
                 //res.forEach(function(element) {
                 console.log('res=='+ res)
-                var video = ((res.videos).results[0]).key;
-                alert('videosss=='+ video)
+                alert('videosss=='+ res.video)
                     var tmp = "";
                     tmp += "<div> " + res.title;
                     tmp += '<p>'+res.release_date+'</p>';
-                alert('3'+ res.vote_average)
                     tmp += '<p>'+res.vote_average+'</p>';
-                alert('4'+ imageUrl+ res.poster_path)
                     tmp += '<img src="'+ imageUrl+""+res.poster_path+'"/>';
-                alert('5'+ videoUrl+ video)
                     tmp+= '<div id="ytplayer"></div>';
                     tmp += "</div>";
                     $('#films').append(tmp)
@@ -238,7 +234,7 @@
                     player = new YT.Player('ytplayer', {
                         height: '360',
                         width: '640',
-                        videoId: video
+                        videoId: res.video
                     });
                 }
             });

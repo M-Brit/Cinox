@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.FilmImpl;
 import forms.FilmForm;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,9 +19,13 @@ public class FilmDetails extends HttpServlet {
         String id = request.getParameter("id");
         System.out.println("id"+ id);
         FilmForm themoviedb = new FilmForm();
+        FilmImpl filmImpl = new FilmImpl();
         try {
             //TODO
-            JSONObject jsonObject = themoviedb.getMovieDetails(id);
+            //from API
+            //JSONObject jsonObject = themoviedb.getMovieDetails(id);
+            //from MongoDB
+            JSONObject jsonObject = filmImpl.findFilmById(id);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");

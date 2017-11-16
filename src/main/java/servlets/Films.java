@@ -18,8 +18,11 @@ public class Films extends HttpServlet {
         FilmForm themoviedb = new FilmForm();
 
         try {
-           JSONArray listFilms = themoviedb.nowPlaying();
+            //TODO save to MongoDB, when?
+            JSONArray listFilms = themoviedb.nowPlaying();
 
+            FilmImpl filmImpl = new FilmImpl();
+            filmImpl.ajoutFilm(listFilms);
          /*   System.out.println("Test1 - Http GET request for API Now Playing");
             themoviedb.nowPlaying();
             System.out.println("Test2 - Http GET request for API Up Coming");
@@ -34,13 +37,12 @@ public class Films extends HttpServlet {
             JSONArray listFilms = themoviedb.getMovieByTypeId(28);
 
             */
-
-            //FilmImpl test = new FilmImpl();
-            //test.ajoutFilm(listFilms);
+            //from MongoDB
+            JSONArray films =  filmImpl.findAllFilm();
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
-            response.getWriter().write(listFilms.toString());
+            response.getWriter().write(films.toString());
             response.getWriter().flush();
             response.getWriter().close();
 

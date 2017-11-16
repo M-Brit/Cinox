@@ -1,8 +1,9 @@
 package dao;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import exceptions.FilmException;
+import com.mongodb.client.MongoCursor;
 import forms.FilmForm;
 import org.bson.Document;
 import org.json.JSONArray;
@@ -70,16 +71,53 @@ public class FilmImpl  {
         }
     }
 
+    public JSONArray findAllFilm(){
+        MongoCollection<Document> collection = this.connexionMongoDB();
+        FindIterable<Document> documents = collection.find();
+        MongoCursor<Document> mongoCursor = documents.iterator();
+
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new JSONObject(doc.toJson());
+            array.put(object);
+        }
+        //TODO
+        //close mongoDB connextion;
+        return  array;
+    }
+
+
+    public JSONObject findFilmById(String id) throws Exception {
+        MongoCollection<Document> collection = this.connexionMongoDB();
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("id", Integer.valueOf(id));
+
+        FindIterable<Document> documents = collection.find(query);
+        Iterator it = documents.iterator();
+
+        JSONObject object= new JSONObject();
+        if(it.hasNext()){
+            Document doc = (Document) it.next();
+            object = new JSONObject(doc.toJson());
+
+        }
+        return object;
+
+    }
+
 
     private void saveMongoDB(JSONObject jsonObject , MongoCollection<Document> collection) throws Exception{
         JSONObject filmDetails;
         JSONObject getActors;
         Document document;
-        FilmForm filmForm = new FilmForm();
+        FilmForm filmApiForm = new FilmForm();
         String video;
 
-            filmDetails = filmForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
-            getActors = filmForm.getActors(String.valueOf(jsonObject.getInt("id")));
+            filmDetails = filmApiForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
+            getActors = filmApiForm.getActors(String.valueOf(jsonObject.getInt("id")));
 
             document = new Document();
             document.put("id", jsonObject.getInt("id"));
@@ -88,13 +126,15 @@ public class FilmImpl  {
             document.put("vote_average", jsonObject.getDouble("vote_average"));
             document.put("overview", jsonObject.getString("overview"));
             document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
+            document.put("overview", jsonObject.getString("overview"));
+            document.put("release_date", jsonObject.getString("release_date"));
 
-            if((filmDetails.getJSONObject("videos").getJSONArray("results")).length() != 0){
+        if((filmDetails.getJSONObject("videos").getJSONArray("results")).length() != 0){
                 video = ((JSONObject)(filmDetails.getJSONObject("videos").getJSONArray("results")).get(0)).getString("key");
             }else {
                 video= "";
             }
-            document.put("videos", video);
+            document.put("video", video);
 
             JSONArray array = getActors.optJSONArray("cast");
             JSONArray acteurs = new JSONArray();
