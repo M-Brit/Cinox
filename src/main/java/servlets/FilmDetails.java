@@ -20,11 +20,11 @@ public class FilmDetails extends HttpServlet {
         FilmForm themoviedb = new FilmForm();
         try {
             //TODO
-            JSONObject jsonArray = themoviedb.getMovieDetails(id);
+            JSONObject jsonObject = themoviedb.getMovieDetails(id);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
-            response.getWriter().write(jsonArray.toString());
+            response.getWriter().write(jsonObject.toString());
             response.getWriter().flush();
             response.getWriter().close();
 
