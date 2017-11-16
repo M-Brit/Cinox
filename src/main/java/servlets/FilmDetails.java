@@ -18,7 +18,9 @@ public class FilmDetails extends HttpServlet {
         System.out.println("id"+ id);
         FilmForm themoviedb = new FilmForm();
         try {
-            JSONArray jsonArray = themoviedb.getMovieDetails(id);
+            //TODO
+            JSONArray jsonArray = new JSONArray();
+            //JSONArray jsonArray = themoviedb.getMovieDetails(id);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");

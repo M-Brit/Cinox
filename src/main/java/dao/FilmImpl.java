@@ -3,6 +3,7 @@ package dao;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import exceptions.FilmException;
+import forms.FilmForm;
 import org.bson.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,7 +30,7 @@ public class FilmImpl  {
 
 
 
-    public void ajoutFilm(JSONArray arrayFilm) throws FilmException {
+    public void ajoutFilm(JSONArray arrayFilm) throws FilmException, Exception {
 
         MongoCollection<Document> collection = this.connexionMongoDB();
         System.out.println("collection"+collection);
@@ -46,17 +47,22 @@ public class FilmImpl  {
 
         JSONObject jsonObject;
         JSONObject object;
+        JSONObject filmDetails;
         Document doc;
         Document document;
-        System.out.println("arrayFilm =="+ arrayFilm.length());
+        FilmForm filmForm = new FilmForm();
+        String video;
 
         if(iterator.hasNext()){
             for( int j = 0; j < arrayFilm.length(); j++) {
+                //TODO it  false
+                it = iterator;
+
                 jsonObject = (JSONObject) arrayFilm.get(j);
                 int id = jsonObject.getInt("id");
 
-                it = iterator;
                 int conflit = 0;
+                System.out.println("it=="+ it.hasNext());
                 while (it.hasNext()) {
                     doc = (Document) it.next();
                     object = new JSONObject(doc.toJson());
@@ -70,7 +76,9 @@ public class FilmImpl  {
                     }
                 }
                 if(conflit == 0) {
-                    System.out.println("document");
+                    filmDetails = filmForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
+
+                    System.out.println("jsonObject1"+ filmDetails);
                     document = new Document();
 
                     document.put("id", jsonObject.getInt("id"));
@@ -78,7 +86,15 @@ public class FilmImpl  {
                     document.put("poster_path", jsonObject.getString("poster_path"));
                     document.put("vote_average", jsonObject.getDouble("vote_average"));
                     document.put("overview", jsonObject.getString("overview"));
+                    //TODO
                     document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
+                    if((filmDetails.getJSONObject("videos").getJSONArray("results")).length() != 0){
+                        video = ((JSONObject)(filmDetails.getJSONObject("videos").getJSONArray("results")).get(0)).getString("key");
+                    }else {
+                        System.out.println("null");
+                        video= "";
+                    }
+                    document.put("videos", video);
 
                     collection.insertOne(document);
                 }
@@ -88,7 +104,32 @@ public class FilmImpl  {
 
             for( int j = 0; j < arrayFilm.length(); j++) {
                 jsonObject = (JSONObject) arrayFilm.get(j);
+                filmDetails = filmForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
+
+                System.out.println("jsonObject1"+ filmDetails);
                 document = new Document();
+
+                document.put("id", jsonObject.getInt("id"));
+                document.put("title", jsonObject.getString("title"));
+                document.put("poster_path", jsonObject.getString("poster_path"));
+                document.put("vote_average", jsonObject.getDouble("vote_average"));
+                document.put("overview", jsonObject.getString("overview"));
+                //TODO
+                document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
+
+                System.out.println("test=="+ (filmDetails.getJSONObject("videos").getJSONArray("results")).length());
+                if((filmDetails.getJSONObject("videos").getJSONArray("results")).length() != 0){
+                    video = ((JSONObject)(filmDetails.getJSONObject("videos").getJSONArray("results")).get(0)).getString("key");
+                }else {
+                    System.out.println("null");
+                    video= "";
+                }
+                document.put("videos", video);
+
+                collection.insertOne(document);
+
+
+                /*document = new Document();
 
                 document.put("id", jsonObject.getInt("id"));
                 document.put("title", jsonObject.getString("title"));
@@ -97,8 +138,7 @@ public class FilmImpl  {
                 document.put("overview", jsonObject.getString("overview"));
                 document.put("genre_ids", jsonObject.getJSONArray("genre_ids"));
 
-                //document.put("film", (JSONObject)jsonObject);
-                collection.insertOne(document);
+                collection.insertOne(document);*/
 
             }
 

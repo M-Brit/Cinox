@@ -81,7 +81,7 @@ public class FilmForm {
             return null;
         }
 
-        public JSONArray getMovieDetails(String id) throws Exception{
+        public JSONObject getMovieDetails(String id) throws Exception{
             // https://www.youtube.com/watch?v=ePbKGoIGAXY
 
             String url_details = "https://api.themoviedb.org/3/movie/"+id+"?api_key=37558deaca34c291c832573f6b749f63&append_to_response=videos&language=fr";
@@ -100,7 +100,7 @@ public class FilmForm {
 
 
             //TODO : acteurs
-            String url_actors = " https://api.themoviedb.org/3/movie/284053/credits?api_key=37558deaca34c291c832573f6b749f63";
+            /*String url_actors = " https://api.themoviedb.org/3/movie/284053/credits?api_key=37558deaca34c291c832573f6b749f63";
             URL urlactors = new URL(url_actors);
             HttpURLConnection connectionActors = (HttpURLConnection) urlactors.openConnection();
             connectionActors.setRequestMethod("GET");
@@ -111,24 +111,25 @@ public class FilmForm {
             while ((inputLineActors = inactors.readLine()) != null) {
                 responseActors.append(inputLineActors);
             }
-            inactors.close();
+            inactors.close();*/
             //TODO : FIN acteurs
 
 
             try {
                 JSONObject jsonObject = new JSONObject(response.toString());
+                return jsonObject;
                 //TODO acteurs
-                JSONObject jsonObjectActors = new JSONObject(responseActors.toString());
+                /*JSONObject jsonObjectActors = new JSONObject(responseActors.toString());
                 JSONArray jsonArrayFILM = new JSONArray();
                 jsonArrayFILM.put(jsonObject);
-                jsonArrayFILM.put(jsonObjectActors);
+                jsonArrayFILM.put(jsonObjectActors);*/
                 //TODO FIN acteurs
-                FilmImpl fi = new FilmImpl();
+                /*FilmImpl fi = new FilmImpl();
                 //  mise en bdd des films
                 fi.ajoutFilm(jsonArrayFILM);
                 //  mise en bdd des films
                 fi.ajoutActeurs(jsonObject);
-                return jsonArrayFILM;
+                return jsonArrayFILM;*/
 
             }catch(JSONException e){
                 e.printStackTrace();
