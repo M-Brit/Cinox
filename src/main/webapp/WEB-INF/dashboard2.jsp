@@ -203,16 +203,16 @@
                 alert("filmDetails : "+data);
                 $('#films').html('');
                 //res.forEach(function(element) {
-                element = res[0];
-                video = ((element.videos).results[0]).key;
+                console.log('res=='+ res)
+                var video = ((res.videos).results[0]).key;
                 alert('videosss=='+ video)
                     var tmp = "";
-                    tmp += "<div> " + element.title;
-                    tmp += '<p>'+element.release_date+'</p>';
-                alert('3'+ element.vote_average)
-                    tmp += '<p>'+element.vote_average+'</p>';
-                alert('4'+ imageUrl+ element.poster_path)
-                    tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                    tmp += "<div> " + res.title;
+                    tmp += '<p>'+res.release_date+'</p>';
+                alert('3'+ res.vote_average)
+                    tmp += '<p>'+res.vote_average+'</p>';
+                alert('4'+ imageUrl+ res.poster_path)
+                    tmp += '<img src="'+ imageUrl+""+res.poster_path+'"/>';
                 alert('5'+ videoUrl+ video)
                     tmp+= '<div id="ytplayer"></div>';
                     tmp += "</div>";
