@@ -21,9 +21,6 @@
                     <a class="nav-link" href="#">Populaire <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mieux notés</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Prochainement</a>
                 </li>
                 <li class="nav-item">
@@ -42,11 +39,11 @@
 
             </ul>
             <!-- <form class="form-inline mt-2 mt-md-0"  method="post" action="dashboard2.jsp"> -->
-                <input id = "search" name="submitsearch" vclass="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button id ="submitsearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input id = "search" class="nav-item" name="submitsearch" vclass="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button id ="submitsearch" class="btn btn-outline-success btn-lg my-2 my-sm-0" type="submit">Search</button>
 
             <!-- </form> -->
-            <a class="btn btn btn-outline-danger" href="deconnexion"  type="warning" role="button">Sign out</a>
+                <a class="btn btn btn-outline-danger btn-lg" href="deconnexion"  type="warning" role="button">Sign out</a>
         </div>
     </nav>
 </header>

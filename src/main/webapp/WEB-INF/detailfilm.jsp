@@ -80,9 +80,7 @@
     </div>
 
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <!-- Fin Carouselle -->
 
     <div class="container marketing">
 
@@ -98,8 +96,9 @@
 
 
     </div><!-- /.container -->
+
     <div>
-        <section class>
+        <section>
 
         </section>
     </div>
@@ -144,11 +143,11 @@
                    $('#films').html('');
                     res.forEach(function(element) {
                     var tmp = "";
-                    tmp += "<div id=\"film\">  " + element.title;
+                    tmp += "<div id=\"film\" class=\"card\">  " + element.title;
                     tmp += '<p>'+element.release_date+'</p>';
-                        tmp += '<p>'+element.overView+'</p>';
-                        tmp += '<p>'+element.vote_average+'</p>';
-                    tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                        tmp += '<p class=\"card-text\">'+element.overView+'</p>';
+                        tmp += '<p class=\"card-text\">'+element.vote_average+'</p>';
+                    tmp += '<img src="'+ imageUrl+""+element.poster_path+'" alt=\"Card image cap\"/>';
                     tmp += "</div>";
                     $('#films').append(tmp);
 
@@ -169,10 +168,10 @@
                     $('#films').html('');
                     res.forEach(function(element) {
                         var tmp = "";
-                        tmp += "<div> " + element.title;
-                        tmp += '<p>'+element.release_date+'</p>';
-                        tmp += '<p>'+element.vote_average+'</p>';
-                        tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                        tmp += "<div class=\"card\">" + element.title;
+                        tmp += '<p class=\"card-text\">'+element.release_date+'</p>';
+                        tmp += '<p class=\"card-text\">'+element.vote_average+'</p>';
+                        tmp += '<img class =\"img-thumbnail\" src="'+ imageUrl+""+element.poster_path+'" alt=\"Card image cap\"/>';
                         tmp += "</div>";
                         $('#films').append(tmp)
 

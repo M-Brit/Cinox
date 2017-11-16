@@ -96,12 +96,9 @@
 
 
     </div><!-- /.container -->
-    <div>
-        <section class>
 
-        </section>
-    </div>
 </main>
+
 <!-- footer de la page -->
 <%@ include file="footer.jsp" %>
 
@@ -143,11 +140,11 @@
                    $('#films').html('');
                     res.forEach(function(element) {
                     var tmp = "";
-                    tmp += "<div id=\"film\">  " + element.title;
-                    tmp += '<p>'+element.release_date+'</p>';
-                        tmp += '<p>'+element.overView+'</p>';
-                        tmp += '<p>'+element.vote_average+'</p>';
-                    tmp += '<a href="#" onclick="filmDetails('+ element.id+')"> <img src="'+ imageUrl+""+element.poster_path+'"/></a>';
+                    tmp += "<div id=\"film\" class=\"card\">  ";
+                    tmp += '<a href="#" onclick="filmDetails('+ element.id+')"> <img src="'+ imageUrl+""+element.poster_path+'" alt=\"Card image cap\"/></a>';
+                    tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
+                   //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
+                    tmp += '<br/> Notes : '+element.vote_average+'</p>';
                     tmp += "</div>";
                     $('#films').append(tmp);
 

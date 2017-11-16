@@ -5,10 +5,16 @@
   Time: 17:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- FOOTER -->
 <footer class="container">
-
+    <div id="foot">
+    <ul class="bs-docs-footer-links">
+        <li> <a  href="https://github.com/M-Brit/Cinox.git" role="button"> GitHub </a> </li>
+        <li> <a  href="https://facebook.com/" role="button"> Facebook </a> </li>
+        <li> <a  href="https://twitter.com/" role="button"> Twitter </a> </li>
+        <li> <a  href="#" role="button"> About </a> </li>
+    </ul>
+    </div>
 </footer>
 <!-- Bootstrap core JavaScript
 ================================================== -->

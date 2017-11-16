@@ -35,8 +35,8 @@ public class Films extends HttpServlet {
 
             */
 
-            FilmImpl test = new FilmImpl();
-            test.ajoutFilm(listFilms);
+            //FilmImpl test = new FilmImpl();
+            //test.ajoutFilm(listFilms);
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");

@@ -44,14 +44,5 @@
     <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.4" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20171018" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.api-allocine-cinox:api-allocine-cinox:1.0">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/api-allocine-cinox.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>
