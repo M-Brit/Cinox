@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import utils.HibernateUtil;
 
 import java.util.Iterator;
+import java.util.regex.Pattern;
 
 public class FilmImpl  {
 
@@ -105,6 +106,29 @@ public class FilmImpl  {
 
         }
         return object;
+
+    }
+
+    public JSONArray searchByKeyword(String keywords){
+        //keywords = keywords.replace(" ","%");
+        MongoCollection<Document> collection = this.connexionMongoDB();
+        BasicDBObject query = new BasicDBObject();
+        Pattern regex = Pattern.compile(keywords);
+        System.out.println("regex=="+ regex);
+        query.put("title", regex);
+        FindIterable<Document> documents = collection.find(query);
+        MongoCursor<Document> mongoCursor = documents.iterator();
+        System.out.println("it=="+ mongoCursor.hasNext());
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new JSONObject(doc.toJson());
+            array.put(object);
+        }
+        //TODO
+        //close mongoDB connextion;
+        return  array;
 
     }
 
