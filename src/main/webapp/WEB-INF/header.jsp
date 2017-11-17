@@ -140,7 +140,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form navbar-right searchForm">
                     <div class="form-group">
-                        <input id = "search" type="text" class="form-control" placeholder="Search movies">
+                       <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies"></label>
                     </div>
                     <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
                     <button type="submit" href="deconnexion" class="btn btn-danger">Deconnexion</button>
