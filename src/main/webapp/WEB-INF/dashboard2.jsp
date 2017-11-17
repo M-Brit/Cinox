@@ -225,16 +225,11 @@
                 tmp += "</div>";
 
                 tmp += '<!-- COMMENTAIRES -->\n';
-                //TODO ne fonctionne pas : tmp += '<%@ include file="commentaires.jsp" %>';
+                //TODO ne fonctionne pas : tmp += '<--%@ include file="commentaires.jsp" --%>';
 
 
                 $('#categorie').html(res.title);
                 $('#films').append(tmp);
-
-
-
-
-
 
 
 
