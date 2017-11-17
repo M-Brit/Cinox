@@ -138,13 +138,15 @@
                 </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <form class="navbar-form navbar-right searchForm">
+               <li class="nav-item"> <form class="navbar-form navbar-right searchForm">
                     <div class="form-group">
                        <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies"></label>
+                        <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
                     </div>
-                    <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
-                    <button type="submit" href="deconnexion" class="btn btn-danger">Deconnexion</button>
-                </form>
+
+
+                </form></li>
+                <li class="nav-item" ><button type="submit" href="deconnexion" class="btn btn-danger">Deconnexion</button></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->

@@ -199,59 +199,62 @@
     });
 
     function filmDetails(id) {
-        alert('id==' + id)
-        $.post(
+        alert('id==' + id);
+       $.post(
             'filmDetails',
             {"id": id},
             function (data, status) {
+                alert("data +"+data);
                 var imageUrl = 'https://image.tmdb.org/t/p/w500';
                 var videoUrl = 'https://www.youtube.com/watch?v=';
                 res = JSON.parse(data);
-                alert("filmDetails : " + data);
+                 alert("res : " + res);
                 $('#categorie').html('');
-                $('#films').html('');
-                //res.forEach(function(element) {
-                var video = ((res.videos).results[0]).key;
-                //alert(video);
-                var tmp = "";
-                tmp += "<div>";
-                tmp += '<section class=" imgFilm"><img src="' + imageUrl + "" + res.poster_path + '"/></section>';
-                tmp += '<section class=" sectionFilm"><section class =" descriptionFilm">';
-                tmp += '<h3> Synopsis : </h3>';
-                tmp += '<p>' + res. overview + '</p>';
-                tmp += '<p>' + res.release_date + '</p>';
-                tmp += '<p>' + res.vote_average + '</p></section>';
-                tmp += '<section><div id="ytplayer"></div></section></section>';
-                tmp += "</div>";
+                 $('#films').html('');
+                 //res.forEach(function(element) {
+                //var video = ((res.videos).results[0]).key;
+                var video = res.video;
+                alert("res.video"+video);
+                 var tmp = "";
+                 tmp += "<div>";
+                 tmp += '<section class="imgFilm"><img src="' + imageUrl + "" + res.poster_path + '"/></section>';
+                 tmp += '<section class=" sectionFilm"><section class =" descriptionFilm">';
+                 tmp += '<h3> Synopsis : </h3>';
+                 tmp += '<p>' + res. overview + '</p>';
+                 tmp += '<p>' + res.release_date + '</p>';
+                 tmp += '<p>' + res.vote_average + '</p></section>';
+                 alert("video : "+video);
+                 tmp += '<section><div id="ytplayer"></div></section></section>';
+                 tmp += "</div>";
 
-                $('#categorie').html(res.title);
-                $('#films').append(tmp);
-
-
-
-
-                onYouTubePlayerAPIReady();
+                 $('#categorie').html(res.title);
+                 $('#films').append(tmp);
 
 
 
 
-                // Load the IFrame Player API code asynchronously.
-                var tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/player_api";
-                var firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                 onYouTubePlayerAPIReady();
 
-                // Replace the 'ytplayer' element with an <iframe> and
-                // YouTube player after the API code downloads.
-                var player;
 
-                function onYouTubePlayerAPIReady() {
-                    player = new YT.Player('ytplayer', {
-                        height: '360',
-                        width: '640',
-                        videoId: video
-                    });
-                }
+
+
+                 // Load the IFrame Player API code asynchronously.
+                 var tag = document.createElement('script');
+                 tag.src = "https://www.youtube.com/player_api";
+                 var firstScriptTag = document.getElementsByTagName('script')[0];
+                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                 // Replace the 'ytplayer' element with an <iframe> and
+                 // YouTube player after the API code downloads.
+                 var player;
+
+                 function onYouTubePlayerAPIReady() {
+                     player = new YT.Player('ytplayer', {
+                         height: '360',
+                         width: '640',
+                         videoId: video
+                     });
+                 }
             });
 
     }
@@ -267,7 +270,6 @@
     var player;
 
     function onYouTubePlayerAPIReady() {
-        console.log('ssss==' + video)
         player = new YT.Player('ytplayer', {
             height: '360',
             width: '640',
