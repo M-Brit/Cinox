@@ -9,10 +9,11 @@
 
     <title>Carousel Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
@@ -20,8 +21,7 @@
 <!-- Header de la page -->
 <%@ include file="header.jsp" %>
 
-<main role="main">
-
+<!--
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -78,30 +78,26 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+-->
 
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+<div class="container">
 
+    <div class="row">
+        <div class="nomAlbum"><h1 id="categorie">TEST</h1></div>
+        <div id="films" >
 
-
-        <div class="album text-muted">
-            <div id="films" class="container">
-            </div>
         </div>
+    </div>
 
 
-
-    </div><!-- /.container -->
-
-</main>
-
+</div><!-- /.container -->
 <!-- footer de la page -->
-<%@ include file="footer.jsp" %>
-
+<%--@ include file="footer.jsp" --%>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"
@@ -110,45 +106,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
-
-
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 
 
 
     $(function () {
-        $(document).ready(function() {
+        $(document).ready(function () {
             getFilm();
         });
 
-        $('input').on('click', function(){
+        $('input').on('click', function () {
             var test = $(this).val;
-            console.log('input=='+ test)
+            console.log('input==' + test)
         });
 
         function getFilm() {
             $.get('films',
                 function (data, status) {
-                var imageUrl ='https://image.tmdb.org/t/p/w500';
-                  //console.log("data : "+data.length );
-                    alert("TEST"+data);
-                   res = JSON.parse(data);
-                   $('#films').html('');
-                    res.forEach(function(element) {
-                    var tmp = "";
-                    tmp += "<div id=\"film\" class=\"card\">  ";
-                    tmp += '<a href="#" onclick="filmDetails('+ element.id+')"> <img src="'+ imageUrl+""+element.poster_path+'" alt=\"Card image cap\"/></a>';
-                    tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
-                   //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
-                    tmp += '<br/> Notes : '+element.vote_average+'</p>';
-                    tmp += "</div>";
-                    $('#films').append(tmp);
-
-                  });
+                    var imageUrl = 'https://image.tmdb.org/t/p/w500';
+                    //console.log("data : "+data.length );
+                    alert("TEST" + data);
+                    res = JSON.parse(data);
+                    $('#films').html('');
+                    res.forEach(function (element) {
+                        var tmp = "";
+                        var imgtest  = element.poster_path;
+                        //alert(imgtest);
+                       if(imgtest !== null && imgtest !== "" ) {
+                            tmp += '<div class="col-sm-3 eachMovie">';
+                            tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
+                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                            //tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
+                            //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
+                            // tmp += '<br/> Notes : '+element.vote_average+'</p>';
+                            tmp += "</div>";
+                            $('#films').append(tmp);
+                            $('#categorie').html("Categorie"); // TODO mettre ici le nom de la categorie ;)
+                       }
+                    });
 
                 });
         }
@@ -158,65 +154,71 @@
             $.post('search',
                 {"titleFilm": objsearch},
                 function (data, status) {
-                    var imageUrl ='https://image.tmdb.org/t/p/w500';
+                    var imageUrl = 'https://image.tmdb.org/t/p/w500';
 
                     res = JSON.parse(data);
-                    alert("searchRes : "+data);
+                    alert("searchRes : " + data);
                     $('#films').html('');
-                    res.forEach(function(element) {
+                    res.forEach(function (element) {
                         var tmp = "";
                         tmp += "<div> " + element.title;
-                        tmp += '<p>'+element.release_date+'</p>';
-                        tmp += '<p>'+element.vote_average+'</p>';
-                        tmp += '<img src="'+ imageUrl+""+element.poster_path+'"/>';
+                        tmp += '<p>' + element.release_date + '</p>';
+                        tmp += '<p>' + element.vote_average + '</p>';
+                        tmp += '<img src="' + imageUrl + "" + element.poster_path + '"/>';
                         tmp += "</div>";
                         $('#films').append(tmp)
 
                     });
-                    alert("TMP : "+tmp);
+                    alert("TMP : " + tmp);
                 });
         }
 
         var submitsearch = document.getElementById('submitsearch');
         console.log('submitsearch')
-        submitsearch.addEventListener('click', function() {
-            var objsearch= document.getElementById('search').value;
+        submitsearch.addEventListener('click', function () {
+            var objsearch = document.getElementById('search').value;
             getSearchFilm(objsearch);
 
         }, false);
 
 
-
-
-      //  setInterval(getCommentaires, 5000);
+        //  setInterval(getCommentaires, 5000);
     });
 
     function filmDetails(id) {
-        alert('id=='+ id)
+        alert('id==' + id)
         $.post(
             'filmDetails',
             {"id": id},
             function (data, status) {
-                var imageUrl ='https://image.tmdb.org/t/p/w500';
+                var imageUrl = 'https://image.tmdb.org/t/p/w500';
                 var videoUrl = 'https://www.youtube.com/watch?v=';
                 res = JSON.parse(data);
-                alert("filmDetails : "+data);
+                alert("filmDetails : " + data);
+                $('#categorie').html('');
                 $('#films').html('');
                 //res.forEach(function(element) {
-                console.log('res=='+ res)
-                alert('videosss=='+ res.video)
-                    var tmp = "";
-                    tmp += "<div> " + res.title;
-                    tmp += '<p>'+res.release_date+'</p>';
-                    tmp += '<p>'+res.vote_average+'</p>';
-                    tmp += '<img src="'+ imageUrl+""+res.poster_path+'"/>';
-                    tmp+= '<div id="ytplayer"></div>';
-                    tmp += "</div>";
-                    $('#films').append(tmp)
+                console.log('res==' + res)
+                var video = ((res.videos).results[0]).key;
+                alert('videosss==' + video)
+                var tmp = "";
+                tmp += "<div> " + res.title;
+                tmp += '<p>' + res.release_date + '</p>';
+                alert('3' + res.vote_average)
+                tmp += '<p>' + res.vote_average + '</p>';
+                alert('4' + imageUrl + res.poster_path)
+                tmp += '<img src="' + imageUrl + "" + res.poster_path + '"/>';
+                alert('5' + videoUrl + video)
+                tmp += '<div id="ytplayer"></div>';
+                tmp += "</div>";
+                $('#categorie').html(res.title);
+                $('#films').append(tmp);
+
+
 
                 //});
-                alert("TMP : "+tmp);
-                    onYouTubePlayerAPIReady();
+                alert("TMP : " + tmp);
+                onYouTubePlayerAPIReady();
 
 
 
@@ -230,11 +232,12 @@
                 // Replace the 'ytplayer' element with an <iframe> and
                 // YouTube player after the API code downloads.
                 var player;
+
                 function onYouTubePlayerAPIReady() {
                     player = new YT.Player('ytplayer', {
                         height: '360',
                         width: '640',
-                        videoId: res.video
+                        videoId: video
                     });
                 }
             });
@@ -250,8 +253,9 @@
     // Replace the 'ytplayer' element with an <iframe> and
     // YouTube player after the API code downloads.
     var player;
+
     function onYouTubePlayerAPIReady() {
-        console.log('ssss=='+ video)
+        console.log('ssss==' + video)
         player = new YT.Player('ytplayer', {
             height: '360',
             width: '640',
