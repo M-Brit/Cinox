@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.HibernateUtil;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
@@ -129,8 +130,27 @@ public class FilmImpl  {
         //TODO
         //close mongoDB connextion;
         return  array;
-
     }
+
+    public JSONArray getByCategory(int categoryId){
+        MongoCollection<Document> collection = this.connexionMongoDB();
+        BasicDBObject query = new BasicDBObject();
+        query.put("genre_ids", new BasicDBObject("$in",Arrays.asList(categoryId)));
+
+        FindIterable<Document> documents = collection.find(query);
+        MongoCursor<Document> mongoCursor = documents.iterator();
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new JSONObject(doc.toJson());
+            System.out.println("object=="+ object);
+            array.put(object);
+        }
+        return  array;
+    }
+
+
 
 
     private void saveMongoDB(JSONObject jsonObject , MongoCollection<Document> collection) throws Exception{
