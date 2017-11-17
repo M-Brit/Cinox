@@ -96,8 +96,21 @@
 
 
 </div><!-- /.container -->
+
+
+
+
+
+
+
 <!-- footer de la page -->
 <%--@ include file="footer.jsp" --%>
+
+
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"
@@ -198,26 +211,34 @@
                 $('#categorie').html('');
                 $('#films').html('');
                 //res.forEach(function(element) {
-                console.log('res==' + res)
                 var video = ((res.videos).results[0]).key;
-                alert('videosss==' + video)
+                //alert(video);
                 var tmp = "";
-                tmp += "<div> " + res.title;
+                tmp += "<div > ";
+                tmp += '<section class=" imgFilm"><img src="' + imageUrl + "" + res.poster_path + '"/></section>';
+                tmp += '<section class=" sectionFilm"><section class =" descriptionFilm">';
+                tmp += '<h3> Synopsis : </h3>';
+                tmp += '<p>' + res. overview + '</p>';
                 tmp += '<p>' + res.release_date + '</p>';
-                alert('3' + res.vote_average)
-                tmp += '<p>' + res.vote_average + '</p>';
-                alert('4' + imageUrl + res.poster_path)
-                tmp += '<img src="' + imageUrl + "" + res.poster_path + '"/>';
-                alert('5' + videoUrl + video)
-                tmp += '<div id="ytplayer"></div>';
+                tmp += '<p>' + res.vote_average + '</p></section>';
+                tmp += '<section><div id="ytplayer"></div></section></section>';
                 tmp += "</div>";
+
+                tmp += '<!-- COMMENTAIRES -->\n';
+                //TODO ne fonctionne pas : tmp += '<%@ include file="commentaires.jsp" %>';
+
+
                 $('#categorie').html(res.title);
                 $('#films').append(tmp);
 
 
 
-                //});
-                alert("TMP : " + tmp);
+
+
+
+
+
+
                 onYouTubePlayerAPIReady();
 
 
@@ -262,6 +283,17 @@
             videoId: videoUrl + video
         });
     }
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </body>

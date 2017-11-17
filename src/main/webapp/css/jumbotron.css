@@ -54,3 +54,15 @@ img{
 #categorie{
     color: white;
 }
+.descriptionFilm{
+    background-color: #6c757d;
+    margin: 10px
+}
+.sectionFilm{
+    background-color: #6c757d;
+    margin: 10px;
+}
+.imgFilm{
+    float:left;
+    max-width: 70%;
+}

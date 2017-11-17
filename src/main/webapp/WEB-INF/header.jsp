@@ -29,11 +29,11 @@
                 </li>
             </ul>
             <!-- <form class="form-inline mt-2 mt-md-0"  method="post" action="dashboard2.jsp"> -->
-            <input id = "search" name="submitsearch" vclass="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  <!--          <input id = "search" name="submitsearch" vclass="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button id ="submitsearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
+-->
             <!-- </form> -->
-            <button class="btn btn-outline-danger my-2 my-sm-0" href="deconnexion" type="submit">Deconnexion</button>
+  <!--          <button class="btn btn-outline-danger my-2 my-sm-0" href="deconnexion" type="submit">Deconnexion</button>
         </div>
     </nav>
 -->
