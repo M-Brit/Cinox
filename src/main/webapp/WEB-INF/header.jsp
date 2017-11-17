@@ -140,10 +140,12 @@
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form navbar-right searchForm">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search movies">
+                        <input id = "search" type="text" class="form-control" placeholder="Search movies">
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
+                    <button type="submit" href="deconnexion" class="btn btn-danger">Deconnexion</button>
                 </form>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

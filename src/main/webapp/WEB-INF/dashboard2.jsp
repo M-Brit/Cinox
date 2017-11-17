@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <!--<link rel="icon" href="../../../../favicon.ico">-->
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>Cinox</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -163,12 +163,12 @@
         }
 
         function getSearchFilm(objsearch) {
-            console.log('submitsearch2')
+            alert('submitsearch1');
             $.post('search',
                 {"titleFilm": objsearch},
                 function (data, status) {
                     var imageUrl = 'https://image.tmdb.org/t/p/w500';
-
+                    alert('submitsearch2');
                     res = JSON.parse(data);
                     alert("searchRes : " + data);
                     $('#films').html('');
@@ -187,9 +187,9 @@
         }
 
         var submitsearch = document.getElementById('submitsearch');
-        console.log('submitsearch')
         submitsearch.addEventListener('click', function () {
             var objsearch = document.getElementById('search').value;
+            alert('submitsearch44 : '+objsearch);
             getSearchFilm(objsearch);
 
         }, false);
@@ -214,7 +214,7 @@
                 var video = ((res.videos).results[0]).key;
                 //alert(video);
                 var tmp = "";
-                tmp += "<div > ";
+                tmp += "<div>";
                 tmp += '<section class=" imgFilm"><img src="' + imageUrl + "" + res.poster_path + '"/></section>';
                 tmp += '<section class=" sectionFilm"><section class =" descriptionFilm">';
                 tmp += '<h3> Synopsis : </h3>';
@@ -223,10 +223,6 @@
                 tmp += '<p>' + res.vote_average + '</p></section>';
                 tmp += '<section><div id="ytplayer"></div></section></section>';
                 tmp += "</div>";
-
-                tmp += '<!-- COMMENTAIRES -->\n';
-                //TODO ne fonctionne pas : tmp += '<--%@ include file="commentaires.jsp" --%>';
-
 
                 $('#categorie').html(res.title);
                 $('#films').append(tmp);
