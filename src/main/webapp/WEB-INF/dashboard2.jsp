@@ -122,7 +122,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 
+    //function commentaires() {
+      //  alert("hererkdskmldksqdkqskdmqlskdqskdlsqmkdlmqskdlqskdkqskdqskdqsk");
+        /* $.get('commentaires',
+             function (data, status) {
+                 alert("searchResteeeeeeaux : " + data);
+                /* $('#commentaireFilm').html('');
+                     $('#commentaireFilm').append(tmp)*/
 
+        //});
+        //alert("TMP : " + tmp);*/
+    //}
 
     $(function () {
         $(document).ready(function () {
@@ -210,22 +220,52 @@
                 res = JSON.parse(data);
                  alert("res : " + res);
                 $('#categorie').html('');
-                 $('#films').html('');
+                $('#films').html('');
                  //res.forEach(function(element) {
                 //var video = ((res.videos).results[0]).key;
                 var video = res.video;
                 alert("res.video"+video);
-                 var tmp = "";
-                 tmp += "<div>";
-                 tmp += '<section class="imgFilm"><img src="' + imageUrl + "" + res.poster_path + '"/></section>';
-                 tmp += '<section class=" sectionFilm"><section class =" descriptionFilm">';
-                 tmp += '<h3> Synopsis : </h3>';
-                 tmp += '<p>' + res. overview + '</p>';
-                 tmp += '<p>' + res.release_date + '</p>';
-                 tmp += '<p>' + res.vote_average + '</p></section>';
-                 alert("video : "+video);
-                 tmp += '<section><div id="ytplayer"></div></section></section>';
-                 tmp += "</div>";
+
+                var tmp = "";
+                tmp += '<div class="detailFilm">';
+                tmp += '<section class="imgFilm"><img class="imgAffiche" src="' + imageUrl + "" + res.poster_path + '"/>';
+                tmp += '<aside class="dateNote"><p> Date de sortie : ' + res.release_date + '</p>';
+                tmp += '<p> Note : ' + res.vote_average + '/10</p></aside>';
+                tmp += '</section>';
+                tmp += '<section class=" sectionFilm"><aside class =" descriptionFilm">';
+                tmp += '<h3> Synopsis : </h3>';
+                tmp += '<p>' + res. overview + '</p></aside>';
+                tmp += '<aside><div id="ytplayer"></div></aside></section>';
+
+                // SPLIT POUR LES ACTEURS
+                var acteurs = res.acteurs;
+                alert("--1 acteurs :"+res.acteurs);
+                tmp += '<section class="acteursFilm"><table><tr>';
+                acteurs.forEach(function (element) {
+                    alert("0");
+                    var arrayacteurImages = element.split("/");
+
+                    for (var i=0; i < arrayacteurImages.length ; i=i+2) {
+                        var nameActeur = arrayacteurImages[i];
+                        var imageActeur = arrayacteurImages[i+1];
+                        alert(nameActeur);
+                        alert(imageUrl + imageActeur);
+
+                        tmp += '<td><img class="imgActeur" src="' + imageUrl +"/"+ imageActeur + '"/>';
+                        tmp += '<p>'+nameActeur+'</p></td>'
+
+                    }
+
+                });
+
+                // POUR LES COMMENTAIRES
+            //    tmp += '<section class="commentaireFilm" onload="javascript:commentaires()">';
+             //   tmp += 'ICICICICIC </section> ';
+
+                tmp += "</tr></table></section>";
+                tmp += '</div>';
+
+
 
                  $('#categorie').html(res.title);
                  $('#films').append(tmp);
@@ -255,7 +295,13 @@
                          videoId: video
                      });
                  }
+
+
+
+
+
             });
+
 
     }
 

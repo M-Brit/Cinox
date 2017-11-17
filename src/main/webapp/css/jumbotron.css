@@ -55,14 +55,36 @@ img{
     color: white;
 }
 .descriptionFilm{
-    background-color: #6c757d;
     margin: 10px
 }
 .sectionFilm{
-    background-color: #6c757d;
     margin: 10px;
 }
 .imgFilm{
     float:left;
     max-width: 70%;
+}
+
+.detailFilm{
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.imgAffiche{
+    max-width : 50%;
+}
+
+.note{
+    font-weight: bold;
+}
+.dateNote{
+    font-weight: bold;
+}
+.acteursFilm{
+    clear: both;;
+}
+
+.imgActeur{
+    max-width : 10%;
 }

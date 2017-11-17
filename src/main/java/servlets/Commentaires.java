@@ -36,14 +36,16 @@ public class Commentaires extends HttpServlet {
        ///// System.out.println("jsonarray :"+commentaires);
  //       session.setAttribute(ATT_FORMCRITIQUE, formCommentaire); // TODO : voir si utiliser session ou request ou autre
  //       session.setAttribute(ATT_COMMENTAIRESJSON, commentaires);
+
+
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 
     //    response.setContentType("application/json");
-        //resp.setContentType("plain/text");
-    //    response.setHeader("Cache-control", "no-cache");
-       // response.getWriter().print(commentaires);
-   //     response.getWriter().flush();
-   //     response.getWriter().close();
+       /*   response.setContentType("plain/text");
+          response.setHeader("Cache-control", "no-cache");
+          response.getWriter().print();
+          response.getWriter().flush();
+          response.getWriter().close();*/
 
     }
 

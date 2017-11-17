@@ -21,7 +21,7 @@
                 <textarea class="form-control" id="comment" placeholder="MESSAGE(300 caractères maximum) ici..."
                           name="commentaire" rows="5"
                           maxlength="300"></textarea>
-                <button type="submit" id="addComment" value="envoyer" name="ajoutcontact" class="but">Envoyer</button>
+                <button type="submit" id="addComment" value="envoyer" name="message" class="but">Envoyer</button>
                 <a href="accueil.html"><input class="but" type="reset" value="Annuler" name="Annuler"/></a>
             </div>
         </form>
