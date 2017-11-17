@@ -24,7 +24,8 @@ public class FilmImpl  {
         return collection;
     }
 
-    public void ajoutFilm(JSONArray arrayFilm) throws Exception {
+    //TODO verifier doublon
+    public void ajoutFilm(String type, JSONArray arrayFilm) throws Exception {
 
         MongoCollection<Document> collection = this.connexionMongoDB();
         FindIterable<Document> iterDoc = collection.find();
@@ -60,14 +61,14 @@ public class FilmImpl  {
                     }
                 }
                 if(conflit == 0) {
-                    saveMongoDB(jsonObject, collection);
+                    saveMongoDB(type, jsonObject, collection);
                 }
 
             }
         }else {
             for(int j= 0; j< arrayFilm.length(); j++){
                 jsonObject = (JSONObject)arrayFilm.get(j);
-                saveMongoDB(jsonObject, collection);
+                saveMongoDB(type, jsonObject, collection);
             }
 
         }
@@ -150,10 +151,27 @@ public class FilmImpl  {
         return  array;
     }
 
+    public JSONArray findFilmByType(String filmType) throws Exception {
+        MongoCollection<Document> collection = this.connexionMongoDB();
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("type", filmType);
+
+        FindIterable<Document> documents = collection.find(query);
+        MongoCursor<Document> mongoCursor = documents.iterator();
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new JSONObject(doc.toJson());
+            System.out.println("object=="+ object);
+            array.put(object);
+        }
+        return  array;
+    }
 
 
-
-    private void saveMongoDB(JSONObject jsonObject , MongoCollection<Document> collection) throws Exception{
+    private void saveMongoDB(String type, JSONObject jsonObject , MongoCollection<Document> collection) throws Exception{
         JSONObject filmDetails;
         JSONObject getActors;
         Document document;
@@ -162,8 +180,10 @@ public class FilmImpl  {
 
             filmDetails = filmApiForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
             getActors = filmApiForm.getActors(String.valueOf(jsonObject.getInt("id")));
+            System.out.println("acteur=="+ getActors);
 
             document = new Document();
+            document.put("type", type);
             document.put("id", jsonObject.getInt("id"));
             document.put("title", jsonObject.getString("title"));
             document.put("poster_path", jsonObject.getString("poster_path"));
@@ -181,10 +201,21 @@ public class FilmImpl  {
             document.put("video", video);
 
             JSONArray array = getActors.optJSONArray("cast");
+            System.out.println("cast=="+ array.length());
             JSONArray acteurs = new JSONArray();
-            if(array != null) {
+
+            //upComming, il y a que infos de zero ou trois quatre acteurs, on affiche que 3 aucteur
+            //nowPlaying et popular, on affiche 5 acteurs
+            int length = 5;
+            if("upComing".equals(type) && array.length()>3){
+                length=3;
+            } else {
+                length=array.length();
+            }
+
+            if(array != null && array.length()!= 0) {
                 int ac =0;
-                for(int a= 0; a< 5; a++){
+                for(int a= 0; a< length; a++){
                     if(!("N/A".equals(((JSONObject)array.get(a)).optString("profile_path", "N/A"))) && ac< 5){
                         String actorName = array.optJSONObject(a).optString("name", "N/A");
                         String actorPicture = array.optJSONObject(a).optString("profile_path", "N/A");

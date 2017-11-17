@@ -82,7 +82,18 @@
         <url-pattern>/commentaires</url-pattern>
     </servlet-mapping>
 
-    <!-- ••••• FILMS ••••• -->
+    <!-- ••••• initialize FILMS ••••• -->
+    <servlet>
+        <servlet-name>InitializeFilm</servlet-name>
+        <servlet-class>servlets.InitializeFilm</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitializeFilm</servlet-name>
+        <url-pattern>/initializeFilm</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• get FILMS ••••• -->
     <servlet>
         <servlet-name>Films</servlet-name>
         <servlet-class>servlets.Films</servlet-class>
@@ -124,6 +135,17 @@
     <servlet-mapping>
         <servlet-name>FilmCategory</servlet-name>
         <url-pattern>/filmCategory</url-pattern>
+    </servlet-mapping>
+
+    <!-- ••••• Film Type(nowPlaying, upComing, popular) ••••• -->
+    <servlet>
+        <servlet-name>FilmType</servlet-name>
+        <servlet-class>servlets.FilmType</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilmType</servlet-name>
+        <url-pattern>/filmType</url-pattern>
     </servlet-mapping>
 
 

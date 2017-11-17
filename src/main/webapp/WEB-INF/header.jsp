@@ -86,10 +86,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Populaire<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" onclick="getFilmByType('popular')">Populaire<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Prochainement</a>
+                    <a class="nav-link" href="#" onclick="getFilmByType('upComing')">Prochainement</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">A l'affiche</a>
@@ -100,19 +100,19 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" class="action" id="action">Action</a></li>
-                        <li><a href="#" class="adventure" id="adventure">Adventure</a></li>
-                        <li><a href="#" class="animation" id="animation">Animation</a></li>
-                        <li><a href="#" class="comedy" id="comedy">Comedy</a></li>
-                        <li><a href="#" class="crime" id="crime">Crime</a></li>
-                        <li><a href="#" class="drama" id="drama">Drama</a></li>
-                        <li><a href="#" class="family" id="family">Family</a></li>
-                        <li><a href="#" class="fantasy" id="fantasy">Fantasy</a></li>
-                        <li><a href="#" class="history" id="history">History</a></li>
-                        <li><a href="#" class="music" id="music">Music</a></li>
-                        <li><a href="#" class="romance" id="romance">Romance</a></li>
-                        <li><a href="#" class="scifi" id="scifi">Science Fiction</a></li>
-                        <li><a href="#" class="thriller" id="thriller">Thriller</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(28)" class="action" id="action">Action</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(12)" class="adventure" id="adventure">Adventure</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(16)" class="animation" id="animation">Animation</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(35)" class="comedy" id="comedy">Comédie</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(80)" class="crime" id="crime">Crime</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(18)" class="drama" id="drama">Drame</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10751)" class="family" id="family">Familial</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(14)" class="fantasy" id="fantasy">Fantastique</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(36)" class="history" id="history">Histoire</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10402)" class="music" id="music">Musique</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10749)" class="romance" id="romance">Romance</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(878)" class="scifi" id="scifi">Science-Fiction</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(53)" class="thriller" id="thriller">Thriller</a></li>
                     </ul>
                 </li>
                 <li class="gitHubLogo">

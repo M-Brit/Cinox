@@ -9,18 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class Films extends HttpServlet {
-
+public class FilmType extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String type = request.getParameter("filmType");
+        System.out.println("servlet=="+ type);
         try {
             FilmImpl filmImpl = new FilmImpl();
 
-            //TODO all or nowPlaying
-            //from MongoDB
-            JSONArray films =  filmImpl.findAllFilm();
-
+            JSONArray films =  filmImpl.findFilmByType(type);
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
             response.getWriter().write(films.toString());
@@ -30,15 +28,6 @@ public class Films extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
-
-
-
-
-
-
 }

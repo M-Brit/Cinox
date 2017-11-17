@@ -57,6 +57,14 @@ public class FilmForm {
             return jsonObject.getJSONArray("results");
         }
 
+        public JSONArray popular() throws Exception
+        {
+            String url_popular = "https://api.themoviedb.org/3/movie/popular?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
+
+            JSONObject jsonObject = new JSONObject(getData(url_popular).toString());
+            return jsonObject.getJSONArray("results");
+        }
+
         public JSONArray getMovieWithKeywords(String keywords) throws Exception
         {
             //TODO replace
