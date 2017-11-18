@@ -59,4 +59,5 @@ public class Profil extends HttpServlet {
                 System.out.println("Action invalide !");
         }
     }
+
 }

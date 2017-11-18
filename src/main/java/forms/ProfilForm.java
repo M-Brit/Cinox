@@ -24,5 +24,6 @@ public class ProfilForm {
             array.put(json);
         }
         return array;
+
     }
 }
