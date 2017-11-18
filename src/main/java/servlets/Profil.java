@@ -27,10 +27,10 @@ public class Profil extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         Utilisateur uRecup = (Utilisateur) req.getSession().getAttribute(ATT_SESSION_USER);
-        System.out.println("@@@@@@@@@@" + uRecup.getId());
+        int idRecup = uRecup.getId();
         switch (action) {
             case "update":
-                List l = AmisImpl.rechercheAmis(11); // !!!!! session
+                List l = AmisImpl.rechercheAmis(idRecup); // !!!!! session
                 JSONArray array = ProfilForm.rechercheAmisJSON(l);
                 String s = array.toString();
                 resp.setContentType("plain/text");
@@ -39,24 +39,24 @@ public class Profil extends HttpServlet {
                 resp.getWriter().close();
                 break;
             case "suppr":
-                AmisImpl.supressionAmis(11, Integer.parseInt(req.getParameter("id")));
+                AmisImpl.supressionAmis(idRecup, Integer.parseInt(req.getParameter("id")));
                 break;
             case "add":
                 List u = UtilisateurImpl.rechercheUtilisateurs(req.getParameter("pseudo"));
                 if (!u.isEmpty()) {
                     int id = ((Utilisateur) u.get(0)).getId();
-                    if (id != 11) {
-                        AmisImpl.ajoutAmi(11, id);
+                    if (id != idRecup) {
+                        AmisImpl.ajoutAmi(idRecup, id);
                     }
                 }
                 // TODO CAS IMPOSSIBLE
                 break;
             case "accept":
-                AmisImpl.accepterAmis(11, Integer.parseInt(req.getParameter("id")));
+                AmisImpl.accepterAmis(idRecup, Integer.parseInt(req.getParameter("id")));
                 break;
             case "desins":
-                AmisImpl.supressionTousAmis(14);
-                UtilisateurImpl.supressionUtilisateur(14);
+                AmisImpl.supressionTousAmis(idRecup);
+                UtilisateurImpl.supressionUtilisateur(idRecup);
                 break;
             default:
                 System.out.println("Action invalide !");
