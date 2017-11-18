@@ -136,7 +136,7 @@
                     $.post('profil',
                         {"action": "desins", "id": $(this).val()},
                         function (data, status) {
-                            update(); //todo desins redirect
+                            window.location.replace("/");
                         });
                 }
             } else {

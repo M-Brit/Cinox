@@ -59,7 +59,6 @@ public class Profil extends HttpServlet {
                     AmisImpl.supressionTousAmis(idRecup);
                     UtilisateurImpl.supressionUtilisateur(idRecup);
                     req.getSession().invalidate();
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(req, resp);
                     break;
                 default:
                     System.out.println("Action invalide !");
