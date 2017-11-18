@@ -6,9 +6,9 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/cinox</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://ec2-54-247-124-9.eu-west-1.compute.amazonaws.com:5432/dfttfcrlb3o86u?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>
+        <property name="hibernate.connection.username">xehnxlegzoxwms</property>
+        <property name="hibernate.connection.password">140afd73d63f5c8835f041a2f9b5da278d1289f1e97527db5936d80d861f9a64</property>
        <!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?verifyServerCertificate=false&amp;useSSL=true</property>
