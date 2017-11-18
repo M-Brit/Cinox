@@ -1,21 +1,22 @@
 package forms;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import exceptions.CommentairesException;
 import org.bson.Document;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import utils.HibernateUtil;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
-public final class CommentairesForm {
+public class CommentairesForm {
     private static final String CHAMP_CRITIQUES = "critiques";
     // TODO :  Mettre les id recuperer de la page du film.
     private static final String CHAMP_ERROR = "errorInsertFilm";
@@ -25,7 +26,7 @@ public final class CommentairesForm {
     private Map<String, String> erreurs = new HashMap<String, String>();
 
     private JSONArray arrayComment = new JSONArray();
-    public void commentaireFilm(HttpServletRequest request) throws ParseException {
+    public void commentaireFilm(HttpServletRequest request) {
 
         String commentaire = request.getParameter("comment").toString();
         System.out.println("commentaire=="+ commentaire);
@@ -41,23 +42,67 @@ public final class CommentairesForm {
 
     }
 
-    public JSONArray obtainCommentaires(HttpServletRequest request){
-        try {
-            getCritiques(request);
-            System.out.println("arrayComment : "+arrayComment);
-        } catch (CommentairesException e) {
-            //setErreur( CHAMP_, e.getMessage() );
-            System.out.println("pb");
-        }
-        return arrayComment;
+
+
+    //---------------------------------------------------
+    public JSONArray commentaireFilm(String idFilm, String idUser, String commentaire){
+        return addCritiquesFilm(idFilm, idUser, commentaire);
     }
+
+    public JSONArray addCritiquesFilm(String idFilm, String idUser, String commentaires){
+        MongoCollection<Document> collection = this.connexionMongoDB();
+        //insert
+        Document document = new Document()
+                .append("idUser", idUser)
+                .append("idFilm", Integer.valueOf(idFilm))
+                .append("critique", commentaires)
+                .append("date", new Date().toString());
+        collection.insertOne(document);
+
+        //select and reture
+        FindIterable<Document> documents = collection.find();
+        MongoCursor<Document> mongoCursor = documents.iterator();
+
+        org.json.JSONArray array = new org.json.JSONArray();
+        org.json.JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new org.json.JSONObject(doc.toJson());
+            array.put(object);
+        }
+        return  array;
+    }
+
+    public JSONArray obtainCommentaires(String idFilm){
+        return getCritiques(idFilm);
+    }
+
+    private JSONArray getCritiques(String idFilm){
+
+        MongoCollection<Document> collection = this.connexionMongoDB();
+        BasicDBObject query = new BasicDBObject();
+        query.put("idFilm", Integer.valueOf(idFilm));
+        FindIterable<Document> documents = collection.find(query);
+
+        MongoCursor<Document> mongoCursor = documents.iterator();
+
+        org.json.JSONArray array = new org.json.JSONArray();
+        org.json.JSONObject object;
+        while (mongoCursor.hasNext()) {
+            Document doc = mongoCursor.next();
+            object = new org.json.JSONObject(doc.toJson());
+            array.put(object);
+        }
+        return  array;
+    }
+    //-----------------------------------------------------
 
 
     /**
      * Permet de se connecter à la base de donnée.
      * @return MongoCollection<Document> qui permet ensuite de se connecter a la base de donnée et
      */
-    private MongoCollection<Document> connexionMongoDB(){
+/*    private MongoCollection<Document> connexionMongoDB(){
 
 
         MongoClient mongo = new MongoClient("localhost", 27017);
@@ -66,53 +111,16 @@ public final class CommentairesForm {
         MongoCollection<Document> collection = database.getCollection("commentaire");
 
         return collection;
+    }*/
+    private MongoCollection<Document> connexionMongoDB(){
+
+        // Accessing the database
+        MongoCollection<Document> collection = HibernateUtil.database.getCollection("commentaire");
+
+        return collection;
     }
 
-    private void getCritiques(HttpServletRequest request)throws CommentairesException {
 
-        MongoCollection<Document> collection = this.connexionMongoDB();
-        System.out.println("collection"+collection);
-        FindIterable<Document> iterDoc = collection.find();
-        System.out.println("iterDoc : "+iterDoc);
-        JSONParser parser = new JSONParser();
-        int i = 1;
-
-        Iterator it = iterDoc.iterator();
-
-        System.out.println("it.hasNext()"+it.hasNext());
-        while (it.hasNext()) {
-            Document doc = (Document)it.next();
-            System.out.println("TEST doc :"+doc.toJson());
-
-            // TODO : faire test si pas de critiques et verifier aussi qu'on peut pas inserer des critiques null
-           /* String critique = (String) doc.get("critique").toString();
-            System.out.println("critique"+critique);
-            String idFilm = (String) doc.get("idFilm").toString();
-            System.out.println("idFilm"+idFilm);
-            String idUser = (String) doc.get("idUser");
-            System.out.println("idUser"+idUser);
-            String date = doc.get("date").toString();
-            System.out.println("date"+date);*/
-            Object obj = null;
-            try {
-                obj = parser.parse(doc.toJson());
-                JSONObject comment = (JSONObject) obj;
-                testCommentaire(comment);
-                System.out.println("comment = " + obj);
-                testCommentaire(comment);
-                arrayComment.add(comment);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (CommentairesException e) {
-                setErreur(CHAMP_ERROR, e.getMessage());
-                e.printStackTrace();
-            }
-
-            i++;// TODO delete
-
-        }
-        System.out.println("Nb de film  : " + i); // TODO delete
-    }
 
     public void testCommentaire(JSONObject comment) throws CommentairesException {
         System.out.println("TEST COM1");
@@ -129,29 +137,7 @@ public final class CommentairesForm {
         System.out.println("TEST COM2");
     }
 
-    public void addCritiquesFilm(String idUser, String idFilm, String commentaires){
-        MongoCollection<Document> collection = this.connexionMongoDB();
-        Date date = new Date();
-        System.out.println("idUser : "+idUser+" idFilm : "+idFilm+" commentaires :"+commentaires);
-        Document document = new Document()
-                .append("idUser", idUser)
-                .append("idFilm", idFilm)
-                .append("critique", commentaires)
-                .append("date", date.toString());
-        collection.insertOne(document);
 
-        // Getting the iterable object
-        FindIterable<Document> iterDoc = collection.find();
-        // Getting the iterator
-        Iterator it = iterDoc.iterator();
-
-        int i = 1;
-        while (it.hasNext()) {
-            System.out.println("MONGOTESTSWAG : " + it.next());
-            i++;
-        }
-
-    }
 
 
     /**

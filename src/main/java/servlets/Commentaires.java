@@ -1,9 +1,7 @@
 package servlets;
 
-import beans.Utilisateur;
 import forms.CommentairesForm;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,43 +52,37 @@ public class Commentaires extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("entre ..........");
         String action = request.getParameter("action");
+        String idFilm = request.getParameter("idFilm");
+        System.out.println("action,idFilm=="+ action+"&"+idFilm);
 
         /* Récupération de la session/userId depuis la requête */
         HttpSession session = request.getSession();
         System.out.println("session=="+ session);
-        System.out.println("session=="+ session.getAttribute("ATT_USER"));
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("ATT_USER");
-        System.out.println("userId=="+ utilisateur.getId());
+        //TODO
+        //j'arrive pas de recuperer l'id user, vous pouvez l'ajouter, pour l'instant je prend qqq
+        String idUser = "qqq";
 
 
-        JSONArray  commentaires;
+        JSONArray commentaires;
         CommentairesForm formCommentaire = new CommentairesForm();
 
         switch (action) {
 
             case "addComment":
-                try {
-                    String comment = request.getParameter("comment");
-                    formCommentaire.commentaireFilm(request);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("add............");
+                String comment = request.getParameter("comment");
+                commentaires = formCommentaire.commentaireFilm(idFilm, idUser, comment);
 
-                commentaires = formCommentaire.obtainCommentaires(request);
-                System.out.println("TEST FIN");
                 response.setContentType("plain/text");
                 response.setHeader("Cache-control", "no-cache");
                 response.getWriter().write(commentaires.toString());
                 response.getWriter().flush();
                 response.getWriter().close();
 
-
-               // session.setAttribute(ATT_FORMCRITIQUE, formCommentaire); // TODO : voir si utiliser session ou request ou autre ou enlever
-                //session.setAttribute(ATT_COMMENTAIRESJSON, commentaires);
                 break;
             case "getComment":
-
-                commentaires = formCommentaire.obtainCommentaires(request);
+                System.out.println("get............");
+                commentaires = formCommentaire.obtainCommentaires(idFilm);
                 response.setContentType("plain/text");
                 response.setHeader("Cache-control", "no-cache");
                 response.getWriter().write(commentaires.toString());
@@ -102,17 +94,6 @@ public class Commentaires extends HttpServlet {
                 System.out.println(" pas bon !!!!"); // TODO a bien gerer
                 break;
         }
-
-
-        /* Affichage de la page des critiques*/
-      /*  response.setContentType("plain/text");
-        //resp.setContentType("plain/text");
-        response.setHeader("Cache-control", "no-cache");
-        response.getWriter().write("test");
-        response.getWriter().flush();
-        response.getWriter().close();*/
-       // this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-
 
     }
 }

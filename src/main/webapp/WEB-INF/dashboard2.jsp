@@ -137,8 +137,6 @@
     $(function () {
         $(document).ready(function () {
             getFilm();
-            //TODO supprimer
-            testCommentaire();
         });
 
         $('input').on('click', function () {
@@ -173,17 +171,30 @@
                 });
         }
 
-        //TODO Supprimer
-        function testCommentaire(){
+        //TODO reutiliser et Supprimer
+        //-------------------test commentaire--------------
+        function addCommentaire(){
             alert('testtesttest')
             $.post('commentaires',
-                {"action": "addComment", "comment": "8888888"},
+                {"action": "addComment", "comment": "8888888", "idFilm":284053},
                 function (data, status) {
                     alert('status test=='+ status);
 
                 });
 
         }
+
+        function getCommentaire(){
+            alert('testtesttest  select')
+            $.post('commentaires',
+                {"action": "getComment", "comment": null, "idFilm":284053},
+                function (data, status) {
+                    alert('status test=='+ status);
+                    alert('data=='+ data)
+                });
+
+        }
+        //-------------------test commentaire--------------
 
         function getSearchFilm(objsearch) {
             alert('submitsearch1');
