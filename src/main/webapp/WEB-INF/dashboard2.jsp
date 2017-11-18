@@ -201,17 +201,18 @@
                     var imageUrl = 'https://image.tmdb.org/t/p/w500';
                     alert('submitsearch2');
                     res = JSON.parse(data);
-                    alert("searchRes : " + data);
                     $('#films').html('');
                     res.forEach(function (element) {
                         var tmp = "";
-                        tmp += "<div> " + element.title;
-                        tmp += '<p>' + element.release_date + '</p>';
-                        tmp += '<p>' + element.vote_average + '</p>';
-                        tmp += '<img src="' + imageUrl + "" + element.poster_path + '"/>';
-                        tmp += "</div>";
-                        $('#films').append(tmp)
-
+                        var imgtest  = element.poster_path;
+                        if(imgtest !== null && imgtest !== "" ) {
+                            tmp += '<div class="col-sm-3 eachMovie">';
+                            tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
+                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                            tmp += "</div>";
+                            $('#films').append(tmp);
+                            $('#categorie').html("Films"); // TODO mettre ici le nom de la categorie ;)
+                        }
                     });
                     alert("TMP : " + tmp);
                 });
