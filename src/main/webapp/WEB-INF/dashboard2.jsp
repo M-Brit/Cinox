@@ -88,7 +88,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="nomAlbum"><h1 id="categorie">TEST</h1></div>
+        <div class="nomAlbum"><h1 id="categorie"></h1></div>
         <div id="films" >
 
         </div>
@@ -149,7 +149,6 @@
                 function (data, status) {
                     var imageUrl = 'https://image.tmdb.org/t/p/w500';
                     //console.log("data : "+data.length );
-                    alert("TEST" + data);
                     res = JSON.parse(data);
                     $('#films').html('');
                     res.forEach(function (element) {
@@ -165,7 +164,7 @@
                             // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                             tmp += "</div>";
                             $('#films').append(tmp);
-                            $('#categorie').html("Categorie"); // TODO mettre ici le nom de la categorie ;)
+                            $('#categorie').html("Films"); // TODO mettre ici le nom de la categorie ;)
                        }
                     });
 
@@ -324,7 +323,7 @@
     }
 
 
-    function getFilmByCategory(categoryId) {
+    function getFilmByCategory(categoryId, cat) {
         alert('........getFilmByCategory.......');
         $.post('filmCategory',
             {"categoryId": categoryId},
@@ -346,7 +345,7 @@
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                         tmp += "</div>";
                         $('#films').append(tmp);
-                        $('#categorie').html("Categorie"); // TODO mettre ici le nom de la categorie ;)
+                        $('#categorie').html(cat); // TODO mettre ici le nom de la categorie ;)
                     }
                 });
             });
@@ -374,7 +373,7 @@
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                         tmp += "</div>";
                         $('#films').append(tmp);
-                        $('#categorie').html("Categorie"); // TODO mettre ici le nom de la categorie ;)
+                        $('#categorie').html("Prochainement"); //TODO mettre ici le nom de la categorie ;)
                     }
                 });
             });

@@ -12,6 +12,8 @@ public class Deconnexion extends HttpServlet {
     public static final String URL_REDIRECTION = "/index.jsp";
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("passe dans deconnexion");
         /* Récupération et destruction de la session en cours */
         HttpSession session = req.getSession();
         session.invalidate();

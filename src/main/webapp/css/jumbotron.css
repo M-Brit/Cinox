@@ -88,3 +88,10 @@ img{
 .imgActeur{
     max-width : 10%;
 }
+
+.btn{
+    margin-left: 10px;
+}
+.btn-danger{
+    margin-top: 8px;
+}

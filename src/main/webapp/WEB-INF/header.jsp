@@ -100,23 +100,23 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" onclick="getFilmByCategory(28)" class="action" id="action">Action</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(12)" class="adventure" id="adventure">Adventure</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(16)" class="animation" id="animation">Animation</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(35)" class="comedy" id="comedy">Comédie</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(80)" class="crime" id="crime">Crime</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(18)" class="drama" id="drama">Drame</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(10751)" class="family" id="family">Familial</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(14)" class="fantasy" id="fantasy">Fantastique</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(36)" class="history" id="history">Histoire</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(10402)" class="music" id="music">Musique</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(10749)" class="romance" id="romance">Romance</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(878)" class="scifi" id="scifi">Science-Fiction</a></li>
-                        <li><a href="#" onclick="getFilmByCategory(53)" class="thriller" id="thriller">Thriller</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(28, 'Action')" class="action" id="action">Action</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(12, 'Aventure')" class="adventure" id="adventure">Aventure</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(16, 'Animation')" class="adventure" id="animation">Animation</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(35, 'Comédie')" class="comedy" id="comedy">Comédie</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(80, 'Crime')" class="crime" id="crime">Crime</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(18, 'Drame')" class="drama" id="drama">Drame</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10751, 'Familial')" class="family" id="family">Familial</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(14, 'Fantastique')" class="fantasy" id="fantasy">Fantastique</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(36, 'Histoire')" class="history" id="history">Histoire</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10402, 'Musique')" class="music" id="music">Musique</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(10749, 'Romance')" class="romance" id="romance">Romance</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(878, 'Science-Fiction')" class="scifi" id="scifi">Science-Fiction</a></li>
+                        <li><a href="#" onclick="getFilmByCategory(53, 'Thriller')" class="thriller" id="thriller">Thriller</a></li>
                     </ul>
                 </li>
                 <li class="gitHubLogo">
-                    <a href="https://github.com/dangconnie/movie-app" target="_blank">GitHub Repo</a>
+                    <a href="https://github.com/M-Brit/Cinox.git" target="_blank">GitHub Repo</a>
                 </li>
                 <!-- <li><a href="#">Specials</a></li> -->
                 <!--      <li class="dropdown">
@@ -137,18 +137,27 @@
                   </ul>
                 </li> -->
             </ul>
+
+            <div class="form-group">
             <ul class="nav navbar-nav navbar-right">
-               <li class="nav-item"> <form class="navbar-form navbar-right searchForm">
-                    <div class="form-group">
-                       <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies"></label>
-                        <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
-                    </div>
 
+                    <li class="nav-item">
 
-                </form></li>
-                <li class="nav-item" ><button type="submit" href="deconnexion" class="btn btn-danger">Deconnexion</button></li>
+                        <form class="navbar-form navbar-right searchForm">
+                            <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies"></label>
+                            <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
+                        </form>
+
+                   </li>
+                    <li class="nav-item" >
+                        <div>
+                            <a class="btn btn-danger" type="submit" href="deconnexion" >Deconnexion</a>
+                        </div>
+                    </li>
+
 
             </ul>
+        </div>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

@@ -63,7 +63,7 @@
                 <input id="search" class="form-control mr-sm-2" name="submitsearch" type="search" placeholder="Search" aria-label="Search">
                 <button id ="submitsearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
             </form>
-            <button class="btn btn-outline-danger my-2 my-sm-0" href="deconnexion" type="submit">Deconnexion</button>
+            <button class="btn btn-outline-danger " href="deconnexion" type="submit">Deconnexion</button>
         </div>
     </nav>
 
