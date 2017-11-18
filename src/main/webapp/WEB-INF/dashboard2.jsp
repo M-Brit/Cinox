@@ -128,7 +128,12 @@
 
     $(function () {
         $(document).ready(function () {
-            getFilm();
+            //get all films
+            //getFilm();
+
+            //get now playing films
+            getFilmByType('nowPlaying');
+
         });
 
         $('input').on('click', function () {
@@ -415,7 +420,7 @@
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                         tmp += "</div>";
                         $('#films').append(tmp);
-                        $('#categorie').html("Prochainement"); //TODO mettre ici le nom de la categorie ;)
+                        $('#categorie').html(type); //TODO mettre ici le nom de la categorie ;)
                     }
                 });
             });
