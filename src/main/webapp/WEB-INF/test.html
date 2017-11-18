@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8"/>
+    <link href="../css/rating.css" rel="stylesheet">
+    <title>Titre</title>
+</head>
+
+<body>
+<div class="rating" id="rating">
+    <input name="stars" value="5" id="e5" type="radio"><label for="e5">★</label>
+    <input name="stars" value="4" id="e4" type="radio"><label for="e4">★</label>
+    <input name="stars" value="3" id="e3" type="radio"><label for="e3">★</label>
+    <input name="stars" value="2" id="e2" type="radio"><label for="e2">★</label>
+    <input name="stars" value="1" id="e1" type="radio"><label for="e1">★</label>
+</div>
+
+<br/>
+
+<div class="container" id="note">
+    ---
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<script>
+    document.getElementById("e1").onclick = function () {
+        sendNote(e1.value);
+    };
+    document.getElementById("e2").onclick = function () {
+        sendNote(e2.value);
+    };
+    document.getElementById("e3").onclick = function () {
+        sendNote(e3.value)
+    };
+    document.getElementById("e4").onclick = function () {
+        sendNote(e4.value)
+    };
+    document.getElementById("e5").onclick = function () {
+        sendNote(e5.value)
+    };
+
+    $(document).ready( function () {
+        update();
+        updateMoyenne();
+    });
+
+    function update() {
+        $.post("notation", {"action": "getNote", "idfilm": "1"},
+            function (data, status) {
+                for (var i = 1; i < 6; i++) {
+                    if (i === parseInt(data)) {
+                        var tmp = "e" + i;
+                        document.getElementById(tmp).checked = true;
+                    } else {
+                        var tmp = "e" + i;
+                        document.getElementById(tmp).checked = false;
+                    }
+                }
+            }
+        );
+    }
+
+    function updateMoyenne() {
+        $.post("notation", {"action": "getMoyenne", "idfilm": "1"},
+            function (data, status) {
+                if (parseInt(data) === -1) {
+                    document.getElementById("note").innerHTML ="Pas de note.";
+                } else {
+                    document.getElementById("note").innerHTML = parseFloat(data);
+                }
+            });
+    }
+
+    function sendNote(value) {
+        $.post("notation", {"action": "addNote", "idfilm":"1", "note":value},
+            function (data, status) {
+                update();
+                updateMoyenne();
+            });
+    }
+</script>
+
+
+</body>
+</html>

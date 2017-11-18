@@ -24,7 +24,7 @@
         <property name="show_sql">true</property>
         <mapping resource="Utilisateur.hbm.xml"/>
         <mapping resource="Amis.hbm.xml"/>
-        <!--<mapping resource="NotationUsers.hbm.xml"/>
-        <mapping resource="NoteMoyenne.hbm.xml"/>-->
+        <mapping resource="NotationUsers.hbm.xml"/>
+        <mapping resource="NoteMoyenne.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -159,4 +159,14 @@
         <url-pattern>/profil</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Notation</servlet-name>
+        <servlet-class>servlets.Notation</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Notation</servlet-name>
+        <url-pattern>/notation</url-pattern>
+    </servlet-mapping>
+
 </web-app>
