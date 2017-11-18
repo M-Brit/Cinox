@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="beans.NoteUtilisateur" table="notationusers">
+        <composite-id>
+            <key-property name="idUser" column="idusers" type="int"/>
+            <key-property name="idFilm" type="int" column="idfilms"/>
+        </composite-id>
+        <property name="note" column="note" type="int"/>
+    </class>
+</hibernate-mapping>

@@ -6,7 +6,9 @@
 <hibernate-mapping>
     <class name="beans.Utilisateur" table="utilisateurs">
         <id name="id" type="int" column="id">
-            <generator class="native"/>
+            <generator class="native">
+                <param name="sequence_name">utilisateurs_id_seq</param>
+            </generator>
         </id>
 
         <property name="nom" column="nom" type="string" not-null="true"/>
@@ -15,4 +17,5 @@
         <property name="email" column="email" type="string" not-null="true"/>
         <property name="motdepasse" column="motdepasse" type="string" not-null="true"/>
     </class>
+
 </hibernate-mapping>
