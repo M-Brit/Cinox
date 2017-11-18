@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static servlets.Connexion.ATT_SESSION_USER;
+
 public class Profil extends HttpServlet {
     private static final String VUE = "/WEB-INF/profil.jsp";
 
@@ -23,8 +25,9 @@ public class Profil extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO GERER SESSION
         String action = req.getParameter("action");
+        Utilisateur uRecup = (Utilisateur) req.getSession().getAttribute(ATT_SESSION_USER);
+        System.out.println("@@@@@@@@@@" + uRecup.getId());
         switch (action) {
             case "update":
                 List l = AmisImpl.rechercheAmis(11); // !!!!! session
