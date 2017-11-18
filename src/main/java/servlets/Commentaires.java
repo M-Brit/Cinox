@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.Utilisateur;
 import forms.CommentairesForm;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
@@ -51,22 +52,25 @@ public class Commentaires extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("entre ..........");
         String action = request.getParameter("action");
-        String comment = request.getParameter("comment");
 
-        /* Récupération de la session depuis la requête */
+        /* Récupération de la session/userId depuis la requête */
         HttpSession session = request.getSession();
+        System.out.println("session=="+ session);
+        System.out.println("session=="+ session.getAttribute("ATT_USER"));
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("ATT_USER");
+        System.out.println("userId=="+ utilisateur.getId());
 
-        JSONArray  commentaires = new JSONArray();
+
+        JSONArray  commentaires;
         CommentairesForm formCommentaire = new CommentairesForm();
+
         switch (action) {
 
             case "addComment":
-
-
-
                 try {
+                    String comment = request.getParameter("comment");
                     formCommentaire.commentaireFilm(request);
                 } catch (ParseException e) {
                     e.printStackTrace();

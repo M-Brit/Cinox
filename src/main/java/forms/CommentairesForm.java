@@ -24,18 +24,13 @@ public final class CommentairesForm {
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
-    public JSONArray getArrayComment() {
-        return arrayComment;
-    }
-
     private JSONArray arrayComment = new JSONArray();
     public void commentaireFilm(HttpServletRequest request) throws ParseException {
 
         String commentaire = request.getParameter("comment").toString();
+        System.out.println("commentaire=="+ commentaire);
 
-
-        // TODO recuperer idfilm et idUser
-        this.addCritiquesFilm("10", "100", commentaire);
+        addCritiquesFilm("10", "100", commentaire);
 
         // Initialisation du résultat global de la validation.
         if (erreurs.isEmpty()) {
@@ -144,16 +139,13 @@ public final class CommentairesForm {
                 .append("critique", commentaires)
                 .append("date", date.toString());
         collection.insertOne(document);
-        // TODO a enlever.
-        System.out.println("Document inserted successfully" + document);
 
         // Getting the iterable object
         FindIterable<Document> iterDoc = collection.find();
-        int i = 1;
-
         // Getting the iterator
         Iterator it = iterDoc.iterator();
 
+        int i = 1;
         while (it.hasNext()) {
             System.out.println("MONGOTESTSWAG : " + it.next());
             i++;

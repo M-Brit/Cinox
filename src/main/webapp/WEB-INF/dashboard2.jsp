@@ -137,6 +137,8 @@
     $(function () {
         $(document).ready(function () {
             getFilm();
+            //TODO supprimer
+            testCommentaire();
         });
 
         $('input').on('click', function () {
@@ -169,6 +171,18 @@
                     });
 
                 });
+        }
+
+        //TODO Supprimer
+        function testCommentaire(){
+            alert('testtesttest')
+            $.post('commentaires',
+                {"action": "addComment", "comment": "8888888"},
+                function (data, status) {
+                    alert('status test=='+ status);
+
+                });
+
         }
 
         function getSearchFilm(objsearch) {
