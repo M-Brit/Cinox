@@ -261,11 +261,11 @@
                 tmp += '<aside class="dateNote"><p> Date de sortie : ' + res.release_date + '</p>';
                 tmp += '<p> Note : ' + res.vote_average + '/10</p></aside>';
                 tmp += '<div class="rating" id="rating">' +
-                    '<input name="stars" value="5" id="e5" type="radio"><label for="e5">★</label>' +
-                    '<input name="stars" value="4" id="e4" type="radio"><label for="e4">★</label>' +
-                    '<input name="stars" value="3" id="e3" type="radio"><label for="e3">★</label>' +
-                    '<input name="stars" value="2" id="e2" type="radio"><label for="e2">★</label>' +
-                    '<input name="stars" value="1" id="e1" type="radio"><label for="e1">★</label>' +
+                    '<input name="stars" value="5" id="e5" type="radio"><label for="e5">\u2605</label>' +
+                    '<input name="stars" value="4" id="e4" type="radio"><label for="e4">\u2605</label>' +
+                    '<input name="stars" value="3" id="e3" type="radio"><label for="e3">\u2605</label>' +
+                    '<input name="stars" value="2" id="e2" type="radio"><label for="e2">\u2605</label>' +
+                    '<input name="stars" value="1" id="e1" type="radio"><label for="e1">\u2605</label>' +
                     '</div>';
                 tmp += '<div class="container" id="note">';
                 tmp += '</section>';
