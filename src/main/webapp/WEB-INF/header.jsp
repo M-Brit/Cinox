@@ -144,7 +144,7 @@
                     <li class="nav-item">
 
                         <form class="navbar-form navbar-right searchForm">
-                            <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies"></label>
+                            <label for="submitsearch"><input id = "search" type="text" class="form-control" placeholder="Search movies" autofocus></label>
                             <button type="submit" id ="submitsearch" class="btn btn-success">Envoyer</button>
                         </form>
 

@@ -122,17 +122,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 
-    //function commentaires() {
-      //  alert("hererkdskmldksqdkqskdmqlskdqskdlsqmkdlmqskdlqskdkqskdqskdqsk");
-        /* $.get('commentaires',
-             function (data, status) {
-                 alert("searchResteeeeeeaux : " + data);
-                /* $('#commentaireFilm').html('');
-                     $('#commentaireFilm').append(tmp)*/
 
-        //});
-        //alert("TMP : " + tmp);*/
-    //}
 
     $(function () {
         $(document).ready(function () {
@@ -220,6 +210,18 @@
                 });
         }
 
+        function commentaires() {
+            alert("hererkdskmldksqdkqskdmqlskdqskdlsqmkdlmqskdlqskdkqskdqskdqsk");
+            /* $.get('commentaires',
+                 function (data, status) {
+                     alert("searchResteeeeeeaux : " + data);
+                    /* $('#commentaireFilm').html('');
+                         $('#commentaireFilm').append(tmp)*/
+
+            //});
+            //alert("TMP : " + tmp);*/
+        }
+
         var submitsearch = document.getElementById('submitsearch');
         submitsearch.addEventListener('click', function () {
             var objsearch = document.getElementById('search').value;
@@ -281,12 +283,15 @@
                     }
 
                 });
-
-                // POUR LES COMMENTAIRES
-            //    tmp += '<section class="commentaireFilm" onload="javascript:commentaires()">';
-             //   tmp += 'ICICICICIC </section> ';
-
                 tmp += "</tr></table></section>";
+                // POUR LES COMMENTAIRES
+                tmp += '<section class="commentaireFilm" >';
+                tmp += '<script>\n' +
+                    '        $(document).ready(function () {\n' +
+                    '            getFilm();\n' +
+                    '        }); <\/script> </section> ';
+
+
                 tmp += '</div>';
 
 
