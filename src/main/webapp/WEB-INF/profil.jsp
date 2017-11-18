@@ -22,6 +22,8 @@
 
 <body>
 
+<%@ include file="header.jsp" %>
+
 <br>
 
 <div class="container">

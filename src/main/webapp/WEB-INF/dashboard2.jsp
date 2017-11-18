@@ -122,6 +122,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 
+    var notetmp = 1;
+
 
 
     $(function () {
@@ -236,6 +238,7 @@
 
     function filmDetails(id) {
         alert('id==' + id);
+        notetmp = id;
        $.post(
             'filmDetails',
             {"id": id},
@@ -257,6 +260,14 @@
                 tmp += '<section class="imgFilm"><img class="imgAffiche" src="' + imageUrl + "" + res.poster_path + '"/>';
                 tmp += '<aside class="dateNote"><p> Date de sortie : ' + res.release_date + '</p>';
                 tmp += '<p> Note : ' + res.vote_average + '/10</p></aside>';
+                tmp += '<div class="rating" id="rating">' +
+                    '<input name="stars" value="5" id="e5" type="radio"><label for="e5">★</label>' +
+                    '<input name="stars" value="4" id="e4" type="radio"><label for="e4">★</label>' +
+                    '<input name="stars" value="3" id="e3" type="radio"><label for="e3">★</label>' +
+                    '<input name="stars" value="2" id="e2" type="radio"><label for="e2">★</label>' +
+                    '<input name="stars" value="1" id="e1" type="radio"><label for="e1">★</label>' +
+                    '</div>';
+                tmp += '<div class="container" id="note">';
                 tmp += '</section>';
                 tmp += '<section class=" sectionFilm"><aside class =" descriptionFilm">';
                 tmp += '<h3> Synopsis : </h3>';
@@ -328,7 +339,8 @@
 
 
 
-
+                 update();
+                 updateMoyenne();
             });
 
 
@@ -406,6 +418,57 @@
                         $('#categorie').html("Prochainement"); //TODO mettre ici le nom de la categorie ;)
                     }
                 });
+            });
+    }
+
+
+    $(document).on('change', 'input:radio', function () {
+        if (this.id === "e1") {
+            sendNote(e1.value);
+        } else if (this.id === "e2") {
+            sendNote(e2.value);
+        } else if (this.id === "e3") {
+            sendNote(e3.value);
+        } else if (this.id === "e4") {
+            sendNote(e4.value);
+        } else if (this.id === "e5") {
+            sendNote(e5.value);
+        }
+
+    });
+
+    function update() {
+        $.post("notation", {"action": "getNote", "idfilm": notetmp},
+            function (data, status) {
+                for (var i = 1; i < 6; i++) {
+                    if (i === parseInt(data)) {
+                        var tmp = "e" + i;
+                        document.getElementById(tmp).checked = true;
+                    } else {
+                        var tmp = "e" + i;
+                        document.getElementById(tmp).checked = false;
+                    }
+                }
+            }
+        );
+    }
+
+    function updateMoyenne() {
+        $.post("notation", {"action": "getMoyenne", "idfilm": notetmp},
+            function (data, status) {
+                if (parseInt(data) === -1) {
+                    document.getElementById("note").innerHTML ="Pas de note.";
+                } else {
+                    document.getElementById("note").innerHTML = parseFloat(data);
+                }
+            });
+    }
+
+    function sendNote(value) {
+        $.post("notation", {"action": "addNote", "idfilm":notetmp, "note":value},
+            function (data, status) {
+                update();
+                updateMoyenne();
             });
     }
 </script>
