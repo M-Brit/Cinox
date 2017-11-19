@@ -116,7 +116,13 @@
                     </ul>
                 </li>
                 <li class="gitHubLogo">
-                    <a href="https://github.com/M-Brit/Cinox.git" target="_blank">GitHub Repo</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/M-Brit/Cinox.git" target="_blank">GitHub</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                        <li><a href="https://twitter.com/?lang=fr" target="_blank">Twitter</a></li>
+                        <li><a href="https://discordapp.com/" target="_blank">Discord</a></li>
+                    </ul>
                 </li>
             </ul>
 
