@@ -26,5 +26,6 @@
         <mapping resource="Amis.hbm.xml"/>
         <mapping resource="NotationUsers.hbm.xml"/>
         <mapping resource="NoteMoyenne.hbm.xml"/>
+        <mapping resource="Event.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

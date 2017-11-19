@@ -160,9 +160,16 @@
     <span href="#" class="recommendation"> Top</span>
     <h3> Créer Evénements </h3>
     <p> Vous voulez aller au cinéma mais pas seul ? Cliquer ici</p>
+    <!--<a href="event.html"></a>-->
+    <button id="event" type="button">Aller voir un film !</button>
 </div>
 
-
+<script>
+    $("#event").click(function() {
+        //window.location.href='event.html';
+        alert('hello');
+    });
+</script>
 
 
 </header>

@@ -17,6 +17,21 @@
         </dependency>
 
         <dependency>
+            <groupId>com.allocine.api</groupId>
+            <artifactId>api-allocine-cinex</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/api-allocine-cinox-16112017.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
@@ -60,26 +75,25 @@
             <version>0.4</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20171018</version>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
         </dependency>
+
 
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
         </dependency>
-
-<!-- TODO
-       <dependency>
-            <groupId>com.api-allocine-cinox</groupId>
-            <artifactId>api-allocine-cinox</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/api-allocine-cinox.jar</systemPath>
-        </dependency>-->
 
     </dependencies>
 
