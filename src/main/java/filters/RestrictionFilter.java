@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * filtre pour eviter l'acces a des pages si l'utilisateur n'est pas connecter.
+ */
 public class RestrictionFilter implements Filter {
 
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
@@ -55,6 +58,6 @@ public class RestrictionFilter implements Filter {
     }
 
     public void destroy() {
-        // TODO
+        // ...
     }
 }

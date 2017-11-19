@@ -6,10 +6,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * Servlet qui gère les deconnexions utilisateurs
+ */
 public class Deconnexion extends HttpServlet {
     // TODO : mettre ici la page index.html a la place de google.fr
     public static final String URL_REDIRECTION = "/index.jsp";
+
+    /**
+     *
+     * Methode de servlet qui gère les requetes Get du client pour la deconnexions.
+     * @param req request permet de scruter la requete du client afin d'effectuer les traitements (Metier) pour la deconnexions.
+     * @param resp response permet de repondre au client de facons personnalise pour la deconnexions.
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

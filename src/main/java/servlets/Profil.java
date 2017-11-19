@@ -14,10 +14,19 @@ import java.io.IOException;
 import java.util.List;
 
 import static servlets.Connexion.ATT_SESSION_USER;
-
+/**
+ * Servlet qui gère le profil des utilisateurs
+ */
 public class Profil extends HttpServlet {
     private static final String VUE = "/WEB-INF/profil.jsp";
 
+    /**
+     * Methode de servlet qui gère les requetes Get du client pour la gestion du profil utilisateur.
+     * @param req request permet de scruter la requete du client afin d'effectuer les traitements (Metier) pour la gestion du profil utilisateur.
+     * @param resp response permet de repondre au client de facons personnalise pour la gestion du profil utilisateur.
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);

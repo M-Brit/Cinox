@@ -1,5 +1,8 @@
 package beans;
 
+/**
+ * beans represantant un commentaire
+ */
 public class Messages {
 
     private String message;
