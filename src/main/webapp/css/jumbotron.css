@@ -157,3 +157,10 @@ img{
     border: 5px solid white;
     background-color: transparent;
 }
+
+.mainProfil{
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
