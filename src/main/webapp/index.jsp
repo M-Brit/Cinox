@@ -70,8 +70,8 @@
         <div class="container">
             <h1 class="display-3">Bienvenus sur Cinox!</h1>
             <p>Notre application a pour but de vous permettre de voir la liste des films à l'affiche actuellement au cinéma. <br/>Mais aussi des films qui vont sortir prochainement. Vous pourrez voir les détails des films et leurs bandes annonces. Enfin vous pourrez créer des événements afin d'aller au cinéma avec vos amis. </p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-            <img src = "../image"/>
+            <img src = "images/listeFilm.jpg">
+            <img src = "images/detailFilm.png">
         </div>
     </div>
 
