@@ -181,7 +181,7 @@
                 tmp += '</div>';
 
                 $.post('commentaires',
-                    {"action": "getComment", "comment": null, "idFilm":284053, async:false},
+                    {"action": "getComment", "comment": null, "idFilm":res.id,}
                 ).done(function (res, status) {
                     alert('status test=='+ status);
                     commentaire = JSON.parse(res);
@@ -233,7 +233,7 @@
         alert('yes yes yes'+ id);
         var commentaire = document.getElementById('commentaire').value;
         $.post('commentaires',
-            {"action": "addComment", "comment": commentaire, "idFilm":id},
+            {"action": "addComment", "comment": commentaire, "idFilm":id}
         ).done(function (data, status) {
                 filmDetails(id);
             });
