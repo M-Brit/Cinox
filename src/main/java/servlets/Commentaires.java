@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.Utilisateur;
 import forms.CommentairesForm;
 import org.json.JSONArray;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static servlets.Connexion.ATT_SESSION_USER;
 
 public class Commentaires extends HttpServlet {
 
@@ -60,8 +63,8 @@ public class Commentaires extends HttpServlet {
         System.out.println("session=="+ session);
         //TODO
         //j'arrive pas de recuperer l'id user, vous pouvez l'ajouter, pour l'instant je prend qqq
-        String idUser = "qqq";
-
+        Utilisateur uRecup = (Utilisateur) request.getSession().getAttribute(ATT_SESSION_USER);
+        String idUser =""+uRecup.getId();
 
         JSONArray commentaires;
         CommentairesForm formCommentaire = new CommentairesForm();
