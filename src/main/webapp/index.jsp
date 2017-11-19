@@ -52,6 +52,11 @@
         </form>
         <a class="btn btn-outline-warning " href="inscription"  type="warning" role="button">Sign up</a>
     </div>
+
+</nav>
+
+<main role="main">
+
     <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
     <!-- TODO : a enlever juste pour le test -->
     <%-- Vérification de la présence d'un objet utilisateur en session --%>
@@ -59,56 +64,21 @@
         <%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
         <p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUtilisateur.pseudo}</p>
     </c:if>
-</nav>
-
-<main role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
+            <h1 class="display-3">Bienvenus sur Cinox!</h1>
+            <p>Notre application a pour but de vous permettre de voir la liste des films à l'affiche actuellement au cinéma. <br/>Mais aussi des films qui vont sortir prochainement. Vous pourrez voir les détails des films et leurs bandes annonces. Enfin vous pourrez créer des événements afin d'aller au cinéma avec vos amis. </p>
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+            <img src = "../image"/>
         </div>
     </div>
 
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
 
-        <hr>
-
-    </div> <!-- /container -->
 
 </main>
 
-<footer class="container">
-    <p>&copy; Company 2017</p>
-</footer>
 
 
 <!-- Optional JavaScript -->
