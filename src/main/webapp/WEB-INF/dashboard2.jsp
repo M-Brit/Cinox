@@ -181,7 +181,7 @@
                 tmp += '</div>';
 
                 $.post('commentaires',
-                    {"action": "getComment", "comment": null, "idFilm":284053, async:false}
+                    {"action": "getComment", "comment": null, "idFilm":res.id,}
                 ).done(function (res, status) {
                     alert('status test=='+ status);
                     commentaire = JSON.parse(res);
