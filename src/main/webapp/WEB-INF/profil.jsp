@@ -17,7 +17,8 @@
     <link href="../css/jumbotron.css" rel="stylesheet">
     <link href="../css/commentaires.css" rel="stylesheet">
 
-    <title>Profil</title>
+    <title>Cinox</title>
+    <link rel="icon" href="../../images/favicon.ico">
 </head>
 
 

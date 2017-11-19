@@ -13,55 +13,44 @@ import java.io.IOException;
 
 import static servlets.Connexion.ATT_SESSION_USER;
 
+/**
+ * Servlet qui gère tous ce qui est en rapport avec les commentaires de films
+ */
 public class Commentaires extends HttpServlet {
 
-    public static final String ATT_COMMENTAIRESJSON = "commentaires";
-    public static final String ATT_FORMCRITIQUE = "formCritique";
-    public static final String ATT_SESSION_USER = "sessionUtilisateur"; //TODO a  mettre si besoin
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE = "/WEB-INF/commentaires.jsp";
-    //public static final String VUE_FRONTPAGE = "/WEB-INF/critique.jsp";
 
+    /**
+     * Methode de servlet qui gère les requetes Get du client .
+     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier).
+     * @param response response permet de repondre au client de facons personnalise
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        /* Récupération de la session depuis la requête */
-        HttpSession session = request.getSession();
-
-
-        /* Préparation de l'objet formulaire */
- //       CommentairesForm formCommentaire = new CommentairesForm();
- //       JSONArray commentaires = formCommentaire.obtainCommentaires(request);
-        //this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-        //formCritique.addCritiquesFilm("1","2", "steven est gentil ??");
-        /* Affichage de la page des critiques*/
-       ///// System.out.println("jsonarray :"+commentaires);
- //       session.setAttribute(ATT_FORMCRITIQUE, formCommentaire); // TODO : voir si utiliser session ou request ou autre
- //       session.setAttribute(ATT_COMMENTAIRESJSON, commentaires);
-
-
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-
-    //    response.setContentType("application/json");
-       /*   response.setContentType("plain/text");
-          response.setHeader("Cache-control", "no-cache");
-          response.getWriter().print();
-          response.getWriter().flush();
-          response.getWriter().close();*/
 
     }
 
+    /**
+     * Methode de servlet qui gère les requetes Post du client .
+     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier).
+     * @param response response permet de repondre au client de facons personnalise
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("entre ..........");
         String action = request.getParameter("action");
         String idFilm = request.getParameter("idFilm");
         System.out.println("action,idFilm=="+ action+"&"+idFilm);
 
-        /* Récupération de la session/userId depuis la requête */
-        HttpSession session = request.getSession();
-
+        /* Récupération de la session/userId depuis la requête grace au cookie session*/
         Utilisateur uRecup = (Utilisateur) request.getSession().getAttribute(ATT_SESSION_USER);
+
         String idUser =""+uRecup.getId();
         String userName =""+uRecup.getPrenom()+ " "+ uRecup.getNom();
 
@@ -71,7 +60,6 @@ public class Commentaires extends HttpServlet {
         switch (action) {
 
             case "addComment":
-                System.out.println("add............");
                 String comment = request.getParameter("comment");
                 commentaires = formCommentaire.commentaireFilm(idFilm, idUser, userName, comment);
 
@@ -83,7 +71,6 @@ public class Commentaires extends HttpServlet {
 
                 break;
             case "getComment":
-                System.out.println("get............");
                 commentaires = formCommentaire.obtainCommentaires(idFilm);
                 response.setContentType("plain/text");
                 response.setHeader("Cache-control", "no-cache");

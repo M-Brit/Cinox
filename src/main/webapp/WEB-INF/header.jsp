@@ -159,7 +159,7 @@
 <div class="banderole">
     <span href="#" class="recommendation"> Top</span>
     <h3> Créer Evénements </h3>
-    <p> Vous voulez aller au cinema mais pas seul Cliquer ici</p>
+    <p> Vous voulez aller au cinéma mais pas seul ? Cliquer ici</p>
 </div>
 
 

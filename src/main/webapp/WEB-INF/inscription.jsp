@@ -16,7 +16,8 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="../css/inscription.css" rel="stylesheet">
 
-    <title>Inscription</title>
+    <title>Cinox</title>
+    <link rel="icon" href="../../images/favicon.ico">
 </head>
 <body>
 
