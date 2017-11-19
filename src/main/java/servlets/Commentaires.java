@@ -60,11 +60,10 @@ public class Commentaires extends HttpServlet {
 
         /* Récupération de la session/userId depuis la requête */
         HttpSession session = request.getSession();
-        System.out.println("session=="+ session);
-        //TODO
-        //j'arrive pas de recuperer l'id user, vous pouvez l'ajouter, pour l'instant je prend qqq
+
         Utilisateur uRecup = (Utilisateur) request.getSession().getAttribute(ATT_SESSION_USER);
         String idUser =""+uRecup.getId();
+        String userName =""+uRecup.getPrenom()+ " "+ uRecup.getNom();
 
         JSONArray commentaires;
         CommentairesForm formCommentaire = new CommentairesForm();
@@ -74,7 +73,7 @@ public class Commentaires extends HttpServlet {
             case "addComment":
                 System.out.println("add............");
                 String comment = request.getParameter("comment");
-                commentaires = formCommentaire.commentaireFilm(idFilm, idUser, comment);
+                commentaires = formCommentaire.commentaireFilm(idFilm, idUser, userName, comment);
 
                 response.setContentType("plain/text");
                 response.setHeader("Cache-control", "no-cache");

@@ -166,6 +166,10 @@ public class FilmImpl  {
 
         BasicDBObject query = new BasicDBObject();
         query.put("type", filmType);
+         /*TODO optimiser
+         if("upComing".equals(filmType)){
+            query.put("release_date", new BasicDBObject("$gte", new Date()));
+        }*/
 
         FindIterable<Document> documents = collection.find(query);
         MongoCursor<Document> mongoCursor = documents.iterator();

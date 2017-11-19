@@ -254,7 +254,7 @@
                     commentaire.forEach(function (mm) {
                         tmp += '<div class="media-grids">';
                         tmp += '<div class="media">';
-                        tmp += '<h5 class="name_user">'+mm.name+'</h5> <a href="../images/u12.png"></a>';
+                        tmp += '<h5 class="name_user">'+mm.userName+'</h5> <a href="../images/u12.png"></a>';
                         tmp += '<div class="media-left">';
                         tmp += '<a href="#"></a>';
                         tmp += '</div>';

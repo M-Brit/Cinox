@@ -25,35 +25,16 @@ public class CommentairesForm {
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
-    private JSONArray arrayComment = new JSONArray();
-    public void commentaireFilm(HttpServletRequest request) {
-
-        String commentaire = request.getParameter("comment").toString();
-        System.out.println("commentaire=="+ commentaire);
-
-        addCritiquesFilm("10", "100", commentaire);
-
-        // Initialisation du résultat global de la validation.
-        if (erreurs.isEmpty()) {
-            resultat = "Succès de la connexion.";
-        } else {
-            resultat = "Échec de la connexion.";
-        }
-
+    public JSONArray commentaireFilm(String idFilm, String idUser, String userName, String commentaire){
+        return addCritiquesFilm(idFilm, idUser,userName, commentaire);
     }
 
-
-
-    //---------------------------------------------------
-    public JSONArray commentaireFilm(String idFilm, String idUser, String commentaire){
-        return addCritiquesFilm(idFilm, idUser, commentaire);
-    }
-
-    public JSONArray addCritiquesFilm(String idFilm, String idUser, String commentaires){
+    public JSONArray addCritiquesFilm(String idFilm, String idUser, String userName, String commentaires){
         MongoCollection<Document> collection = this.connexionMongoDB();
         //insert
         Document document = new Document()
                 .append("idUser", idUser)
+                .append("userName", userName)
                 .append("idFilm", Integer.valueOf(idFilm))
                 .append("critique", commentaires)
                 .append("date", new Date().toString());
