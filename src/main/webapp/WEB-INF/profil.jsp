@@ -31,7 +31,7 @@
     <h1>Ajout d'un ami</h1>
     <div class="form-inline">
         <input type="text" id="addPseudo" class="form-control" placeholder="pseudo">
-        <button type="submit" id="addUser" class="btn btn-outline-primary">Ajouter</button>
+        <button type="submit" id="addUser" class="btn btn-success">Ajouter</button>
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 <div class="container">
     <h1>Désinscription</h1>
     <div class="form-inline">
-        <button type="submit" id="desinscription" class="btn btn-outline-danger">Désinscription</button>
+        <button type="submit" id="desinscription" class="btn btn-danger">Désinscription</button>
     </div>
 </div>
 
@@ -54,11 +54,11 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Pseudo</th>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Action</th>
+            <th class="text-center">Id</th>
+            <th class="text-center">Pseudo</th>
+            <th class="text-center">Prenom</th>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Action</th>
         </tr>
         </thead>
         <tbody id="tableauAmi">
@@ -96,14 +96,14 @@
                         tmp += '<td class="text-center">' + res[i].nom + '</td>';
                         if (res[i].status === 1) {
                             tmp += '<td class="text-center">' +
-                                '<button type="button" value=' + res[i].id + ' class="btn btn-outline-danger">Supprimer</button> </td>';
+                                '<button type="button" value=' + res[i].id + ' class="btn btn-danger">Supprimer</button> </td>';
                         } else if (res[i].status === 0) {
                             tmp += '<td class="text-center"> En attente d\'acceptation ...</td>';
                         } else if (res[i].status === 2) {
 
                             tmp += '<td class="text-center">' +
-                                '<button type="button" id="accept" value=' + res[i].id + ' class="btn btn-outline-success">Accepter</button>';
-                            tmp += '<button type="button" id="refuse" value=' + res[i].id + ' class="btn btn-outline-danger">Refuser</button> </td>';
+                                '<button type="button" id="accept" value=' + res[i].id + ' class="btn btn-success">Accepter</button>';
+                            tmp += '<button type="button" id="refuse" value=' + res[i].id + ' class="btn btn-danger">Refuser</button> </td>';
                         }
                         tmp += '</tr>';
                         $('#tableauAmi').append(tmp);
