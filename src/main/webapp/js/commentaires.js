@@ -104,7 +104,6 @@ function traiteReponseCommentaire(critiquesArray){
    // $('#donnees').html('');
     $(document).ready(function(){
         //$('#').remove();
-        alert("HEOLLLLLO");
          critiquesArray.forEach(
              function(jsonCritique) {
                  $('#donnees').append(

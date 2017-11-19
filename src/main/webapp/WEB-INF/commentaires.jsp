@@ -69,11 +69,7 @@
                 $.post('commentaires',
                     {"action": "addComment", "comment": comment},
                     function (data, status) {
-                        alert("texte : "+data);
-                        alert("nadine");
                         $('#comments').html('');
-                        alert("fin");
-                        alert("fin2");
                         var tmp = "";
                         tmp += "<div id=\"commentaire\">  " + data + "</div>";
                         $('#comments').append(tmp);
@@ -84,11 +80,7 @@
                 $.post('commentaires',
                     {"action": "getComment"},
                     function (data, status) {
-                        alert("texte : "+data);
-                        alert("nadine");
                         $('#comments').html('');
-                        alert("fin");
-                        alert("fin2");
                         var tmp = "";
                         tmp += "<div id=\"commentaire\">  " + data + "</div>";
                         $('#comments').append(tmp);
@@ -100,7 +92,6 @@
             addComment.addEventListener('click', function() {
 
                 var comment = $("textarea").val();
-                alert(comment);
                 sendCommentaire(comment);
 
             }, false);
