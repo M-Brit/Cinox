@@ -21,7 +21,11 @@ public final class ConnexionForm {
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
-
+    /**
+     * Permet de gerer la connexion des utilisateurs en effectuant des tests avant de le connecter.
+     * @param request requete a tester avant d'autoriser la connexion
+     * @return
+     */
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         /* Récupération des champs du formulaire */
         //String email = getValeurChamp(request, CHAMP_EMAIL);

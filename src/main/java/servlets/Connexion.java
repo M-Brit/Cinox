@@ -10,18 +10,36 @@ import javax.servlet.http.HttpSession;
 
 import beans.Utilisateur;
 import forms.ConnexionForm;
-
+/**
+ * Servlet qui gère les connexions utilisateurs
+ */
 public class Connexion extends HttpServlet {
     public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE = "/index.jsp";
     public static final String VUE_FRONTPAGE = "/WEB-INF/dashboard2.jsp";
+
+    /**
+     * Methode de servlet qui gère les requetes Get du client pour la connexion.
+     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier) pour la connexion.
+     * @param response response permet de repondre au client de facons personnalise pour la connexion.
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Affichage de la page de connexion */
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
+
+    /**
+     * Methode de servlet qui gère les requetes Post du client pour la connexion.
+     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier) pour la connexion.
+     * @param response response permet de repondre au client de facons personnalise pour la connexion.
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
@@ -32,10 +50,8 @@ public class Connexion extends HttpServlet {
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
-        /**
-         * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
-         * Utilisateur à la session, sinon suppression du bean de la session.
-         */
+        /* Si aucune erreur de validation a eu lieu, alors ajout du bean
+         * Utilisateur à la session, sinon suppression du bean de la session.*/
         if (form.getErreurs().isEmpty()) {
 
             session.setAttribute(ATT_FORM, form); // TODO : voir si utile
