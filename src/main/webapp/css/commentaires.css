@@ -89,6 +89,7 @@
 }
 .media-grids{
 	margin-top:4em;
+    margin-left: 10px;
 }
 .media {
     margin: 4em 0;
@@ -106,7 +107,8 @@
     width: 65px;
     height: 65px;
     display: block;
-    background: #E2E2E2;
+    background: #21DEEF;
+    margin-bottom: 10px;
     border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -114,8 +116,9 @@
 	-o-border-radius: 50%;
 }
 .media-body p{
+    margin-left: 10px;
     font-size: 13px;
-    color: #757575;
+    color: #000000;
     margin: 0 0 .5em 0;
     line-height: 1.5em;
 }
@@ -123,10 +126,7 @@
     color: #C7C7C7;
     font-size: 13px;
 }
-.media-body   a {
-    color: #21DEEF;
-    text-decoration: none;
-}
+
 .media:nth-child(3) {
   padding-left: 4em;
 }
@@ -193,3 +193,5 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
+

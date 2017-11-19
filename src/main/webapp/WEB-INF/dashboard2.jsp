@@ -244,7 +244,7 @@
                 tmp += '<textarea class="form-control" id="commentaire" placeholder="Poster commentaire ici..." name="comment"  rows="5" maxlength="300" required="required"></textarea>';
                 tmp += '<a href="#" onclick="addCommentaire(res.id)" id="test"> <button type="submit" id="submitCommentaire" value="envoyer" name="ajouteCommentaire" class="but">Envoyer</button></a>';
                 tmp += '</div></section>';
-
+                tmp += '</div>';
 
                 $.post('commentaires',
                     {"action": "getComment", "comment": null, "idFilm":res.id}
@@ -254,16 +254,19 @@
                     commentaire.forEach(function (mm) {
                         tmp += '<div class="media-grids">';
                         tmp += '<div class="media">';
-                        tmp += '<h5 class="name_user">'+mm.idUser+'</h5> <a href="../images/u12.png"></a>';
+                        tmp += '<h5 class="name_user">'+mm.name+'</h5> <a href="../images/u12.png"></a>';
+                        tmp += '<div class="media-left">';
+                        tmp += '<a href="#"></a>';
+                        tmp += '</div>';
                         tmp += '<div class="media-body">';
                         tmp += '<p>'+mm.critique+'</p>';
                         tmp += '</div>';
                         tmp += '</div>';
 
                     })
+                    tmp += '</div>';
                 });
-                tmp += '</div>';
-                tmp += '</div>';
+
                 alert('tmp=='+ tmp)
 
                  $('#categorie').html(res.title);
