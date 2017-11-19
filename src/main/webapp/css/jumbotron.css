@@ -134,3 +134,32 @@ img{
 .rating2 a {
     float:none
 }
+
+.banderole {
+    position: relative;
+    margin: 0em auto;
+    background-color: #721c24;
+    padding: 0em;
+    height: 90px;
+    min-width: 100%;
+    color: #fff3cd;
+    overflow: hidden;
+    text-align:center;
+}
+
+
+.recommendation {
+    position: absolute;
+    top: 30%;
+    right: -30%;
+    z-index: 10;
+    display: inline-block;
+    font-size: 12px;
+    min-width: 100%;
+    text-align: center;
+    padding: 0em 0;
+    color: white;
+    transform: rotate(45deg);
+    border: 5px solid white;
+    background-color: transparent;
+}

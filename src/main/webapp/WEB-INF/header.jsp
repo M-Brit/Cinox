@@ -163,18 +163,16 @@
 </nav>
 
 
+<!-- TODO mettre <a></a> pour faire appel au code de la creation d'evenement ou passer par AJAX-->
 
 
 
 
-
-
-
-
-
-
-
-
+<div class="banderole">
+    <span href="#" class="recommendation"> Top</span>
+    <h3> Créer Evénements </h3>
+    <p> Vous voulez aller au cinema mais pas seul Cliquer ici</p>
+</div>
 
 
 

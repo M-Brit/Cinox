@@ -24,6 +24,8 @@ public class Films extends HttpServlet {
             //from MongoDB
             JSONArray films =  filmImpl.findAllFilm();
 
+
+
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
             response.getWriter().write(films.toString());

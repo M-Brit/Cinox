@@ -32,12 +32,12 @@ public class Connexion extends HttpServlet {
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
-
         /**
          * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
          * Utilisateur à la session, sinon suppression du bean de la session.
          */
         if (form.getErreurs().isEmpty()) {
+
             session.setAttribute(ATT_FORM, form); // TODO : voir si utile
             session.setAttribute(ATT_SESSION_USER, utilisateur);
             this.getServletContext().getRequestDispatcher(VUE_FRONTPAGE).forward(request, response);
