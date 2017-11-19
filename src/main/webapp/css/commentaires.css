@@ -1,15 +1,4 @@
-body{
-	background:#fff;
-	font-size:100%;
-	font-family: 'Open Sans', sans-serif;
-}
-body a {
-  transition: 0.5s all;
-  -webkit-transition: 0.5s all;																																												
-  -o-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -ms-transition: 0.5s all;
-}
+
 .all-comments{
     margin: 1em 0 0 0;
     padding-left: 0;
@@ -27,7 +16,7 @@ body a {
 .box form {
     margin: 3em 0 0 0;
 }
-.box input[type="text"], .box textarea {
+.box button[type="text"], .box textarea {
     outline: none;
     border: 1px solid #D4D3D3;
     background: none;
@@ -35,7 +24,7 @@ body a {
     width: 60%;
     font-size: 13px;
 }
-.box input[type="text"]:nth-child(2) {
+.box button[type="text"]:nth-child(2) {
     margin: 1em 0;
 }
 .box textarea {
@@ -44,7 +33,7 @@ body a {
     margin: 1em 0;
     width: 80%;
 }
-.box input[type="submit"] {
+.box button[type="submit"] {
     outline: none;
     font-style: normal;
     padding: 8px 20px;
@@ -64,7 +53,7 @@ body a {
     -o-transition: .5s all;
     -ms-transition: .5s all;
 }
-.box input[type="submit"]:hover{
+.box button[type="submit"]:hover{
     text-decoration: none;
     color: #272C2E;
     background: #E2E2E2;

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="../css/jumbotron.css" rel="stylesheet">
+    <link href="../css/commentaires.css" rel="stylesheet">
 </head>
 <body>
 <!-- Header de la page -->
@@ -138,7 +139,7 @@
                        if(imgtest !== null && imgtest !== "" ) {
                             tmp += '<div class="col-sm-3 eachMovie">';
                             tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
-                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="'+element.title+'" alt=\"Card image cap\"/></a></div>';
                             //tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
                             //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
                             // tmp += '<br/> Notes : '+element.vote_average+'</p>';
@@ -166,7 +167,7 @@
                         if(imgtest !== null && imgtest !== "" ) {
                             tmp += '<div class="col-sm-3 eachMovie">';
                             tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
-                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                            tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="'+element.title+'" alt=\"Card image cap\"/></a></div>';
                             tmp += "</div>";
                             $('#films').append(tmp);
                             $('#categorie').html("Search"); // TODO mettre ici le nom de la categorie ;)
@@ -188,7 +189,6 @@
     });
 
     function filmDetails(id) {
-        //alert('id==' + id);
         notetmp = id;
        $.post(
             'filmDetails',
@@ -237,31 +237,33 @@
                 });
                 tmp += "</tr></table></section>";
                 // POUR LES COMMENTAIRES
-                tmp += '<div class="mainComment">';
-                tmp += '<section class="nouveauCommentaire" >';
-                tmp += '<div class="form-group">';
-                tmp += '<label for="comment">COMMENTAIRE :</label>';
-                tmp += '<textarea class="form-control" id="commentaire" placeholder="ici..." name="comment" rows="5" maxlength="300"></textarea>';
+                tmp += '<div class="mainComment all-comments">';
+                tmp += '<section class="nouveauCommentaire all-comments-info" >';
+                tmp += '<div class="form-group box">';
+                tmp += '<label for="commentaire">COMMENTAIRE :</label>';
+                tmp += '<textarea class="form-control" id="commentaire" placeholder="Poster commentaire ici..." name="comment"  rows="5" maxlength="300" required="required"></textarea>';
                 tmp += '<a href="#" onclick="addCommentaire(res.id)" id="test"> <button type="submit" id="submitCommentaire" value="envoyer" name="ajouteCommentaire" class="but">Envoyer</button></a>';
-                tmp += '</div>';
-                tmp += '</div>';
+                tmp += '</div></section>';
+
 
                 $.post('commentaires',
-                    {"action": "getComment", "comment": null, "idFilm":res.id,}
+                    {"action": "getComment", "comment": null, "idFilm":res.id}
                 ).done(function (res, status) {
                     alert('status test=='+ status);
                     commentaire = JSON.parse(res);
                     commentaire.forEach(function (mm) {
                         tmp += '<div class="media-grids">';
                         tmp += '<div class="media">';
-                        tmp += '<h5 class="name_user">'+mm.idUser+'</h5> <a href="../images/fb.png"></a>';
+                        tmp += '<h5 class="name_user">'+mm.idUser+'</h5> <a href="../images/u12.png"></a>';
                         tmp += '<div class="media-body">';
                         tmp += '<p>'+mm.critique+'</p>';
                         tmp += '</div>';
                         tmp += '</div>';
+
                     })
                 });
-
+                tmp += '</div>';
+                tmp += '</div>';
                 alert('tmp=='+ tmp)
 
                  $('#categorie').html(res.title);
@@ -337,7 +339,7 @@
                     if(imgtest !== null && imgtest !== "" ) {
                         tmp += '<div class="col-sm-3 eachMovie">';
                         tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
-                        tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                        tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="'+element.title+'" alt=\"Card image cap\"/></a></div>';
                         //tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
                         //TODO ajouter css: tmp += '<p class="card-text"> '+element.overview+'</p>';
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
@@ -362,7 +364,7 @@
                     if(imgtest !== null && imgtest !== "" ) {
                         tmp += '<div class="col-sm-3 eachMovie">';
                         tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
-                        tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
+                        tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="'+element.title+'" alt=\"Card image cap\"/></a></div>';
                         //tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
                         //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
