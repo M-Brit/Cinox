@@ -21,70 +21,6 @@
 <!-- Header de la page -->
 <%@ include file="header.jsp" %>
 
-<!--
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="first-slide"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                     alt="First slide">
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="second-slide"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                     alt="Second slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="third-slide"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                     alt="Third slide">
-                <div class="container">
-                    <div class="carousel-caption text-right">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
--->
-
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
 <div class="container">
 
     <div class="row">
@@ -94,24 +30,10 @@
         </div>
     </div>
 
-
 </div><!-- /.container -->
-
-
-
-
-
-
 
 <!-- footer de la page -->
 <%--@ include file="footer.jsp" --%>
-
-
-
-
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -123,8 +45,6 @@
 <script>
 
     var notetmp = 1;
-
-
 
     $(function () {
         $(document).ready(function () {
@@ -151,7 +71,6 @@
                     res.forEach(function (element) {
                         var tmp = "";
                         var imgtest  = element.poster_path;
-                        //alert(imgtest);
                        if(imgtest !== null && imgtest !== "" ) {
                             tmp += '<div class="col-sm-3 eachMovie">';
                             tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
@@ -168,38 +87,12 @@
                 });
         }
 
-        //TODO reutiliser et Supprimer
-        //-------------------test commentaire--------------
-        function addCommentaire(){
-            alert('testtesttest')
-            $.post('commentaires',
-                {"action": "addComment", "comment": "8888888", "idFilm":284053},
-                function (data, status) {
-                    alert('status test=='+ status);
-
-                });
-
-        }
-
-        function getCommentaire(){
-            alert('testtesttest  select')
-            $.post('commentaires',
-                {"action": "getComment", "comment": null, "idFilm":284053},
-                function (data, status) {
-                    alert('status test=='+ status);
-                    alert('data=='+ data)
-                });
-
-        }
-        //-------------------test commentaire--------------
-
         function getSearchFilm(objsearch) {
             alert('submitsearch1');
             $.post('search',
                 {"titleFilm": objsearch},
                 function (data, status) {
                     var imageUrl = 'https://image.tmdb.org/t/p/w500';
-                    alert('submitsearch2');
                     res = JSON.parse(data);
                     $('#films').html('');
                     res.forEach(function (element) {
@@ -214,20 +107,7 @@
                             $('#categorie').html("Films"); // TODO mettre ici le nom de la categorie ;)
                         }
                     });
-                    alert("TMP : " + tmp);
                 });
-        }
-
-        function commentaires() {
-            alert("hererkdskmldksqdkqskdmqlskdqskdlsqmkdlmqskdlqskdkqskdqskdqsk");
-            /* $.get('commentaires',
-                 function (data, status) {
-                     alert("searchResteeeeeeaux : " + data);
-                    /* $('#commentaireFilm').html('');
-                         $('#commentaireFilm').append(tmp)*/
-
-            //});
-            //alert("TMP : " + tmp);*/
         }
 
         var submitsearch = document.getElementById('submitsearch');
@@ -238,8 +118,6 @@
 
         }, false);
 
-
-        //  setInterval(getCommentaires, 5000);
     });
 
     function filmDetails(id) {
@@ -249,17 +127,12 @@
             'filmDetails',
             {"id": id},
             function (data, status) {
-                alert("data +"+data);
                 var imageUrl = 'https://image.tmdb.org/t/p/w500';
                 var videoUrl = 'https://www.youtube.com/watch?v=';
                 res = JSON.parse(data);
-                 alert("res : " + res);
                 $('#categorie').html('');
                 $('#films').html('');
-                 //res.forEach(function(element) {
-                //var video = ((res.videos).results[0]).key;
                 var video = res.video;
-                alert("res.video"+video);
 
                 var tmp = "";
                 tmp += '<div class="detailFilm">';
@@ -282,17 +155,13 @@
 
                 // SPLIT POUR LES ACTEURS
                 var acteurs = res.acteurs;
-                alert("--1 acteurs :"+res.acteurs);
                 tmp += '<section class="acteursFilm"><table><tr>';
                 acteurs.forEach(function (element) {
-                    alert("0");
                     var arrayacteurImages = element.split("/");
 
                     for (var i=0; i < arrayacteurImages.length ; i=i+2) {
                         var nameActeur = arrayacteurImages[i];
                         var imageActeur = arrayacteurImages[i+1];
-                        alert(nameActeur);
-                        alert(imageUrl + imageActeur);
 
                         tmp += '<td><img class="imgActeur" src="' + imageUrl +"/"+ imageActeur + '"/>';
                         tmp += '<p>'+nameActeur+'</p></td>'
@@ -302,27 +171,37 @@
                 });
                 tmp += "</tr></table></section>";
                 // POUR LES COMMENTAIRES
-                tmp += '<section class="commentaireFilm" >';
-                tmp += '<script>\n' +
-                    '        $(document).ready(function () {\n' +
-                    '            getFilm();\n' +
-                    '        }); <\/script> </section> ';
-
-
+                tmp += '<div class="mainComment">';
+                tmp += '<section class="nouveauCommentaire" >';
+                tmp += '<div class="form-group">';
+                tmp += '<label for="comment">COMMENTAIRE :</label>';
+                tmp += '<textarea class="form-control" id="commentaire" placeholder="ici..." name="comment" rows="5" maxlength="300"></textarea>';
+                tmp += '<a href="#" onclick="addCommentaire(res.id)" id="test"> <button type="submit" id="submitCommentaire" value="envoyer" name="ajouteCommentaire" class="but">Envoyer</button></a>';
+                tmp += '</div>';
                 tmp += '</div>';
 
+                $.post('commentaires',
+                    {"action": "getComment", "comment": null, "idFilm":284053, async:false},
+                ).done(function (res, status) {
+                    alert('status test=='+ status);
+                    commentaire = JSON.parse(res);
+                    commentaire.forEach(function (mm) {
+                        tmp += '<div class="media-grids">';
+                        tmp += '<div class="media">';
+                        tmp += '<h5 class="name_user">'+mm.idUser+'</h5> <a href="../images/fb.png"></a>';
+                        tmp += '<div class="media-body">';
+                        tmp += '<p>'+mm.critique+'</p>';
+                        tmp += '</div>';
+                        tmp += '</div>';
+                    })
+                });
 
+                alert('tmp=='+ tmp)
 
                  $('#categorie').html(res.title);
                  $('#films').append(tmp);
 
-
-
-
                  onYouTubePlayerAPIReady();
-
-
-
 
                  // Load the IFrame Player API code asynchronously.
                  var tag = document.createElement('script');
@@ -348,8 +227,16 @@
                  update();
                  updateMoyenne();
             });
+    }
 
-
+    function addCommentaire(id) {
+        alert('yes yes yes'+ id);
+        var commentaire = document.getElementById('commentaire').value;
+        $.post('commentaires',
+            {"action": "addComment", "comment": commentaire, "idFilm":id},
+        ).done(function (data, status) {
+                filmDetails(id);
+            });
     }
 
     // Load the IFrame Player API code asynchronously.
@@ -372,18 +259,15 @@
 
 
     function getFilmByCategory(categoryId, cat) {
-        alert('........getFilmByCategory.......');
         $.post('filmCategory',
             {"categoryId": categoryId},
             function (data, status) {
                 var imageUrl = 'https://image.tmdb.org/t/p/w500';
-                alert("TEST" + data);
                 res = JSON.parse(data);
                 $('#films').html('');
                 res.forEach(function (element) {
                     var tmp = "";
                     var imgtest  = element.poster_path;
-                    //alert(imgtest);
                     if(imgtest !== null && imgtest !== "" ) {
                         tmp += '<div class="col-sm-3 eachMovie">';
                         tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
@@ -400,18 +284,15 @@
     }
 
     function getFilmByType(type) {
-        alert('........getFilmByCategory.......'+ type);
         $.post('filmType',
             {"filmType": type},
             function (data, status) {
                 var imageUrl = 'https://image.tmdb.org/t/p/w500';
-                alert("TEST" + data);
                 res = JSON.parse(data);
                 $('#films').html('');
                 res.forEach(function (element) {
                     var tmp = "";
                     var imgtest  = element.poster_path;
-                    //alert(imgtest);
                     if(imgtest !== null && imgtest !== "" ) {
                         tmp += '<div class="col-sm-3 eachMovie">';
                         tmp += '<div id="film" class="col-sm-7 card eachAlbum">';

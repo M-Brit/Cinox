@@ -118,24 +118,6 @@
                 <li class="gitHubLogo">
                     <a href="https://github.com/M-Brit/Cinox.git" target="_blank">GitHub Repo</a>
                 </li>
-                <!-- <li><a href="#">Specials</a></li> -->
-                <!--      <li class="dropdown">
-                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
-                       <ul class="dropdown-menu">
-                         <li><a href="#">VIP Rewards Card</a></li>
-                         <li><a href="#">Specials and Promotions</a></li>
-                         <li><a href="#">Gift Cards</a></li>
-                       </ul>
-                     </li> -->
-                <!-- <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Atlanta</a></li>
-                    <li><a href="#">Buckhead</a></li>
-                    <li><a href="#">Midtown</a></li>
-                    <li><a href="#">Marietta</a></li>
-                  </ul>
-                </li> -->
             </ul>
 
             <div class="form-group">
