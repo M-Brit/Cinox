@@ -44,7 +44,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.allocine.api:api-allocine-cinex:1.0">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/lib/api-allocine-cinox-16112017.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/api-allocine-cinox-16112017.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

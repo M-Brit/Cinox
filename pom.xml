@@ -21,7 +21,7 @@
             <artifactId>api-allocine-cinex</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/lib/api-allocine-cinox-16112017.jar</systemPath>
+            <systemPath>${basedir}/lib/api-allocine-cinox-16112017.jar</systemPath>
         </dependency>
 
         <dependency>
