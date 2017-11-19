@@ -2,15 +2,22 @@ package beans;
 
 import java.io.Serializable;
 
+/**
+ * Bean representant la note d'un film pariculier par un utilisateur partculier.
+ */
 public class NoteUtilisateur implements Serializable {
     private int idUser;
     private int idFilm;
     private int note;
 
-    public NoteUtilisateur() {
+    public NoteUtilisateur() {}
 
-    }
-
+    /**
+     *
+     * @param idUser
+     * @param idFilm identifiant du film que l'on note et dont on gère la note moyenne
+     * @param note
+     */
     public NoteUtilisateur(int idUser, int idFilm, int note) {
         this.idFilm = idFilm;
         this.idUser = idUser;

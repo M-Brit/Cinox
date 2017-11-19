@@ -17,16 +17,14 @@ public class Messages {
     }
 
     /*---------------- GETTERS ----------------*/
+
     public String getMessage() {
         return message;
     }
-
     public String getIdUser() { return idUser; }
-
     public String getIdFilm() {
         return idFilm;
     }
-
     public String getDate() { return date; }
 
 
@@ -35,11 +33,9 @@ public class Messages {
     public void setMessage(String message) {
         this.message = message;
     }
-
     public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
-
     public void setIdFilm(String idFilm) {
         this.idFilm = idFilm;
     }
