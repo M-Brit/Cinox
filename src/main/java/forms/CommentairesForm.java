@@ -17,18 +17,30 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 public class CommentairesForm {
-    private static final String CHAMP_CRITIQUES = "critiques";
-    // TODO :  Mettre les id recuperer de la page du film.
-    private static final String CHAMP_ERROR = "errorInsertFilm";
-    private static final String CHAMP_USER = "idUser";
 
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
+    /**
+     * fonction intermediaire pour insere un commentaire dans la bdd MongoDB
+     * @param idFilm idFilm identifiant du film ou on veux ajouter un commentaire
+     * @param idUser idUser identifiant de l'utilisateur qui ajoute le commmentaire
+     * @param userName userName nom de l'utilisateur qui ajoute le commmentaire
+     * @param commentaire le commentaire de l'utilisateur a ajouter
+     * @return
+     */
     public JSONArray commentaireFilm(String idFilm, String idUser, String userName, String commentaire){
         return addCritiquesFilm(idFilm, idUser,userName, commentaire);
     }
 
+    /**
+     * Permet de d'ajouter un commentaire a un Film via son identifiant
+     * @param idFilm idFilm identifiant du film ou on veux ajouter un commentaire
+     * @param idUser idUser identifiant de l'utilisateur qui ajoute le commmentaire
+     * @param userName userName nom de l'utilisateur qui ajoute le commmentaire
+     * @param commentaires le commentaire de l'utilisateur a ajouter
+     * @return
+     */
     public JSONArray addCritiquesFilm(String idFilm, String idUser, String userName, String commentaires){
         MongoCollection<Document> collection = this.connexionMongoDB();
         //insert
@@ -54,10 +66,20 @@ public class CommentairesForm {
         return  array;
     }
 
+    /**
+     * methode intermediare pour recuperer les commentaire d'un film donnee
+     * @param idFilm idfilm identifiant du film sur lequel on veut recuperer les commentaires.
+     * @return
+     */
     public JSONArray obtainCommentaires(String idFilm){
         return getCritiques(idFilm);
     }
 
+    /**
+     * Permet de recuperer les commentaire d'un film
+     * @param idFilm idfilm identifiant du film sur lequel on veut recuperer les commentaires.
+     * @return
+     */
     private JSONArray getCritiques(String idFilm){
 
         MongoCollection<Document> collection = this.connexionMongoDB();
@@ -76,25 +98,13 @@ public class CommentairesForm {
         }
         return  array;
     }
-    //-----------------------------------------------------
 
 
     /**
      * Permet de se connecter à la base de donnée.
-     * @return MongoCollection<Document> qui permet ensuite de se connecter a la base de donnée et
+     * @return MongoCollection<Document> qui permet ensuite de se connecter a la base de donnée
      */
-/*    private MongoCollection<Document> connexionMongoDB(){
-
-
-        MongoClient mongo = new MongoClient("localhost", 27017);
-        MongoDatabase database = mongo.getDatabase("cinoxNoSqlDB");
-        // Accessing the database
-        MongoCollection<Document> collection = database.getCollection("commentaire");
-
-        return collection;
-    }*/
     private MongoCollection<Document> connexionMongoDB(){
-
         // Accessing the database
         MongoCollection<Document> collection = HibernateUtil.database.getCollection("commentaire");
 
@@ -102,7 +112,11 @@ public class CommentairesForm {
     }
 
 
-
+    /**
+     * Permet de tester  si les commentaire son null ou vide
+     * @param comment commentaire en json
+     * @throws CommentairesException
+     */
     public void testCommentaire(JSONObject comment) throws CommentairesException {
         System.out.println("TEST COM1");
         // todo -> changer critique en commentaire + ajout affichage utilisateur
