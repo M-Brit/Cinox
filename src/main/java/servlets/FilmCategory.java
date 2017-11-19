@@ -14,7 +14,6 @@ public class FilmCategory extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String categoryId = request.getParameter("categoryId");
-        System.out.println("categoryId=="+ categoryId);
         FilmImpl filmImpl = new FilmImpl();
         try {
 

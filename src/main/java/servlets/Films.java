@@ -16,7 +16,6 @@ public class Films extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        System.out.println("session f=="+ session);
         try {
             FilmImpl filmImpl = new FilmImpl();
 

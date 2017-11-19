@@ -117,11 +117,9 @@ public class FilmImpl  {
         BasicDBObject query = new BasicDBObject();
         //Pattern regex = Pattern.compile(keywords);
         Pattern regex = Pattern.compile(keywords,Pattern.CASE_INSENSITIVE);
-        System.out.println("regex=="+ regex);
         query.put("title", regex);
         FindIterable<Document> documents = collection.find(query);
         MongoCursor<Document> mongoCursor = documents.iterator();
-        System.out.println("it=="+ mongoCursor.hasNext());
         JSONArray array = new JSONArray();
         JSONObject object;
         while (mongoCursor.hasNext()) {
@@ -155,7 +153,6 @@ public class FilmImpl  {
         while (mongoCursor.hasNext()) {
             Document doc = mongoCursor.next();
             object = new JSONObject(doc.toJson());
-            System.out.println("object=="+ object);
             array.put(object);
         }
         return  array;
@@ -178,7 +175,6 @@ public class FilmImpl  {
         while (mongoCursor.hasNext()) {
             Document doc = mongoCursor.next();
             object = new JSONObject(doc.toJson());
-            System.out.println("object=="+ object);
             array.put(object);
         }
         return  array;
@@ -194,7 +190,6 @@ public class FilmImpl  {
 
             filmDetails = filmApiForm.getMovieDetails(String.valueOf(jsonObject.getInt("id")));
             getActors = filmApiForm.getActors(String.valueOf(jsonObject.getInt("id")));
-            System.out.println("acteur=="+ getActors);
 
             document = new Document();
             document.put("type", type);
@@ -215,7 +210,6 @@ public class FilmImpl  {
             document.put("video", video);
 
             JSONArray array = getActors.optJSONArray("cast");
-            System.out.println("cast=="+ array.length());
             JSONArray acteurs = new JSONArray();
 
             //upComming, il y a que infos de zero ou trois quatre acteurs, on affiche que 3 aucteur

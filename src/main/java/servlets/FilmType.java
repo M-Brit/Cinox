@@ -14,7 +14,6 @@ public class FilmType extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String type = request.getParameter("filmType");
-        System.out.println("servlet=="+ type);
         try {
             FilmImpl filmImpl = new FilmImpl();
 

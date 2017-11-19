@@ -15,7 +15,6 @@ public class FilmSearch extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         String movieName=req.getParameter("titleFilm");
-        System.out.println("title="+ movieName);
 
         //from API
         //FilmForm api=new FilmForm();
@@ -28,7 +27,6 @@ public class FilmSearch extends HttpServlet {
 
             response.setContentType("plain/text");
             response.setHeader("Cache-control", "no-cache");
-            System.out.println("liste : "+list.toString());
             response.getWriter().write(list.toString());
             response.getWriter().flush();
             response.getWriter().close();

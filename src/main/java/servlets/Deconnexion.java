@@ -13,7 +13,6 @@ public class Deconnexion extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        System.out.println("passe dans deconnexion");
         /* Récupération et destruction de la session en cours */
         HttpSession session = req.getSession();
         session.invalidate();

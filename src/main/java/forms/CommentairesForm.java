@@ -118,7 +118,6 @@ public class CommentairesForm {
      * @throws CommentairesException
      */
     public void testCommentaire(JSONObject comment) throws CommentairesException {
-        System.out.println("TEST COM1");
         // todo -> changer critique en commentaire + ajout affichage utilisateur
         if(comment.get("critique").toString().equals("") || comment.get("critique").toString() == null){
             throw new CommentairesException("commentaire vide");
@@ -129,7 +128,6 @@ public class CommentairesForm {
         if(comment.get("idFilm").toString().equals("") || comment.get("idFilm").toString() == null){
             throw new CommentairesException("idFilm inconnu");
         }
-        System.out.println("TEST COM2");
     }
 
 

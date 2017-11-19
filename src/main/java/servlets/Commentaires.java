@@ -46,7 +46,6 @@ public class Commentaires extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String idFilm = request.getParameter("idFilm");
-        System.out.println("action,idFilm=="+ action+"&"+idFilm);
 
         /* Récupération de la session/userId depuis la requête grace au cookie session*/
         Utilisateur uRecup = (Utilisateur) request.getSession().getAttribute(ATT_SESSION_USER);
