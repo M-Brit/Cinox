@@ -18,7 +18,6 @@
     <link href="../css/commentaires.css" rel="stylesheet">
 
     <title>Cinox</title>
-    <link rel="icon" href="../../images/favicon.ico">
 </head>
 
 
@@ -26,6 +25,16 @@
 <body>
 
 <%@ include file="header.jsp" %>
+
+<div class="container">
+
+    <div class="row">
+        <div class="nomAlbum"><h1 id="categorie"></h1></div>
+        <div id="films" >
+
+
+
+
 
 <div class="mainProfil">
 <div class="container">
@@ -66,6 +75,10 @@
         </tbody>
     </table>
 </div>
+
+</div>
+        </div>
+    </div>
 
 </div>
 
@@ -160,5 +173,7 @@
 
 
 </script>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>
