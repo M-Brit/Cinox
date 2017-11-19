@@ -107,7 +107,7 @@
     <!-- ••••• Search Films ••••• -->
     <servlet>
         <servlet-name>Search</servlet-name>
-        <servlet-class>servlets.Search</servlet-class>
+        <servlet-class>servlets.FilmSearch</servlet-class>
 
     </servlet>
     <servlet-mapping>

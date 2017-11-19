@@ -115,7 +115,8 @@ public class FilmImpl  {
         //keywords = keywords.replace(" ","%");
         MongoCollection<Document> collection = this.connexionMongoDB();
         BasicDBObject query = new BasicDBObject();
-        Pattern regex = Pattern.compile(keywords);
+        //Pattern regex = Pattern.compile(keywords);
+        Pattern regex = Pattern.compile(keywords,Pattern.CASE_INSENSITIVE);
         System.out.println("regex=="+ regex);
         query.put("title", regex);
         FindIterable<Document> documents = collection.find(query);
@@ -126,7 +127,16 @@ public class FilmImpl  {
         while (mongoCursor.hasNext()) {
             Document doc = mongoCursor.next();
             object = new JSONObject(doc.toJson());
-            array.put(object);
+            if(array.length() > 0){
+                for(Object o: array){
+                    if(object.getInt("id") != ((JSONObject)o).getInt("id")){
+                        array.put(object);
+                    }
+                }
+            }else {
+                array.put(object);
+            }
+
         }
         //TODO
         //close mongoDB connextion;

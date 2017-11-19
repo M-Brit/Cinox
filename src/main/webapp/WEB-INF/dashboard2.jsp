@@ -80,7 +80,7 @@
                             // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                             tmp += "</div>";
                             $('#films').append(tmp);
-                            $('#categorie').html("Films"); // TODO mettre ici le nom de la categorie ;)
+                            $('#categorie').html("Films");
                        }
                     });
 
@@ -94,6 +94,7 @@
                 function (data, status) {
                     var imageUrl = 'https://image.tmdb.org/t/p/w500';
                     res = JSON.parse(data);
+                    alert('res=='+ res);
                     $('#films').html('');
                     res.forEach(function (element) {
                         var tmp = "";
@@ -104,7 +105,7 @@
                             tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
                             tmp += "</div>";
                             $('#films').append(tmp);
-                            $('#categorie').html("Films"); // TODO mettre ici le nom de la categorie ;)
+                            $('#categorie').html("Search"); // TODO mettre ici le nom de la categorie ;)
                         }
                     });
                 });
@@ -273,7 +274,7 @@
                         tmp += '<div id="film" class="col-sm-7 card eachAlbum">';
                         tmp += '<div class="btnModal"> <a href="#" onclick="filmDetails(' + element.id + ')"> <img class="imgModal" src="' + imageUrl + "" + element.poster_path + '" title="IMAGES" alt=\"Card image cap\"/></a></div>';
                         //tmp += '<p class="card-text"> Titre : '+ element.title +"<br/> Date de sortie : "+ element.release_date;
-                        //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
+                        //TODO ajouter css: tmp += '<p class="card-text"> '+element.overview+'</p>';
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                         tmp += "</div>";
                         $('#films').append(tmp);
