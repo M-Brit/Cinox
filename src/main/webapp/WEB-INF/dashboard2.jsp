@@ -251,7 +251,10 @@
                 ).done(function (res, status) {
                     alert('status test=='+ status);
                     commentaire = JSON.parse(res);
-                    commentaire.forEach(function (mm) {
+                    //commentaire.forEach(function (mm) {
+                    for(var i=commentaire.length-1; i>=0; i--){
+                        mm = commentaire[i];
+
                         tmp += '<div class="media-grids">';
                         tmp += '<div class="media">';
                         tmp += '<h5 class="name_user">'+mm.userName+'</h5> <a href="../images/u12.png"></a>';
@@ -263,7 +266,7 @@
                         tmp += '</div>';
                         tmp += '</div>';
 
-                    })
+                    }
                     tmp += '</div>';
                 });
 
