@@ -10,7 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.HibernateUtil;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
@@ -105,7 +108,14 @@ public class FilmImpl  {
         if(it.hasNext()){
             Document doc = (Document) it.next();
             object = new JSONObject(doc.toJson());
+            String release_date = object.getString("release_date");
 
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = (Date)formatter.parse(release_date);
+
+            SimpleDateFormat sm = new SimpleDateFormat("dd/MM/yyyy");
+            String s= sm.format(date);
+            object.put("release_date",s);
         }
         return object;
 
