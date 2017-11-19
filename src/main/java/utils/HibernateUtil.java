@@ -30,7 +30,6 @@ public class HibernateUtil implements ServletContextListener {
             System.out.println("SEAGALL");
         }
 
-
     }
 
     public static void testMongo() {

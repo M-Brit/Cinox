@@ -8,7 +8,15 @@ import java.util.Map;
 
 public class InscriptionForm {
 
-    // Validations.
+
+    /**
+     * Validations de l'inscription
+     * @param pseudo
+     * @param email
+     * @param motDePasse
+     * @param confirmation
+     * @return
+     */
     public static Map<String, String> validation(String pseudo, String email, String motDePasse, String confirmation) {
         Map<String, String> erreurs = new HashMap<>();
 
@@ -33,7 +41,12 @@ public class InscriptionForm {
         return erreurs;
     }
 
-    // Valide l'adresse mail saisie.
+
+    /**
+     * Valide l'adresse mail saisie.
+     * @param email
+     * @throws InscriptionException
+     */
     private static void validationEmail(String email) throws InscriptionException {
         if (email != null && email.trim().length() != 0) {
             if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
@@ -47,7 +60,13 @@ public class InscriptionForm {
         }
     }
 
-    // Valide les mots de passe saisis.
+
+    /**
+     * Valide les mots de passe saisis.
+     * @param motDePasse
+     * @param confirmation
+     * @throws InscriptionException
+     */
     private static void validationMotsDePasse(String motDePasse, String confirmation) throws InscriptionException {
         if (motDePasse != null && motDePasse.trim().length() != 0 && confirmation != null && confirmation.trim().length() != 0) {
             if (!motDePasse.equals(confirmation)) {
@@ -60,7 +79,12 @@ public class InscriptionForm {
         }
     }
 
-    // Valide le pseudo saisi.
+
+    /**
+     * Valide le pseudo saisi.
+     * @param pseudo
+     * @throws InscriptionException
+     */
     private static void validationPseudo(String pseudo) throws InscriptionException {
         if (pseudo != null && pseudo.trim().length() < 3) {
             throw new InscriptionException("Le pseudo doit contenir au moins 3 caractères.");

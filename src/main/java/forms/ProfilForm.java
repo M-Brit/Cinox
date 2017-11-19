@@ -10,6 +10,11 @@ import java.util.List;
 
 public class ProfilForm {
 
+    /**
+     * Permet de cherche ses amis parmis un liste d'utilisateur
+     * @param list de tous les utilisateurs
+     * @return
+     */
     public static JSONArray rechercheAmisJSON(List list) {
         JSONArray array = new JSONArray();
         for (int i = 0; i < list.size(); i++) {

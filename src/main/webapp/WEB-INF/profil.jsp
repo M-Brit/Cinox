@@ -18,7 +18,6 @@
     <link href="../css/commentaires.css" rel="stylesheet">
 
     <title>Cinox</title>
-    <link rel="icon" href="../../images/favicon.ico">
 </head>
 
 
@@ -26,6 +25,16 @@
 <body>
 
 <%@ include file="header.jsp" %>
+
+<div class="container">
+
+    <div class="row">
+        <div class="nomAlbum"><h1 id="categorie"></h1></div>
+        <div id="films" >
+
+
+
+
 
 <div class="mainProfil">
 <div class="container">
@@ -68,6 +77,10 @@
 </div>
 
 </div>
+        </div>
+    </div>
+
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -76,6 +89,7 @@
         integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 
 <script>
@@ -160,5 +174,7 @@
 
 
 </script>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>

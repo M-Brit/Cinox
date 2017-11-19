@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 public class CommentairesForm {
+    private static final String CHAMP_CRITIQUES = "critiques";
+    private static final String CHAMP_ERROR = "errorInsertFilm";
+    private static final String CHAMP_USER = "idUser";
 
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
@@ -32,7 +35,6 @@ public class CommentairesForm {
     public JSONArray commentaireFilm(String idFilm, String idUser, String userName, String commentaire){
         return addCritiquesFilm(idFilm, idUser,userName, commentaire);
     }
-
     /**
      * Permet de d'ajouter un commentaire a un Film via son identifiant
      * @param idFilm idFilm identifiant du film ou on veux ajouter un commentaire
@@ -65,7 +67,6 @@ public class CommentairesForm {
         }
         return  array;
     }
-
     /**
      * methode intermediare pour recuperer les commentaire d'un film donnee
      * @param idFilm idfilm identifiant du film sur lequel on veut recuperer les commentaires.
@@ -74,7 +75,6 @@ public class CommentairesForm {
     public JSONArray obtainCommentaires(String idFilm){
         return getCritiques(idFilm);
     }
-
     /**
      * Permet de recuperer les commentaire d'un film
      * @param idFilm idfilm identifiant du film sur lequel on veut recuperer les commentaires.
@@ -98,13 +98,25 @@ public class CommentairesForm {
         }
         return  array;
     }
+    //-----------------------------------------------------
 
 
+/*    private MongoCollection<Document> connexionMongoDB(){
+
+
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        MongoDatabase database = mongo.getDatabase("cinoxNoSqlDB");
+        // Accessing the database
+        MongoCollection<Document> collection = database.getCollection("commentaire");
+
+        return collection;
+    }*/
     /**
      * Permet de se connecter à la base de donnée.
      * @return MongoCollection<Document> qui permet ensuite de se connecter a la base de donnée
      */
     private MongoCollection<Document> connexionMongoDB(){
+
         // Accessing the database
         MongoCollection<Document> collection = HibernateUtil.database.getCollection("commentaire");
 

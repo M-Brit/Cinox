@@ -23,8 +23,8 @@ public class Commentaires extends HttpServlet {
 
     /**
      * Methode de servlet qui gère les requetes Get du client .
-     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier).
-     * @param response response permet de repondre au client de facons personnalise
+     * @param request request permet de scruter la requete du client afin d'effectuer les traitements (Metier) pour les commentaires.
+     * @param response response permet de repondre au client de facons personnalise pour les commentaires.
      * @throws ServletException
      * @throws IOException
      */

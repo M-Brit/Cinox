@@ -8,6 +8,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+/**
+ * code metier qui gerer toute les requetes a l'api moviedb
+ */
 public class FilmForm {
         //TODO global ou local
         //JSONObject jsonObject;
@@ -31,7 +35,11 @@ public class FilmForm {
 
         }
 
-
+        /**
+         * Permet d'obtenir les films qui sont actuellement sortie depuis l'api moviedb.
+         * @return
+         * @throws Exception
+         */
         public JSONArray nowPlaying() throws Exception
         {
             String url_nowPlaying = "https://api.themoviedb.org/3/movie/now_playing?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
@@ -40,6 +48,11 @@ public class FilmForm {
             return jsonObject.getJSONArray( "results" );
         }
 
+        /**
+         * Permet d'obtenir les films qui vont prochainement sortir depuis l'api moviedb.
+         * @return
+         * @throws Exception
+         */
         public JSONArray upComing() throws Exception
         {
             String url_upComing = "https://api.themoviedb.org/3/movie/upcoming?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
@@ -57,6 +70,11 @@ public class FilmForm {
             return jsonObject.getJSONArray("results");
         }
 
+        /**
+         * Recherche les film populaire c'est a dire les plus apprecier des clients de l'api moviedb.
+         * @return
+         * @throws Exception
+         */
         public JSONArray popular() throws Exception
         {
             String url_popular = "https://api.themoviedb.org/3/movie/popular?api_key=37558deaca34c291c832573f6b749f63&language=fr&page=1&region=fr";
@@ -65,6 +83,12 @@ public class FilmForm {
             return jsonObject.getJSONArray("results");
         }
 
+        /**
+         * Obtenir des films avec des mot cles pour la recherche de film
+         * @param keywords mot cles qui permet la recherche de film
+         * @return
+         * @throws Exception
+         */
         public JSONArray getMovieWithKeywords(String keywords) throws Exception
         {
             //TODO replace
@@ -78,6 +102,12 @@ public class FilmForm {
             return null;
         }
 
+        /**
+         * Permet d'obtenir les films par rapport a un category depuis l'API movieDB
+         * @param filmTypeId id de la categorie
+         * @return
+         * @throws Exception
+         */
         public JSONArray getMovieByTypeId(int filmTypeId) throws Exception{
             String url_fileType = "https://api.themoviedb.org/3/genre/"+ filmTypeId +"/movies?api_key=37558deaca34c291c832573f6b749f63&language=fr&include_adult=false&sort_by=created_at.asc";
             JSONObject jsonObject = new JSONObject(getData(url_fileType).toString());
@@ -87,6 +117,12 @@ public class FilmForm {
             return null;
         }
 
+        /**
+         * Permet d'obtenir le detail  d'un film depuis l'API movieDB
+         * @param id id du film
+         * @return
+         * @throws Exception
+         */
         public JSONObject getMovieDetails(String id) throws Exception{
             // https://www.youtube.com/watch?v=ePbKGoIGAXY
 
@@ -101,6 +137,11 @@ public class FilmForm {
 
         }
 
+        /**
+         * Permet d'obtenir les acteurs d'un film depuis l'API movieDB
+         * @param id de l'acteurs en question
+         * @return
+         */
         public JSONObject getActors(String id){
             try {
                 String url_actors = " https://api.themoviedb.org/3/movie/"+id+ "/credits?api_key=37558deaca34c291c832573f6b749f63";

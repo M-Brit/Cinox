@@ -1,5 +1,8 @@
 package beans;
 
+/**
+ * beans representant l'utilisateur ->  permet de passer l'utilisateur notament dans la connexion
+ */
 public class Utilisateur {
 
     private int id;
