@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class RestrictionFilter implements Filter {
 
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String ACCES_PUBLIC = "connexion.jsp";
+    public static final String ACCES_PUBLIC = "index.jsp";
     /**
      *
      * @param config permet de recuperer les parametres d'initialisation du filtre et d'en passer
@@ -50,7 +50,7 @@ public class RestrictionFilter implements Filter {
         if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
             /* Redirection vers la page publique */
             // TODO : mettre la page d'index en haut dans la constante
-           // response.sendRedirect( request.getContextPath() + ACCES_PUBLIC );
+           response.sendRedirect( request.getContextPath() + ACCES_PUBLIC );
         } else {
             /* la requete est transmise au filtre suivant ou vers la ressource visé initialement */
             chain.doFilter( request, response );

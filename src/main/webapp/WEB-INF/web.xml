@@ -9,15 +9,25 @@
     </listener>
 
     <!-- ••••• Filtres session ••••• -->
-    <!--   <filter>
+    <filter>
         <filter-name>Filtre</filter-name>
         <filter-class>filters.RestrictionFilter</filter-class>
-    </filter> -->
+    </filter>
     <!-- TODO : ¿¿¿ Les mappings de filtres sont appliqués les uns apres les autres selon leurs positions -->
-    <!--   <filter-mapping>
+    <filter-mapping>
          <filter-name>Filtre</filter-name>
-         <url-pattern>/*</url-pattern>
-     </filter-mapping> -->
+         <url-pattern>/commentaires</url-pattern>
+        <url-pattern>/deconnexion</url-pattern>
+        <url-pattern>/initializeFilm</url-pattern>
+        <url-pattern>/films</url-pattern>
+        <url-pattern>/notation</url-pattern>
+        <url-pattern>/search</url-pattern>
+        <url-pattern>/filmCategory</url-pattern>
+        <url-pattern>/filmType</url-pattern>
+        <url-pattern>/profil</url-pattern>
+
+
+     </filter-mapping>
 
 
 
