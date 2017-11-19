@@ -369,8 +369,21 @@
                         //TODO : tmp += '<p class="card-text"> '+element.overView+'</p>';
                         // tmp += '<br/> Notes : '+element.vote_average+'</p>';
                         tmp += "</div>";
+                        var outputType ="";
+                        switch (type) {
+                            case "upComing":
+                                outputType += 'Prochainement';
+                                break;
+                            case "popular":
+                                outputType += 'Populaire ';
+                                break;
+
+                            default:
+                                outputType += 'Films';
+                                console.log('Erreur');
+                        }
                         $('#films').append(tmp);
-                        $('#categorie').html(type); //TODO mettre ici le nom de la categorie ;)
+                        $('#categorie').html(outputType); //TODO mettre ici le nom de la categorie ;)
                     }
                 });
             });
