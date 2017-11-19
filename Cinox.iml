@@ -71,8 +71,9 @@
     <orderEntry type="library" name="Maven: org.mongodb:bson:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.ejb:javax.ejb-api:3.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.transaction:javax.transaction-api:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.2.12.Final" level="project" />
   </component>
 </module>
